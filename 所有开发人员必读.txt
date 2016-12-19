@@ -1,0 +1,21 @@
+
+1. 框架内的任何信息都不得修改，即ThinkPHP文件夹下的任何文件代码都不要修改；
+
+2. 如果要更改配置，请到自己应用的目录下面的config.php文件里面配置，如Admin/Commom/Conf/confg.php;
+
+3. 如果要使用一个类，请使用extends继承；
+
+4. 如果非要更改框架里面的父类，例如Controller,也不得更改框架父类，可以使用继承
+   即，myController extends Controller ,然后再来使用xxxController extends myController 即可实现自定义Controller；
+
+5. 如果对框架比较了解可以适当的在框架里面的部分代码上标注一些注释，但不得更改框架任何源码；
+
+6. 本系统使用的框架版本为3.2.3；
+
+7. 文件编码一律使用UTF-8,有些编辑器默认为GBK，一定要改过来，UTF-8，UTF-8，UTF-8；
+
+8. 自定义的方法、类、控制器等一定要写注释，写注释，写注释；
+
+9. 所有的模板文件，即xxx.html/.tpl文件，不要把css/js写在里面，要写在单独的.css/.js文件里，
+   即不要在html文件里面出现非模板引擎使用的花括号{}；
+
