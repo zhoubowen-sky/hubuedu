@@ -18,7 +18,7 @@ define("APP_DEBUG", true);
 
 //自己定义的CSS JS IMG路径全局常量，用以存储网页相关的资源文件的路径
 //定义路径常量，直接定义http绝对路径，框架在应用的时候会自动将SITE_URL 与 CSS等资源路径进行组合得到一个统一资源定位符
-define("SITE_URL", "http://web.hubu.edu/");//站点路径
+define("SITE_URL", "http://web.hubu.edu:3002/");//站点路径
 define("ADMIN_CSS_URL", SITE_URL."Admin/Public/css/");//css路径
 define("ADMIN_JS_URL", SITE_URL."Admin/Public/js/");//js路径
 define("ADMIN_IMG_URL", SITE_URL."Admin/Public/images/");//images图片路径
