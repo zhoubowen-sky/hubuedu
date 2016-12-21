@@ -1,4 +1,4 @@
-Èç¹ûÒª¼æÈÝieä¯ÀÀÆ÷¼ÓÈëÒÔÏÂÁ½ÐÐ´úÂë
+ï»¿å¦‚æžœè¦å…¼å®¹ieæµè§ˆå™¨åŠ å…¥ä»¥ä¸‹ä¸¤è¡Œä»£ç 
     <!--[if lt IE 9]>
       <script src="../ie/html5shiv.min.js"></script>
       <script src="../ie/respond.min.js"></script>
