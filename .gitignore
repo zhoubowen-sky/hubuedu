@@ -7,6 +7,7 @@ Desktop.ini
 
 #自定义忽略的文件/文件夹
 /Admin/Runtime/
+/Hubu/Runtime/
 /Student/Runtime/
 /Teacher/Runtime/
 /.settings/

@@ -1,0 +1,2 @@
+无论是Admin还是Teacher还是Student使用的都是同一个数据库，
+因此Model都放在此目录，
