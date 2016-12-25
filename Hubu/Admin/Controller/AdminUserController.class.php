@@ -168,7 +168,7 @@ class AdminUserController extends Controller{
 	            if(!empty($_FILES)){
 	                //自定义文件接收相关配置
 	                $config = array(
-	                    'rootPath'      =>  'Admin/Public/', //保存根路径,Andim目录下面public目录定义为Admin的根目录，这里的路径设置是以admin.php所在路径为依据设置
+	                    'rootPath'      =>  'Hubu/Public/', //保存根路径,Andim目录下面public目录定义为Admin的根目录，这里的路径设置是以admin.php所在路径为依据设置
 	                    'savePath'      =>  'Uploads/', //保存路径为Uploads，TP框架会自动生成如2016-12-18的日期文件夹
 	                );
 	                //print_r($_FILES);//是个二维数组
