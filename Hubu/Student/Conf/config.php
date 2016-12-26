@@ -23,18 +23,7 @@ return array(
     'DB_FIELDS_CACHE'       =>  true,        // 启用字段缓存
     'DB_CHARSET'            =>  'utf8',      // 数据库编码默认采用utf8 
     
-    //以下是发送邮件相关的配置文件
-    'THINK_EMAIL' => array(
-        'SMTP_HOST' => 'smtp.126.com', //SMTP服务器
-        'SMTP_PORT' => '465', //SMTP服务器端口
-        'SMTP_USER' => 'hubu_edu_cn@126.com', //SMTP服务器用户名
-        'SMTP_PASS' => 'hubueducn123', //SMTP服务器密码，此处填写的是授权码，可以代替密码
-        'FROM_EMAIL' => 'hubu_edu_cn@126.com',
-        'FROM_NAME' => '湖大在线学习平台', //发件人名称
-        'REPLY_EMAIL' => '', //回复EMAIL（留空则为发件人EMAIL）
-        'REPLY_NAME' => '', //回复名称（留空则为发件人名称）
-        'SESSION_EXPIRE'=>'72',
-    ),
+    
     
     
 );
