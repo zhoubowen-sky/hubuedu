@@ -31,5 +31,12 @@ class FeedbackController extends Controller {
 	    show_bug($z);
 	}
 	
+	function emailCheck(){
+	    $a = think_send_mail('zhoubowen.sky@foxmail.com','发件人','在线学习平台','这是一封测试邮件，无需回复！不要太在意为什么是126邮箱。。。这并不重要。。。');
+	    show_bug($a);
+	    //think_send_mail('要发送的邮箱','发送人名称，即你的名称','邮件主题','邮件内容');
+		  
+	}
+	
 	
 }
