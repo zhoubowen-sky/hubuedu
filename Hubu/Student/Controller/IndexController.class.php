@@ -6,7 +6,7 @@ class IndexController extends Controller {
 	
     function index(){
 		//echo "这里是学生模块，以后是网站首页" ;
-		$this->display();
+		$this->display('header');
 	}
 	
 	
