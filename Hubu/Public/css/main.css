@@ -1,5 +1,7 @@
 body{
     font-family: "Microsoft YaHei";
+    padding: 0;
+    margin: 0;
 }
 
 /*头部导航*/
@@ -11,6 +13,8 @@ body{
 .header-top .row{
     width: 1366px;
     height: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .header-top .row img{
      width: 255px;
@@ -69,25 +73,20 @@ body{
 
 /*图片轮播*/
 .swiper-container {
+    width: 100%;
+    height: 490px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+.swiper-slide {
     width: 1205px;
     height: 490px;
     margin-left: auto;
     margin-right: auto;
-}
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
+}
+.swiper-slide img{
+    height: 100%;
 }
