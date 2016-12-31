@@ -41,6 +41,22 @@ class TestController extends Controller {
 	    show_bug($bbb);
 	}
 	
+	function test5(){
+	    $sql = "SELECT * FROM hubu_feedback";
+	    $info = M();
+	    $z = $info->query($sql);
+	    show_bug($z);
+	}
+	
+	function test6(){
+	    header("Content-Type:text/html; charset=utf-8");//设置后不乱码
+	    $student_user_id = 1;
+	    $User = M("StudentUser"); // 实例化User对象// 更改用户的name值
+	    show_bug($User);
+	    $z = $User-> where("student_user_id = $student_user_id")->setField('student_user_verify','3');
+	    show_bug($z);
+	}
+	
 	function emailCheck(){
 	    $a = think_send_mail('zhoubowen.sky@foxmail.com','发件人名称填写处','湖大在线学习平台','这是一封测试邮件，无需回复！不要太在意为什么是126邮箱。。。这并不重要。。。');
 	    show_bug($a);
