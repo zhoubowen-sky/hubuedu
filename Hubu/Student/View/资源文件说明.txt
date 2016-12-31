@@ -1,0 +1,6 @@
+{$Think.const.ADMIN_CSS_URL} //cssÂ·¾¶
+ADMIN_CSS_URL === Hubu/Public/css/
+
+{$Think.const.ADMIN_JS_URL}  //jsÂ·¾¶
+
+{$Think.const.ADMIN_IMG_URL} //imagesÍ¼Æ¬Â·¾¶

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $.adaptiveBackground.run()
+        });
+
+    </script>
+
+</head>
+<body>
+    <div class="header-top">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+            <img src="{$Think.const.ADMIN_IMG_URL}logo.png" alt="">
+        </div>
+        <div class="col-md-4">
+            <ul class="list-inline">
+                <li><a class="ul-a" href="#">首页</a></li>
+                <li><a class="ul-a" href="#">课程</a></li>
+                <li><a class="ul-a1" href=""><span class="glyphicon glyphicon-phone"></span>客户端</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <div class="search">
+                <div>
+                    <div class="input-group">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                            </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+            <div class="login">
+                <a href="#">登录</a><!-- 这里点击链接后弹出下面的登录框，注册也是一样哒 -->
+                <span>&nbsp;|&nbsp;</span>
+                <a href="#">注册</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- 貌似下面这个图片左右滑动当点击的很快的时候就不灵了，然后它不能自动一张张播放（我浏览器Chrome55），下面这个div与header之间有一个间隙白条 -->
+    <div class="swiper-container">
+       <div class="swiper-wrapper">
+                <div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}1.jpg" alt="" data-adaptive-background></div>
+                <div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}2.jpg" alt="" data-adaptive-background></div>
+                <div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}3.jpg" alt="" data-adaptive-background></div>
+                <div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}4.jpg" alt="" data-adaptive-background></div>
+                <div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}5.jpg" alt="" data-adaptive-background></div>
+       </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+    </div>
+    
+    <!-- 这里我把登陆以及注册的简单表单写在这里，回头改一下，我觉得改成那种点击登陆后，像alert弹出来登陆表单就行，jquery就可以实现，后期你想咋改随意昂，表单我先塞这儿 -->
+    <div>
+    	<form name="login" method="post" action="index.php/Student/StudentUser/login">
+		<p>
+			<label for="student_user_email">邮箱:</label> <input type="email" name="student_user_email" id="student_user_email"> 
+		</p>
+		<p>
+			<label for="student_user_pwd">密码：</label> <input type="password" name="student_user_pwd" id="student_user_pwd">
+		</p>
+		<!-- 下面验证码如果直接使用AdminUser控制器里面书写的verifyImg方法 就需要跨分组调用,为逻辑简单，我们在Student写一个一模一样的验证码教研方法-->
+		<div>
+            <input type="text" class="input input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码" />
+            <!-- 这里的验证码直接用ThinkPHP的变量替换 -->
+            <img src="index.php/Student/StudentUser/verifyImg" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">  
+                                                   
+        </div>
+		<p>
+		  <input type="submit" name="submit" id="submit" value="点击登录">
+		</p>
+
+	</form>
+    </div>
+    
+    
+<script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
+<script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
+</body>
+</html>

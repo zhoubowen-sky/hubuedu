@@ -1,23 +1,5 @@
 <?php
-/* //ThinkPHP框架入口
-
-//设置head头，防止乱码
-header("content-type:text/html,charset=utf-8");
-
-//开启调试模式
-define("APP_DEBUG",true);
-
-//1.定义我们的项目名称
-define("APP_NAME","student");
-
-//2.定义当前项目的路径
-define("APP_PATH","./Student/");
-
-//3.导入入口文件
-require("./ThinkPHP/ThinkPHP.php");
- */
-
-
+//ThinkPHP框架入口
 //设置head头，防止乱码
 header("content-type:text/html,charset=utf-8");
 
@@ -40,7 +22,7 @@ define("SITE_URL", "http://web.hubu.edu:3002/");//站点路径
 define("ADMIN_CSS_URL", SITE_URL."Hubu/Public/css/");//css路径
 define("ADMIN_JS_URL", SITE_URL."Hubu/Public/js/");//js路径
 define("ADMIN_IMG_URL", SITE_URL."Hubu/Public/images/");//images图片路径
-
+define("ADMIN_IE_URL", SITE_URL."Hubu/Public/ie/");//适配ie9以下浏览器的js文件
 //为上传用户头像路径设置路径
 define("ADMIN_IMG_UPLOADS", SITE_URL."Hubu/Public/");
 //定义用户头像默认存储位置

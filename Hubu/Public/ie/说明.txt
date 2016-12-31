@@ -1,0 +1,5 @@
+﻿如果要兼容ie浏览器加入以下两行代码
+    <!--[if lt IE 9]>
+      <script src="../ie/html5shiv.min.js"></script>
+      <script src="../ie/respond.min.js"></script>
+    <![endif]-->
