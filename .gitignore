@@ -15,6 +15,10 @@ Desktop.ini
 .project
 *.log
 
+#MySQL数据库数据文件 只同步hubuedu的相关文件
+/Database/
+!/Database/MySQL/hubuedu/
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
