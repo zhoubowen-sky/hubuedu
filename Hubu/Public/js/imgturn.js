@@ -3,11 +3,13 @@
  */
 
 var swiper = new Swiper('.swiper-container', {
-    pagination: '.swiper-pagination',
+    paginationClickable: '.swiper-pagination',
     nextButton: '.swiper-button-next',
     prevButton: '.swiper-button-prev',
     slidesPerView: 1,
-    paginationClickable: true,
     spaceBetween: 30,
-    loop: true
+    loop: true,
+    centeredSlides: true,
+    autoplay: 1500,
+    autoplayDisableOnInteraction: false
 });
