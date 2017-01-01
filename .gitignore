@@ -18,6 +18,7 @@ Desktop.ini
 #MySQL数据库数据文件 只同步hubuedu的相关文件
 /Database/
 !/Database/MySQL/hubuedu/
+!/Database/这里是MySQL数据库数据文件.txt
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
