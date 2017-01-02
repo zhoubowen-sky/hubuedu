@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
+	<script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>  
     <script type="text/javascript">
 
         $(document).ready(function(){
-            $.adaptiveBackground.run()
+            $.adaptiveBackground.run();	
         });
 
     </script>
@@ -44,7 +45,7 @@
                 </div>
             </div>
             <div class="login">
-                <a href="#">登录</a><!-- 这里点击链接后弹出下面的登录框，注册也是一样哒 -->
+                <a id='login' href="#">登录</a><!-- 这里点击链接后弹出下面的登录框，注册也是一样哒 -->
                 <span>&nbsp;|&nbsp;</span>
                 <a href="#">注册</a>
             </div>
@@ -66,7 +67,7 @@
     </div>
     
     <!-- 这里我把登陆以及注册的简单表单写在这里，回头改一下，我觉得改成那种点击登陆后，像alert弹出来登陆表单就行，jquery就可以实现，后期你想咋改随意昂，表单我先塞这儿 -->
-    <div>
+    <div id='login-div-1'>
 	<form class="login-form" name="login" method="post" action="index.php/Student/StudentUser/login">
     <p>
         <label class="sr-only" for="student_user_email">Email address</label>
@@ -94,8 +95,9 @@
 	</form>
     </div>
     
-    
+
 <script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
 <script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
+<script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
 </body>
 </html>
