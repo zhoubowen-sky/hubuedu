@@ -31,22 +31,27 @@ class StudentUserController extends Controller {
 	            }else {
 	                //账号密码输入正确
 	                //进行账号激活校验，即student_user_verify字段，只有此字段为真（1）才能进行下一步操作，否则发送邮件激活
-	                $rst = $user->getField('student_user_verify');
+	                //$rst = $user->getField('student_user_verify');
+	                $rst = $z['student_user_verify'];
 	                //show_bug($rst);
 	                if (!$rst){
 	                    //邮箱没有验证,提示发送邮件验证
-	                    $email = $user->getField('student_user_email');//获取邮箱字段的值
-	                    $id = $user->getField('student_user_id');//获取id
+	                    $email = $z['student_user_email'];//获取邮箱字段的值
+	                    $id = $z['student_user_id'];//获取id
 	                    //发送激活邮件
 	                    //show_bug($email);
+	                    //show_bug($id);
 	                    //账号激活的URL地址,例如  http://web.hubu.edu:3002/index.php/Student/StudentUser/activeAccount/id/1
 	                    $activeURL = SITE_URL.'index.php/Student/StudentUser/activeAccount/id/'.$id.' ';
 	                    //show_bug($activeURL);
 	                    $a = think_send_mail($email,'湖北大学网络课程平台','账号激活邮件','您的账号为：'.$email.',点击链接激活账号：'.$activeURL);
-	                    $this->error("您的账号还没有激活，我们已向您的邮箱 $email 发送了激活邮件，请注意查收！");
+	                    //show_bug($a);
+	                    $this->error("您的账号还没有激活，我们已向您的邮箱 $email 发送了激活邮件，请注意查收并登录邮箱激活账号！");
 	                }else {
 	                    /*****登陆成功后执行的操作****/
 	                    echo "登陆成功";
+	                    //生成session
+	                    
 	                    
 	                }
 	            }
@@ -91,6 +96,60 @@ class StudentUserController extends Controller {
 	 * 接收注册时候的表单，并向数据库写入注册用户信息
 	 */
 	function register(){
+	    //echo "学生用户注册的方法";
+	    //show_bug($_POST);
+	    //首先校验验证码的正确性
+	    $verify = new \Think\Verify();
+	    if(!$verify ->check($_POST['code'])){
+	        //echo "验证码错误！";
+	        $this->error("验证码输入错误！");
+	    }else {
+	        //验证码输入正确
+	        //echo "验证码正确"."<br>";
+	        //收集表单数据，表单验证就直接在前端用JS实现，这样效果好一些，在后端验证会增加服务器开销，当然后端校验数据完整性更强
+	        if(!empty($_POST)){
+	            //用户提交了表单
+	            //echo "提交了表单";
+	            
+	            //show_bug($_POST);
+	            //检查此邮箱是否已经注册过
+	            //实例化Model，调用其中的邮箱验证方法验证邮箱是否已经被注册过了
+	            $user = new \Model\StudentUserModel();
+	            //show_bug($user);
+	            $info = $user->checkEmail_Registered($_POST['student_user_email']);
+	            //show_bug($info);
+	            if($info){
+	                //邮箱已经被注册过了
+	                //echo "这个邮箱已经被人注册过了，请换一个邮箱账号重新注册";
+	                $this->error("这个邮箱已经被人注册过了，请换一个邮箱账号重新注册！",SITE_URL);
+	            }else {
+	                //echo "邮箱没有被注册";
+	                //邮箱没有被注册，发送邮件到注册的邮箱,向数据库写入数据
+	                //收集表单数据，把时间添加到$_POST里面
+	                $_POST['student_user_time'] = date("Y-m-d H:i:s");//用户注册的时间
+	                $_POST['student_user_username'] = $_POST['student_user_email'];//默认在注册的时候，用户名就是邮箱，但是这是两个字段
+	                $m = D('StudentUser');
+	                $rst = $m->create();//收集表单数据，存储到 $rst 中
+	                //show_bug($rst);
+	                $z = $m->add();//将数据写入到数据库
+	                //show_bug($z);
+	                
+	                //向邮箱发送账号激活链接
+	                $user = new \Model\StudentUserModel();
+	                $r = $user->getBystudent_user_email($_POST['student_user_email']);//获取邮箱字段的值
+	                //show_bug($r);
+	                $id = $r['student_user_id'];//获取id
+	                $email = $r['student_user_email'];//获取email
+	                //show_bug($email);
+	                //账号激活的URL地址,例如  http://web.hubu.edu:3002/index.php/Student/StudentUser/activeAccount/id/1
+	                $activeURL = SITE_URL.'index.php/Student/StudentUser/activeAccount/id/'.$id.' ';
+	                //show_bug($activeURL);
+	                $a = think_send_mail($email,'湖北大学网络课程平台','账号激活邮件','您的账号为：'.$email.',点击链接激活账号：'.$activeURL);
+	                //show_bug($a);
+	                $this->success("^_^恭喜，注册成功，我们已经向您的邮箱发送了激活链接，请尽快激活账号！");
+	            }
+	        }
+	    }
 	    
 	}
 	
