@@ -48,9 +48,9 @@ class StudentUserController extends Controller {
 	                    //show_bug($a);
 	                    $this->error("您的账号还没有激活，我们已向您的邮箱 $email 发送了激活邮件，请注意查收并登录邮箱激活账号！");
 	                }else {
-	                    /*****登陆成功后执行的操作****/
+	                    /**********************************登陆成功后执行的操作***********************************/
 	                    echo "登陆成功";
-	                    //生成session
+	                    //生成session，这里要存储的将是大量的信息，包括学生课程相关的信息
 	                    
 	                    
 	                }
@@ -146,11 +146,19 @@ class StudentUserController extends Controller {
 	                //show_bug($activeURL);
 	                $a = think_send_mail($email,'湖北大学网络课程平台','账号激活邮件','您的账号为：'.$email.',点击链接激活账号：'.$activeURL);
 	                //show_bug($a);
-	                $this->success("^_^恭喜，注册成功，我们已经向您的邮箱发送了激活链接，请尽快激活账号！");
+	                $this->success("^_^恭喜，注册成功，我们已经向您的邮箱发送了激活链接，请尽快激活账号！",SITE_URL);
 	            }
 	        }
 	    }
 	    
+	}
+	
+	/**
+	 * 退出登录，主要是清除session，然后跳转到网站首页
+	 */
+	function logout(){
+	    session(null);//清除所有的session值
+	    $this->redirect(SITE_URL);//跳转到网站首页
 	}
 	
 	/**
@@ -174,7 +182,7 @@ class StudentUserController extends Controller {
 	        'reset'     =>  true,           // 验证成功后是否重置
 	    );
 	    //实例化的时候传入配置
-	    $verify = new \Think\Verify($config); //实例化Verify对象，此处要注意命名空间的书写，可以使用在admin.php中定义的show_bug()函数输出对象看实例化好了没有
+	    $verify = new \Think\Verify($config); //实例化Verify对象，此处要注意命名空间的书写，可以使用在index.php中定义的show_bug()函数输出对象看实例化好了没有
 	    //show_bug($verify);
 	    $verify ->entry();
 	}
