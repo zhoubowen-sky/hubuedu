@@ -3,7 +3,7 @@
  */
 
 var swiper = new Swiper('.swiper-container', {
-    paginationClickable: '.swiper-pagination',
+    pagination: '.swiper-pagination',
     nextButton: '.swiper-button-next',
     prevButton: '.swiper-button-prev',
     slidesPerView: 1,
