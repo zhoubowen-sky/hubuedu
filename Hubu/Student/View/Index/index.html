@@ -94,6 +94,32 @@
     </p>
 	</form>
     </div>
+    <br />
+    {/*学生用户注册的表单*/}
+    <div>
+    	<form name="register" method="post" action="index.php/Student/StudentUser/register">
+		<p>
+			<label for="student_user_email">注册邮箱:</label> <input type="email" name="student_user_email" id="student_user_email"> 
+		</p>
+		<p>
+			<label for="student_user_pwd2">设置密码：</label> <input type="password" name="student_user_pwd2" id="student_user_pwd2">
+		</p>
+		<p>
+			<label for="student_user_pwd">确认密码：</label> <input type="password" name="student_user_pwd" id="student_user_pwd">
+		</p>
+		
+		<div>
+            <input type="text" class="input input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码" />
+            <!-- 这里的验证码直接用ThinkPHP的变量替换 -->
+            <img src="index.php/Student/StudentUser/verifyImg" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">  
+                                                   
+        </div>
+		<p>
+		  <input type="submit" name="submit" id="submit" value="点击注册">
+		</p>
+
+	</form>
+    </div>
     
 
 <script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>

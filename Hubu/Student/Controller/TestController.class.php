@@ -58,7 +58,7 @@ class TestController extends Controller {
 	}
 	
 	function emailCheck(){
-	    $a = think_send_mail('zhoubowen.sky@foxmail.com','发件人名称填写处','湖大在线学习平台','这是一封测试邮件，无需回复！不要太在意为什么是126邮箱。。。这并不重要。。。');
+	    $a = think_send_mail('1793404975@qq.com','周博文','重要邮件','这不是垃圾邮件啊');
 	    show_bug($a);
 	    //think_send_mail('要发送的邮箱','发送人名称，即你的名称','邮件主题','邮件内容');
 	    
