@@ -96,3 +96,20 @@ div{
     height: 100%;
 	display:block;
 }
+
+/*登录页面*/
+.login-form{
+    width:400px;
+    height:300px;
+    padding: 20px;
+}
+.login-form .yanzhen{
+    width:210px;
+    float: left;
+}
+.login-form .ma{
+    float: right;
+}
+.login-form .form-control{
+	height:43px;
+}
