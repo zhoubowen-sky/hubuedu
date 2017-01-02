@@ -74,7 +74,7 @@
         <input type="email" class="form-control" id="student_user_email" placeholder="邮箱" name="student_user_email">
     </p>
     <p>
-        <label class="sr-only" for="student_user_pwd">Email address</label>
+        <label class="sr-only" for="student_user_pwd">PassWord</label>
         <input type="password" class="form-control" id="student_user_pwd" placeholder="密码" name="student_user_pwd">
     </p>
     <!-- 下面验证码如果直接使用AdminUser控制器里面书写的verifyImg方法 就需要跨分组调用,为逻辑简单，我们在Student写一个一模一样的验证码教研方法-->
@@ -96,26 +96,32 @@
     </div>
     <br />
     {/*学生用户注册的表单*/}
-    <div>
-    	<form name="register" method="post" action="index.php/Student/StudentUser/register">
+    <div id="login-div-2">
+    	<form class="login-form" name="register" method="post" action="index.php/Student/StudentUser/register">
 		<p>
-			<label for="student_user_email">注册邮箱:</label> <input type="email" name="student_user_email" id="student_user_email"> 
+            <label class="sr-only" for="student_user_email">Email address</label>
+            <input type="email" class="form-control" id="student_user_email" placeholder="注册邮箱" name="student_user_email">
 		</p>
 		<p>
-			<label for="student_user_pwd2">设置密码：</label> <input type="password" name="student_user_pwd2" id="student_user_pwd2">
+            <label class="sr-only" for="student_user_pwd2">PassWord</label>
+            <input type="password" class="form-control" id="student_user_pwd2" placeholder="密码" name="student_user_pwd2">
 		</p>
 		<p>
-			<label for="student_user_pwd">确认密码：</label> <input type="password" name="student_user_pwd" id="student_user_pwd">
+            <label class="sr-only" for="student_user_pwd">PassWord</label>
+            <input type="password" class="form-control" id="student_user_pwd" placeholder="重复密码" name="student_user_pwd">
 		</p>
 		
 		<div>
-            <input type="text" class="input input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码" />
+            <div class="yanzhen">
+            <input type="text" class="form-control"  placeholder="填写右侧的验证码" name="code" data-validate="required:请填写右侧的验证码">
+            </div>
             <!-- 这里的验证码直接用ThinkPHP的变量替换 -->
-            <img src="index.php/Student/StudentUser/verifyImg" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">  
-                                                   
-        </div>
+            <div class="ma">
+            <img src="index.php/Student/StudentUser/verifyImg" alt=""  class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
+            </div>
+        </div><br/><br/><br/>
 		<p>
-		  <input type="submit" name="submit" id="submit" value="点击注册">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" name="submit" id="submit" >点击注册</button>
 		</p>
 
 	</form>

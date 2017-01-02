@@ -14,6 +14,7 @@ Desktop.ini
 .buildpath
 .project
 *.log
+/.idea
 
 #MySQL数据库数据文件 只同步hubuedu的相关文件
 
