@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
+	<script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>  
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $.adaptiveBackground.run();	
+        });
+
+    </script>
+
+</head>
+<body>
+	{/**下面这个header是我直接从index页面复制过来的，然后样式不对*/}
+    <div class="header-top">
+	    <div class="row">
+	        <div class="col-md-3 col-md-offset-1">
+	            <img src="{$Think.const.ADMIN_IMG_URL}logo.png" alt="">
+	        </div>
+	        <div class="col-md-4">
+	            <ul class="list-inline">
+	                <li><a class="ul-a" href="{$Think.const.SITE_URL}index.php">首页</a></li>
+	                <li><a class="ul-a" href="{$Think.const.SITE_URL}index.php/Student/Course/index">课程</a></li>
+	                <li><a class="ul-a" href="{$Think.const.SITE_URL}index.php/Student/Occupation/index">职业</a></li>
+	                <li><a class="ul-a1" href=""><span class="glyphicon glyphicon-phone"></span>客户端</a></li>
+	            </ul>
+	        </div>
+	        <div class="col-md-4">
+	            <div class="search">
+	                <div>
+	                    <div class="input-group">
+	                            <span class="input-group-btn">
+	                            <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+	                            </span>
+	                        <input type="text" class="form-control" placeholder="">
+	                    </div>
+	                </div>
+	                <div>
+	                </div>
+	            </div>
+	            <div class="login">
+	                <a id='login' href="#">登录</a>
+	                <span>&nbsp;|&nbsp;</span>
+	                <a href="#">注册</a>
+	            </div>
+	        </div>
+	    </div>
+    </div>
+    {/**注释这样写，就不会在HTML里面展示出来了，这是TP模板引擎的写法*/}
+    <div>
+    </div>
+    
+    
+    
+
+<script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
+<script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
+<script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
+</body>
+</html>
