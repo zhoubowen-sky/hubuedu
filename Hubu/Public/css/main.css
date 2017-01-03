@@ -25,6 +25,15 @@ div{
      height: 76px;
      margin-top: 12px;
 }
+.header-top .logo{
+    padding-right: 0;
+}
+.header-top .head{
+    padding-left: 0;
+}
+.header-top .search-login{
+    padding-left: 35px;
+}
 .header-top .row ul{
     width: auto;
     height:100px;
