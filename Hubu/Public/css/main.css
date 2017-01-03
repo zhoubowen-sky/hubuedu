@@ -100,7 +100,7 @@ div{
 /*登录页面*/
 .login-form{
     width:400px;
-    height:300px;
+    height:auto;
     padding: 20px;
 }
 .login-form .yanzhen{
@@ -115,7 +115,7 @@ div{
 }
 #login-div-1{
     width: 400px;
-    height: 300px;
+    height: 250px;
     margin-left: auto;
     margin-right: auto;
 }

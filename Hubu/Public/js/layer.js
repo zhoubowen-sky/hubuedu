@@ -6,7 +6,7 @@
         layer.open({
             type: 1,
             title: ['登录', 'font-size:18px;background: #1e6f46;color: white;padding-left:200px;'],
-            area: ['460px', '350px'],
+            area: ['460px', '305px'],
             shadeClose: true, //点击遮罩关闭
 			content: $('#login-div-1')
         });
@@ -15,7 +15,7 @@
         layer.open({
             type: 1,
             title: ['注册', 'font-size:18px;background: #1e6f46;color: white;padding-left:200px;'],
-            area: ['460px', '350px'],
+            area: ['460px', '360px'],
             shadeClose: true, //点击遮罩关闭
             content: $('#login-div-2')
         });
