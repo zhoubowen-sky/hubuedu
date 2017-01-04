@@ -15,8 +15,5 @@ class CourseClassController extends Controller {
         $this->assign('course_class',$course_class);//将数据输出到模板引擎
         
     }
-	
-	
-	
-	
+    
 }
