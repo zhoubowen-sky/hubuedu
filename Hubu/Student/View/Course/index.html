@@ -88,19 +88,20 @@
     </div>
     
     <div>
-    	<foreach name = 'course_name' item = 'voo'>
-		    <table width="200" border="1">
-				  <tr>
-				    <td>课程名称：{$voo.course_name_name}</td>
-				  </tr>
-				  <tr>
-				    <td>讲师/主讲人：{$voo.course_name_adder}</td>
-				  </tr>
-				  <tr>
-				    <td>课程简介：{$voo.course_name_intro}</td>
-				  </tr>
-			</table>
-		</foreach>
+
+        <foreach name = 'course_name' item = 'voo'>
+        <div class="media">
+            <a class="media-left" href="#">
+                <img src="..." alt="...">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">{$voo.course_name_name}</h4>
+                <p>讲师/主讲人：{$voo.course_name_adder}</p>
+                <p>课程简介：{$voo.course_name_intro}</p>
+            </div>
+        </div>
+        </foreach>
+
     </div>
 
     {/*学生用户登录的表单*/}
@@ -154,7 +155,7 @@
                 </div>
                 <!-- 这里的验证码直接用ThinkPHP的变量替换 -->
                 <div class="ma">
-                    <img src="index.php/Student/StudentUser/verifyImg" alt=""  class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
+                    <img src="{$Think.const.SITE_URL}index.php/Student/StudentUser/verifyImg" alt=""  class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
                 </div>
             </div><br/><br/><br/>
             <p>
