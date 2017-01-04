@@ -23,8 +23,15 @@ class CourseNameController extends Controller {
      */
     function all(){
         $info = D('CourseName');
+        
+        $count = $info->count();
+        $page = getPage($count,5);//每页显示5门课程
+        $course_name = $info->limit($page->firstRow,$page->listRows)->select();
+        //$this->assign('info',$info);//赋值数据集
+        $this->assign('page',$page->show());//赋值分页输出
+        
         //show_bug($info);
-        $course_name = $info->select();//获取数据库中的全部数据
+        //$course_name = $info->select();//获取数据库中的全部数据
         //show_bug($course_name);
         $this->assign('course_name',$course_name);
         $this->display('course_name');
