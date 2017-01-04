@@ -12,7 +12,15 @@ class IndexController extends Controller {
 		$this->display('index');
 	}
 	
-	
+	/**
+	 * 展示bottom的模板，这个需要复用
+	 * 原本Index也要做出复用的，但是已经写成现在这样了，就不改了
+	 */
+	function bottom(){
+	    header("Content-Type:text/html; charset=utf-8");//首页不乱码
+	    //echo "bottom" ;
+	    $this->display();
+	}
 	
 	
 }
