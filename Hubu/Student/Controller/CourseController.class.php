@@ -14,9 +14,9 @@ class CourseController extends Controller {
         //$course_class->getCourseClass();//调用CourseClass控制器里面的getCourseClass()方法
         
         //将所有课程名称信息输出到模板，方法同上所示
-        $course_name = A('CourseName');
+        //$course_name = A('CourseName');
         //show_bug($course_name);
-        $course_name->getCourseName();
+        //$course_name->getCourseName();
         
         $this->display();
     }

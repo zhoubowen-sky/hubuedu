@@ -18,7 +18,7 @@
 
 </head>
 <body>
-	{/**下面这个header是我直接从index页面复制过来的，然后样式不对*/}
+	{/**下面这个header*/}
     <div class="header-top">
         <div class="row">
             <div class="col-md-2 col-md-offset-1 logo">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="login">
-                    <a id='login' href="#">登录</a><!-- 这里点击链接后弹出下面的登录框，注册也是一样哒 -->
+                    <a id='login' href="#">登录</a>{/*<!-- 这里点击链接后弹出下面的登录框，注册也是一样哒 -->*/}
                     <span>&nbsp;|&nbsp;</span>
                     <a id='login2' href="#">注册</a>
                 </div>
@@ -57,51 +57,25 @@
     <div>
     	
     	<div>
-			<div><a href="{$Think.const.SITE_URL}index.php/Course/" target="coursename">全部</a></div>
-		    <div><a href="">计算机</a></div>
-			<div><a href="">经济管理</a></div>
-			<div><a href="">心理学</a></div>
-			<div><a href="">外语</a></div>
-			<div><a href="">文学历史</a></div>
-			<div><a href="">艺术设计</a></div>
-			<div><a href="">工学</a></div>
-			<div><a href="">理学</a></div>
-			<div><a href="">生命科学</a></div>
-			<div><a href="">哲学</a></div>
-			<div><a href="">法学</a></div>
-			<div><a href="">教育教学</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/all" 				target="coursename">全部</a></div>
+		    <div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/computer" 		target="coursename">计算机</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/ecoManagement" 	target="coursename">经济管理</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/psychology" 		target="coursename">心理学</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/foreignLanguage" 	target="coursename">外语</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/literaryHistory" 	target="coursename">文学历史</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/artDesign" 		target="coursename">艺术设计</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/engineering" 		target="coursename">工学</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/science" 			target="coursename">理学</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/biomedicine" 		target="coursename">生命科学</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/philosophy" 		target="coursename">哲学</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/law" 				target="coursename">法学</a></div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/teachingMethod" 	target="coursename">教育教学</a></div>
 		</div>
 		
-		
+		{/*下面使用的是iframe,默认显示的是所有的课程,我这里长宽就写死了，需要改成自适应的*/}
 		<div>
-		  <iframe scrolling="auto" rameborder="0" src="" name="coursename" width="100%" height="100%"></iframe>
+		  <iframe scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/CourseName/all" name="coursename" width="100%" height="800"></iframe>
 		</div>
-    
-    	
-    	<div>
-    		{/**这里面放置课程的类别信息，仿照中国大学慕课*/}
-    		<foreach name = 'course_class' item = 'vo'>
-    			{/**连接暂时都为空，回头都设置好了再加上去*/}
-    			<div><a href="">{$vo.course_class_name}</a></div>
-    		</foreach>
-    	</div>
-    </div>
-    
-    <div>
-
-        <foreach name = 'course_name' item = 'voo'>
-        <div class="media">
-            <a class="media-left" href="#">
-                <img src="..." alt="...">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">{$voo.course_name_name}</h4>
-                <p>讲师/主讲人：{$voo.course_name_adder}</p>
-                <p>课程简介：{$voo.course_name_intro}</p>
-            </div>
-        </div>
-        </foreach>
-
     </div>
 
     {/*学生用户登录的表单*/}
@@ -115,13 +89,13 @@
                 <label class="sr-only" for="student_user_pwd">PassWord</label>
                 <input type="password" class="form-control" id="student_user_pwd" placeholder="密码" name="student_user_pwd">
             </p>
-            <!-- 下面验证码如果直接使用AdminUser控制器里面书写的verifyImg方法 就需要跨分组调用,为逻辑简单，我们在Student写一个一模一样的验证码教研方法-->
+            {/*<!-- 下面验证码如果直接使用AdminUser控制器里面书写的verifyImg方法 就需要跨分组调用,为逻辑简单，我们在Student写一个一模一样的验证码教研方法-->*/}
             <div>
 
                 <div class="yanzhen">
                     <input type="text" class="form-control"  placeholder="填写右侧的验证码" name="code" data-validate="required:请填写右侧的验证码">
                 </div>
-                <!-- 这里的验证码直接用ThinkPHP的变量替换 -->
+                {/*<!-- 这里的验证码直接用ThinkPHP的变量替换 -->*/}
                 <div class="ma">
                     <img src="{$Think.const.SITE_URL}index.php/Student/StudentUser/verifyImg" alt=""   class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
                 </div>
@@ -153,7 +127,7 @@
                 <div class="yanzhen">
                     <input type="text" class="form-control"  placeholder="填写右侧的验证码" name="code" data-validate="required:请填写右侧的验证码">
                 </div>
-                <!-- 这里的验证码直接用ThinkPHP的变量替换 -->
+                {/*<!-- 这里的验证码直接用ThinkPHP的变量替换 -->*/}
                 <div class="ma">
                     <img src="{$Think.const.SITE_URL}index.php/Student/StudentUser/verifyImg" alt=""  class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
                 </div>
@@ -164,6 +138,12 @@
 
         </form>
     </div>
+    
+    {/*这里放置的是bottom*/}
+    <div>
+    	<iframe scrolling="auto" frameborder="0" src="__MODULE__/Index/bottom" name="bottom" width="100%" height="100%"></iframe>
+    </div>
+    
 <script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
 </body>
 </html>

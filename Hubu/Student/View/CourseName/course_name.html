@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>course_name</title>
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_ROOT_URL}layui/css/layui.css">
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
+	<script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>  
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $.adaptiveBackground.run();	
+        });
+
+    </script>
+
+</head>
+<body>
+	<div>
+
+        <foreach name = 'course_name' item = 'voo'>
+        <div class="media">
+            <a class="media-left" href="#">
+                <img src="..." alt="...">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">{$voo.course_name_name}</h4>
+                <p>讲师/主讲人：{$voo.course_name_adder}</p>
+                <p>课程简介：{$voo.course_name_intro}</p>
+            </div>
+        </div>
+        </foreach>
+
+    </div>
+<script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
+</body>
+</html>
