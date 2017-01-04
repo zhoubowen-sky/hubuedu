@@ -8,6 +8,7 @@
     <title></title>  
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}pintuer.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}admin.css">
+    <link href="{$Think.const.ADMIN_CSS_URL}/page.css" rel="stylesheet">
     <script src="{$Think.const.ADMIN_JS_URL}jquery.js"></script>
     <script src="{$Think.const.ADMIN_JS_URL}pintuer.js"></script>  
 </head>
@@ -47,13 +48,9 @@
 	          <td><div class="button-group"> <a class="button border-red" href="__MODULE__/Feedback/feedback/feedback_id/{$vo.feedback_id}" onclick="return del(1)"><span class="icon-trash-o"></span> 删除</a> </div></td>
 	        </tr>
         </foreach>
-          
-      <tr>
-        <td colspan="8"><div class="pagelist"> <a href="">上一页</a> <span class="current">1</span><a href="">2</a><a href="">3</a><a href="">下一页</a><a href="">尾页</a> </div></td>
-      </tr>
-      
     </table>
   </div>
+  <div class="pages">{$page}</div>
 </form>
 <script type="text/javascript">
 
@@ -92,4 +89,5 @@ function DelSelect(){
 }
 
 </script>
-</body></html>
+</body>
+</html>
