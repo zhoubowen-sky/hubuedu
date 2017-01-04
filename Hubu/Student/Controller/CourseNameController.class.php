@@ -14,6 +14,102 @@ class CourseNameController extends Controller {
         //show_bug($course_name);
         $this->assign('course_name',$course_name);
     }
+    
+
+    /**
+     * 所有的课程
+     */
+    function all(){
+        $info = D('CourseName');
+        //show_bug($info);
+        $course_name = $info->select();//获取数据库中的全部数据
+        //show_bug($course_name);
+        $this->assign('course_name',$course_name);
+    }
+    
+    /**
+     * 计算机类课程
+     */
+    function computer(){
+    
+    }
+    
+    /**
+     * 经济管理
+     */
+    function ecoManagement(){
+    
+    }
+    
+    /**
+     * 心理学
+     */
+    function psychology(){
+    
+    }
+    
+    /**
+     * 外语
+     */
+    function foreignLanguage(){
+    
+    }
+    
+    /**
+     * 文学历史
+     */
+    function literaryHistory(){
+    
+    }
+    
+    /**
+     * 艺术设计
+     */
+    function artDesign(){
+         
+    }
+    
+    /**
+     * 工学
+     */
+    function engineering(){
+         
+    }
+    
+    /**
+     * 理学
+     */
+    function science(){
+         
+    }
+    
+    /**
+     * 生命科学
+     */
+    function biomedicine(){
+         
+    }
+    
+    /**
+     * 哲学
+     */
+    function philosophy(){
+         
+    }
+    
+    /**
+     * 法学
+     */
+    function law(){
+         
+    }
+    
+    /**
+     * 教育教学
+     */
+    function teachingMethod(){
+         
+    }
 	
 	
 	

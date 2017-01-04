@@ -55,6 +55,29 @@
     </div>
     {/**注释这样写，就不会在HTML里面展示出来了，这是TP模板引擎的写法*/}
     <div>
+    	
+    	<div>
+			<div><a href="{$Think.const.SITE_URL}index.php/Course/" target="coursename">全部</a></div>
+		    <div><a href="">计算机</a></div>
+			<div><a href="">经济管理</a></div>
+			<div><a href="">心理学</a></div>
+			<div><a href="">外语</a></div>
+			<div><a href="">文学历史</a></div>
+			<div><a href="">艺术设计</a></div>
+			<div><a href="">工学</a></div>
+			<div><a href="">理学</a></div>
+			<div><a href="">生命科学</a></div>
+			<div><a href="">哲学</a></div>
+			<div><a href="">法学</a></div>
+			<div><a href="">教育教学</a></div>
+		</div>
+		
+		
+		<div>
+		  <iframe scrolling="auto" rameborder="0" src="" name="coursename" width="100%" height="100%"></iframe>
+		</div>
+    
+    	
     	<div>
     		{/**这里面放置课程的类别信息，仿照中国大学慕课*/}
     		<foreach name = 'course_class' item = 'vo'>
