@@ -16,7 +16,7 @@ class CourseNameController extends Controller {
         //$this->display('course_name');
     }
     
-    /*******说实在话，写下面这么多一模一样的方法实在没必要，可以只写一个方法，使用switch case 设置传入的参数不同，从而调用不同的指令*******/
+    /*******说实在话，写下面这么多一模一样的方法实在没必要，可以只写一个方法，使用switch case 设置传入的参数不同，从而调用不同的指令,但我还是挨个写一遍吧*******/
     
     /**
      * 所有的课程

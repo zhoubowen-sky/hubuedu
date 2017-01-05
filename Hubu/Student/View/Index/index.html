@@ -20,7 +20,9 @@
 
 </head>
 <body>
-    <div class="header-top">
+	{/*包含header.html模板*/}
+	<include file="header" />
+    <!-- <div class="header-top">
     <div class="row">
         <div class="col-md-2 col-md-offset-1 logo">
             <img src="{$Think.const.ADMIN_IMG_URL}logo.png" alt="">
@@ -47,13 +49,13 @@
                 </div>
             </div>
             <div class="login">
-                <a id='login' href="#">登录</a><!-- 这里点击链接后弹出下面的登录框，注册也是一样哒 -->
+                <a id='login' href="#">登录</a>
                 <span>&nbsp;|&nbsp;</span>
                 <a id='login2' href="#">注册</a>
             </div>
         </div>
     </div>
-    </div>
+    </div> -->
     <!-- 貌似下面这个图片左右滑动当点击的很快的时候就不灵了，然后它不能自动一张张播放（我浏览器Chrome55），下面这个div与header之间有一个间隙白条 -->
     <div class="swiper-container">
        <div class="swiper-wrapper">
