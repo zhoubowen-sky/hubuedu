@@ -22,18 +22,13 @@ class CourseNameController extends Controller {
      * 所有的课程
      */
     function all(){
-        $info = D('CourseName');
-        
-        $count = $info->count();
-        $page = getPage($count,5);//每页显示5门课程
-        $course_name = $info->limit($page->firstRow,$page->listRows)->select();
-        //$this->assign('info',$info);//赋值数据集
-        $this->assign('page',$page->show());//赋值分页输出
-        
-        //show_bug($info);
-        //$course_name = $info->select();//获取数据库中的全部数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = '';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -41,11 +36,13 @@ class CourseNameController extends Controller {
      * 计算机类课程
      */
     function computer(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 1')->select();//获取数据库中计算机类的全部数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 1';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -53,11 +50,13 @@ class CourseNameController extends Controller {
      * 经济管理
      */
     function ecoManagement(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 2')->select();//获取数据库中数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 2';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -65,11 +64,13 @@ class CourseNameController extends Controller {
      * 心理学
      */
     function psychology(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 3')->select();//获取数据库中数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 3';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -77,11 +78,13 @@ class CourseNameController extends Controller {
      * 外语
      */
     function foreignLanguage(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 4')->select();//获取数据库中数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 4';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -89,11 +92,13 @@ class CourseNameController extends Controller {
      * 文学历史
      */
     function literaryHistory(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 5')->select();//获取数据库中数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 5';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -101,11 +106,13 @@ class CourseNameController extends Controller {
      * 艺术设计
      */
     function artDesign(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 6')->select();//获取数据库中数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 6';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -113,11 +120,13 @@ class CourseNameController extends Controller {
      * 工学
      */
     function engineering(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 7')->select();//获取数据库中数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 7';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -125,11 +134,13 @@ class CourseNameController extends Controller {
      * 理学
      */
     function science(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 8')->select();//获取数据库中数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 8';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -137,11 +148,13 @@ class CourseNameController extends Controller {
      * 生命科学
      */
     function biomedicine(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 9')->select();//获取数据库中数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 9';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -149,11 +162,13 @@ class CourseNameController extends Controller {
      * 哲学
      */
     function philosophy(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 10')->select();//获取数据库中数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 10';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -161,11 +176,13 @@ class CourseNameController extends Controller {
      * 法学
      */
     function law(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 11')->select();//获取数据库中数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 11';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
     
@@ -173,11 +190,13 @@ class CourseNameController extends Controller {
      * 教育教学
      */
     function teachingMethod(){
-        $info = D('CourseName');
-        //show_bug($info);
-        $course_name = $info->where('course_name_class = 12')->select();//获取数据库中数据
-        //show_bug($course_name);
-        $this->assign('course_name',$course_name);
+        $m = M('CourseName');
+        $where = 'course_name_class = 12';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
         $this->display('course_name');
     }
 	

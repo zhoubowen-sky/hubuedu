@@ -14,20 +14,17 @@ class FeedbackController extends Controller {
             //show_bug($rst);
         }
         
-        
         //用户留言的浏览与管理页面
 		//echo "feedback";
 		//var_dump(get)
 		//从数据库中查询出数据，并输出到前台模板
         $m = M('Feedback');
-        $count = $m->count();
-        //show_bug($count);
-        $page = getPage($count,5);//调用公共函数库里面的getPage方法
-        $info = $m->limit($page->firstRow,$page->listRows)->select();
-        //show_bug($list);
-        $this->assign('info',$info);//赋值数据集
-        $this->assign('page',$page->show());//赋值分页输出
-        
+        $where = '';
+        $p = getpage($m,$where,6);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('info',$list);
         
 		//$feedback = D('Feedback');
 		//$info = $feedback->select();//从数据库中查询出数据存储在$info中
