@@ -3,35 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
-    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
-    <script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
+	<script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>
 
 </head>
 <body>
 	{/**下面这个header*/}
     <include file="Public/header" />
     {/**注释这样写，就不会在HTML里面展示出来了，这是TP模板引擎的写法*/}
-    <div class="tab-nav">
-    	<div>
-    	<div class="layui-tab layui-tab-brief " lay-filter="docDemoTabBrief">
-            <ul class="layui-tab-title">
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/all" 				target="coursename"><span class="glyphicon glyphicon-th"></span>全部</a></li>
-		    <li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/computer" 		target="coursename"><span class="glyphicon glyphicon-inbox"></span>计算机</a></li>
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/ecoManagement" 	target="coursename"><span class="glyphicon glyphicon-euro"></span>经济管理</a></li>
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/psychology" 		target="coursename"><span class="glyphicon glyphicon-heart"></span>心理学</a></li>
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/foreignLanguage" 	target="coursename"><span class="glyphicon glyphicon-search"></span>外语</a></li>
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/literaryHistory" 	target="coursename"><span class="glyphicon glyphicon-search"></span>文学历史</a></li>
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/artDesign" 		target="coursename"><span class="glyphicon glyphicon-search"></span>艺术设计</a></li>
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/engineering" 		target="coursename"><span class="glyphicon glyphicon-search"></span>工学</a></li>
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/science" 			target="coursename"><span class="glyphicon glyphicon-search"></span>理学</a></li>
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/biomedicine" 		target="coursename"><span class="glyphicon glyphicon-search"></span>生命科学</a></li>
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/philosophy" 		target="coursename"><span class="glyphicon glyphicon-search"></span>哲学</a></li>
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/law" 				target="coursename"><span class="glyphicon glyphicon-search"></span>法学</a></li>
-			<li><a href="{$Think.const.SITE_URL}index.php/Student/CourseName/teachingMethod" 	target="coursename"><span class="glyphicon glyphicon-search"></span>教育教学</a></li>
-		    </ul>
+    <div class="m-nav">
+        <div class="btn-group btn-group-justified">
+            <a id="m-nav-first" href="{$Think.const.SITE_URL}index.php/Student/CourseName/all" 			class="btn btn-warning"	target="coursename"><i class="glyphicon glyphicon-th"></i>&nbsp;<span>全部</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/computer" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-inbox"></i>&nbsp;<span>计算机</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/ecoManagement" class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-euro"></i>&nbsp;<span>经济管理</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/psychology" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-heart"></i>&nbsp;<span>心理学</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/foreignLanguage" class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>外语</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/literaryHistory" class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>文学历史</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/artDesign" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>艺术设计</span></a>
+        </div>
+        <div class="btn-group btn-group-justified">
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/engineering" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>工学</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/science" 		class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>理学</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/biomedicine" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>生命科学</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/philosophy" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>哲学</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/law" 			class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>法学</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/teachingMethod" class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>教育教学</span></a>
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/teachingMethod" class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-"></i>&nbsp;<span></span></a>
         </div>
     </div>
 		{/*下面使用的是iframe,默认显示的是所有的课程,我这里长宽就写死了，需要改成自适应的*/}

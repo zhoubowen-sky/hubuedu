@@ -7,7 +7,7 @@ div{
 	padding: 0;
     margin: 0;
 }
-
+a{text-decoration:none}
 /*头部导航*/
 .header-top{
     width: 100%;
@@ -136,11 +136,22 @@ div{
 }
 
 /*课程页面*/
-.tab-nav{
-    width: 900px;
-    height: auto;
-    margin-left: 30px;
+.m-nav{
+    width: 930px;
+    height: 129px;
+    padding-top: 23px;
+    padding-bottom: 23px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: #f7f7f7;
 }
-.tab-nav a{
+.m-nav span{
+    font-size: 16px;
+    color: #333;
+}
+.m-nav .btn-group a{
     text-decoration: none;
+}
+.m-nav i{
+    color: #333;
 }
