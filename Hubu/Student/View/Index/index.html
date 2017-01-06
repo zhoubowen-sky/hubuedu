@@ -21,7 +21,7 @@
 </head>
 <body>
 	{/*包含header.html模板*/}
-	<include file="header" />
+	<include file="Public/header" />
     <!-- <div class="header-top">
     <div class="row">
         <div class="col-md-2 col-md-offset-1 logo">
@@ -57,80 +57,80 @@
     </div>
     </div> -->
     <!-- 貌似下面这个图片左右滑动当点击的很快的时候就不灵了，然后它不能自动一张张播放（我浏览器Chrome55），下面这个div与header之间有一个间隙白条 -->
-    <div class="swiper-container">
-       <div class="swiper-wrapper">
-                <div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}1.jpg" alt="" data-adaptive-background></div>
-                <div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}2.jpg" alt="" data-adaptive-background></div>
-                <div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}3.jpg" alt="" data-adaptive-background></div>
-                <div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}4.jpg" alt="" data-adaptive-background></div>
-                <div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}5.jpg" alt="" data-adaptive-background></div>
-       </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-    </div>
-    
+    <!--<div class="swiper-container">-->
+       <!--<div class="swiper-wrapper">-->
+                <!--<div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}1.jpg" alt="" data-adaptive-background></div>-->
+                <!--<div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}2.jpg" alt="" data-adaptive-background></div>-->
+                <!--<div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}3.jpg" alt="" data-adaptive-background></div>-->
+                <!--<div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}4.jpg" alt="" data-adaptive-background></div>-->
+                <!--<div class="swiper-slide"><img id="img" src="{$Think.const.ADMIN_IMG_URL}5.jpg" alt="" data-adaptive-background></div>-->
+       <!--</div>-->
+                <!--<div class="swiper-pagination"></div>-->
+                <!--<div class="swiper-button-next"></div>-->
+                <!--<div class="swiper-button-prev"></div>-->
+    <!--</div>-->
+    <include file="Public/imgturn" />
     <!-- 这里我把登陆以及注册的简单表单写在这里，回头改一下，我觉得改成那种点击登陆后，像alert弹出来登陆表单就行，jquery就可以实现，后期你想咋改随意昂，表单我先塞这儿 -->
     {/*学生用户登录的表单*/}
-    <div id='login-div-1'>
-	<form class="login-form" name="login" method="post" action="index.php/Student/StudentUser/login">
-    <p>
-        <label class="sr-only" for="student_user_email">Email address</label>
-        <input type="email" class="form-control" id="student_user_email" placeholder="邮箱" name="student_user_email">
-    </p>
-    <p>
-        <label class="sr-only" for="student_user_pwd">PassWord</label>
-        <input type="password" class="form-control" id="student_user_pwd" placeholder="密码" name="student_user_pwd">
-    </p>
-    <!-- 下面验证码如果直接使用AdminUser控制器里面书写的verifyImg方法 就需要跨分组调用,为逻辑简单，我们在Student写一个一模一样的验证码教研方法-->
-    <div>
+    <!--<div id='login-div-1'>-->
+	<!--<form class="login-form" name="login" method="post" action="index.php/Student/StudentUser/login">-->
+    <!--<p>-->
+        <!--<label class="sr-only" for="student_user_email">Email address</label>-->
+        <!--<input type="email" class="form-control" id="student_user_email" placeholder="邮箱" name="student_user_email">-->
+    <!--</p>-->
+    <!--<p>-->
+        <!--<label class="sr-only" for="student_user_pwd">PassWord</label>-->
+        <!--<input type="password" class="form-control" id="student_user_pwd" placeholder="密码" name="student_user_pwd">-->
+    <!--</p>-->
+    <!--&lt;!&ndash; 下面验证码如果直接使用AdminUser控制器里面书写的verifyImg方法 就需要跨分组调用,为逻辑简单，我们在Student写一个一模一样的验证码教研方法&ndash;&gt;-->
+    <!--<div>-->
 
-        <div class="yanzhen">
-        <input type="text" class="form-control"  placeholder="填写右侧的验证码" name="code" data-validate="required:请填写右侧的验证码">
-        </div>
-        <!-- 这里的验证码直接用ThinkPHP的变量替换 -->
-        <div class="ma">
-        <img src="{$Think.const.SITE_URL}index.php/Student/StudentUser/verifyImg" alt=""   class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
-        </div>
-        </div>
-		<br/><br/><br/>
-    <p>
-        <button type="submit" class="btn btn-success btn-lg btn-block" name="submit" id="submit" >点击登录</button>
-    </p>
-	</form>
-    </div>
-    <br />
-    {/*学生用户注册的表单*/}
-    <div id="login-div-2">
-    	<form class="login-form" name="register" method="post" action="index.php/Student/StudentUser/register">
-		<p>
-            <label class="sr-only" for="student_user_email">Email address</label>
-            <input type="email" class="form-control" id="student_user_email" placeholder="注册邮箱" name="student_user_email">
-		</p>
-		<p>
-            <label class="sr-only" for="student_user_pwd2">PassWord</label>
-            <input type="password" class="form-control" id="student_user_pwd2" placeholder="密码" name="student_user_pwd2">
-		</p>
-		<p>
-            <label class="sr-only" for="student_user_pwd">PassWord</label>
-            <input type="password" class="form-control" id="student_user_pwd" placeholder="重复密码" name="student_user_pwd">
-		</p>
-		
-		<div>
-            <div class="yanzhen">
-            <input type="text" class="form-control"  placeholder="填写右侧的验证码" name="code" data-validate="required:请填写右侧的验证码">
-            </div>
-            <!-- 这里的验证码直接用ThinkPHP的变量替换 -->
-            <div class="ma">
-            <img src="index.php/Student/StudentUser/verifyImg" alt=""  class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
-            </div>
-        </div><br/><br/><br/>
-		<p>
-            <button type="submit" class="btn btn-success btn-lg btn-block" name="submit" id="submit" >点击注册</button>
-		</p>
+        <!--<div class="yanzhen">-->
+        <!--<input type="text" class="form-control"  placeholder="填写右侧的验证码" name="code" data-validate="required:请填写右侧的验证码">-->
+        <!--</div>-->
+        <!--&lt;!&ndash; 这里的验证码直接用ThinkPHP的变量替换 &ndash;&gt;-->
+        <!--<div class="ma">-->
+        <!--<img src="{$Think.const.SITE_URL}index.php/Student/StudentUser/verifyImg" alt=""   class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">-->
+        <!--</div>-->
+        <!--</div>-->
+		<!--<br/><br/><br/>-->
+    <!--<p>-->
+        <!--<button type="submit" class="btn btn-success btn-lg btn-block" name="submit" id="submit" >点击登录</button>-->
+    <!--</p>-->
+	<!--</form>-->
+    <!--</div>-->
+    <!--<br />-->
+    <!--{/*学生用户注册的表单*/}-->
+    <!--<div id="login-div-2">-->
+    	<!--<form class="login-form" name="register" method="post" action="index.php/Student/StudentUser/register">-->
+		<!--<p>-->
+            <!--<label class="sr-only" for="student_user_email">Email address</label>-->
+            <!--<input type="email" class="form-control" id="student_user_email" placeholder="注册邮箱" name="student_user_email">-->
+		<!--</p>-->
+		<!--<p>-->
+            <!--<label class="sr-only" for="student_user_pwd2">PassWord</label>-->
+            <!--<input type="password" class="form-control" id="student_user_pwd2" placeholder="密码" name="student_user_pwd2">-->
+		<!--</p>-->
+		<!--<p>-->
+            <!--<label class="sr-only" for="student_user_pwd">PassWord</label>-->
+            <!--<input type="password" class="form-control" id="student_user_pwd" placeholder="重复密码" name="student_user_pwd">-->
+		<!--</p>-->
+		<!---->
+		<!--<div>-->
+            <!--<div class="yanzhen">-->
+            <!--<input type="text" class="form-control"  placeholder="填写右侧的验证码" name="code" data-validate="required:请填写右侧的验证码">-->
+            <!--</div>-->
+            <!--&lt;!&ndash; 这里的验证码直接用ThinkPHP的变量替换 &ndash;&gt;-->
+            <!--<div class="ma">-->
+            <!--<img src="index.php/Student/StudentUser/verifyImg" alt=""  class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">-->
+            <!--</div>-->
+        <!--</div><br/><br/><br/>-->
+		<!--<p>-->
+            <!--<button type="submit" class="btn btn-success btn-lg btn-block" name="submit" id="submit" >点击注册</button>-->
+		<!--</p>-->
 
-	</form>
-    </div>
+	<!--</form>-->
+    <!--</div>-->
     
     {/*这里放置的是bottom*/}
     <div>
