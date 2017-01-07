@@ -69,3 +69,77 @@ function getPage(&$m,$where,$pagesize=10){
 
     return $p;
 }
+
+
+
+/**
+ * 用以生成符合输出课程章节列表数组的方法，从数据库获取指定数据并生成对应格式返回
+ * @param 课程章表里面对应的课程名$course_section_course_name字段的值  $course_section_course_name
+ * @param 课程节表里面对应的课程名$course_chapter_course_name字段的值  $course_chapter_course_name
+ * @return Ambigous <multitype:, \Think\mixed, Arrary数组>
+ */
+function getCourseSectionChapterList($course_section_course_name,$course_chapter_course_name){
+    /**这里section代表章，例如第一章，chapter代表节，例如1-1节*/
+    $info_chapter = D('CourseChapter');//实例化CourseChapter 好获取数据表hubu_course_chapter中的数据
+    $info_section = M('CourseSection');//实例化Model
+     
+    $sql_section = "select * from hubu_course_section WHERE course_section_course_name = $course_section_course_name";//选出该课程的所有章信息
+    $rst_section = $info_section->query($sql_section);//章信息存储在$rst_section里面
+     
+    //$sql_chapter = "select * from hubu_course_chapter where course_chapter_course_name = $course_chapter_course_name and course_chapter_section = $course_chapter_section";//查询出该课程所有节信息
+    //$rst_chapter = $info_chapter->query($sql_chapter);//节信息存储在$rst_section里面
+     
+    /**将上述 $rst_chapter 以及  $rst_section 信息合并成我们所需要的数据格式*/
+    $res = array();//存储最终结果的数组
+    foreach ($rst_section as $key => $value){
+        $res[$value['course_section_name']][] = $value['course_section_name'];
+
+        //获取新的$rst
+        $sql = "select * from hubu_course_chapter where course_chapter_course_name = 1 and course_chapter_section = $key+1";//查询出该课程所有章节
+        $rst = $info_chapter->query($sql);
+
+        foreach ($rst as $k => $v){
+            $res[$value['course_section_name']][$k] = $v;
+        }
+    }
+    //show_bug($res);
+    //所需要的数组格式如下
+    /* $test_arr = array(
+        '第一章hahaha'=>array(
+            array(
+                'course_chapter_name'=>'1.0前言',
+                'course_chapter_time'=>'2017-01-20 19:25:16'),
+            array(
+                'course_chapter_name'=>'1.1前言',
+                'course_chapter_time'=>'2017-01-20 19:25:16'),
+            array(
+                'course_chapter_name'=>'1.2前言',
+                'course_chapter_time'=>'2017-01-20 19:25:16')
+        ),
+        '第二章,,,,,'=>array(
+            array(
+                'course_chapter_name'=>'2.0前言',
+                'course_chapter_time'=>'2017-01-20 19:25:16'),
+            array(
+                'course_chapter_name'=>'2.1前言',
+                'course_chapter_time'=>'2017-01-20 19:25:16'),
+            array(
+                'course_chapter_name'=>'2.2前言',
+                'course_chapter_time'=>'2017-01-20 19:25:16'
+            )
+        ),
+        '第三章nnn'=>array(
+            array(
+                'course_chapter_name'=>'3.0前言',
+                'course_chapter_time'=>'2017-01-20 19:25:16'),
+            array(
+                'course_chapter_name'=>'3.1前言',
+                'course_chapter_time'=>'2017-01-20 19:25:16'),
+            array(
+                'course_chapter_name'=>'3.2前言',
+                'course_chapter_time'=>'2017-01-20 19:25:16'
+            )
+        )
+    ); */
+    return $res;
+}
