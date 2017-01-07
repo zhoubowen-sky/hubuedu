@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
-    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
 	<script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>
 
 </head>
@@ -16,8 +15,8 @@
     <include file="Public/header" />
     {/**注释这样写，就不会在HTML里面展示出来了，这是TP模板引擎的写法*/}
     <div class="m-nav">
-        <div class="btn-group btn-group-justified">
-            <a id="m-nav-first" href="{$Think.const.SITE_URL}index.php/Student/CourseName/all" 			class="btn btn-warning"	target="coursename"><i class="glyphicon glyphicon-th"></i>&nbsp;<span>全部</span></a>
+        <div class="btn-group btn-group-justified m-nav-btn">	
+            <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/all" 			class="btn btn-warning"	target="coursename"><i class="glyphicon glyphicon-th"></i>&nbsp;<span>全部</span></a>
             <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/computer" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-inbox"></i>&nbsp;<span>计算机</span></a>
             <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/ecoManagement" class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-euro"></i>&nbsp;<span>经济管理</span></a>
             <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/psychology" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-heart"></i>&nbsp;<span>心理学</span></a>
@@ -25,7 +24,7 @@
             <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/literaryHistory" class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>文学历史</span></a>
             <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/artDesign" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>艺术设计</span></a>
         </div>
-        <div class="btn-group btn-group-justified">
+        <div class="btn-group btn-group-justified m-nav-btn">
             <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/engineering" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>工学</span></a>
             <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/science" 		class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>理学</span></a>
             <a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/biomedicine" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-search"></i>&nbsp;<span>生命科学</span></a>

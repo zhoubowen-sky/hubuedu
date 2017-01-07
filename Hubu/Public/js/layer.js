@@ -28,12 +28,8 @@
             content: $('#login-div-2')
         });
 });
-$('#m-nav-other').on('click',function () {
-   $('#m-nav-first').removeClass('btn btn-warning').addClass('btn btn-link');
-   $('#m-nav-other').removeClass('btn btn-link').addClass('btn btn-warning');
-});
-$('#m-nav-first').on('click',function () {
-    $('#m-nav-first').removeClass('btn btn-link').addClass('btn btn-warning');
+$('a#m-nav-other').click(function () {
+     $(this).removeClass().addClass("btn btn-warning").siblings().removeClass().addClass('btn btn-link');
 });
 
 
