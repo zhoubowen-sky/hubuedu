@@ -24,16 +24,29 @@
                 <div>
                 </div>
             </div>
-            <div class="login">
-                <a id='login' href="#">登录</a><!-- 这里点击链接后弹出下面的登录框，注册也是一样哒 -->
-                <span>&nbsp;|&nbsp;</span>
-                <a id='login2' href="#">注册</a>
-            </div>
+            {/**此处做一个判断，用session来判断，如果用户登录了，这里就不显示登录注册，直接显示用户的头像以及姓名，同时，点击头像后跳转到个人中心*/}
+            <if condition = "isset($_SESSION['student_user_username'])">
+            	{/**student_user_username 值不为空，说明用户已经登陆了,这里就显示用户的头像以及用户名*/}
+            	
+            	<div class="login">
+            		<a href='{$Think.const.SITE_URL}index.php/Student/StudentUser/logout'>注销</a>
+	                <a href='#'>{$Think.session.student_user_username}{/**这里是用户名*/}</a>
+	                {$Think.const.ADMIN_IMG_UPLOADS}{$Think.session.student_user_pic}{/**左边这两个结合返回的是用户头像的URL地址*/}
+	            </div>
+            
+            <else />
+            	{/**用户没有登陆*/}
+	            <div class="login">
+	                <a id='login' href="#">登录</a>{/**<!-- 这里点击链接后弹出下面的登录框，注册也是一样哒 -->*/}
+	                <span>&nbsp;|&nbsp;</span>
+	                <a id='login2' href="#">注册</a>
+	            </div>
+            </if>
         </div>
     </div>
     </div>
     
-    <!-- 这里我把登陆以及注册的简单表单写在这里，回头改一下，我觉得改成那种点击登陆后，像alert弹出来登陆表单就行，jquery就可以实现，后期你想咋改随意昂，表单我先塞这儿 -->
+    {/**<!-- 这里我把登陆以及注册的简单表单写在这里，回头改一下，我觉得改成那种点击登陆后，像alert弹出来登陆表单就行，jquery就可以实现，后期你想咋改随意昂，表单我先塞这儿 -->*/}
     {/*学生用户登录的表单*/}
     <div id='login-div-1'>
 	<form class="login-form" name="login" method="post" action="index.php/Student/StudentUser/login">
@@ -45,13 +58,13 @@
         <label class="sr-only" for="student_user_pwd">PassWord</label>
         <input type="password" class="form-control" id="student_user_pwd" placeholder="密码" name="student_user_pwd">
     </p>
-    <!-- 下面验证码如果直接使用AdminUser控制器里面书写的verifyImg方法 就需要跨分组调用,为逻辑简单，我们在Student写一个一模一样的验证码教研方法-->
+    {/**<!-- 下面验证码如果直接使用AdminUser控制器里面书写的verifyImg方法 就需要跨分组调用,为逻辑简单，我们在Student写一个一模一样的验证码教研方法-->*/}
     <div>
 
         <div class="yanzhen">
         <input type="text" class="form-control"  placeholder="填写右侧的验证码" name="code" data-validate="required:请填写右侧的验证码">
         </div>
-        <!-- 这里的验证码直接用ThinkPHP的变量替换 -->
+        {/**<!-- 这里的验证码直接用ThinkPHP的变量替换 -->*/}
         <div class="ma">
         <img src="{$Think.const.SITE_URL}index.php/Student/StudentUser/verifyImg" alt=""   class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
         </div>
@@ -83,7 +96,7 @@
             <div class="yanzhen">
             <input type="text" class="form-control"  placeholder="填写右侧的验证码" name="code" data-validate="required:请填写右侧的验证码">
             </div>
-            <!-- 这里的验证码直接用ThinkPHP的变量替换 -->
+            {/**<!-- 这里的验证码直接用ThinkPHP的变量替换 -->*/}
             <div class="ma">
             <img src="{$Think.const.SITE_URL}index.php/Student/StudentUser/verifyImg" alt=""  class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
             </div>

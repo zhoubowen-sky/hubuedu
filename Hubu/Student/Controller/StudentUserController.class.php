@@ -50,9 +50,27 @@ class StudentUserController extends Controller {
 	                }else {
 	                    /**********************************登陆成功后执行的操作***********************************/
 	                    echo "登陆成功";
-	                    //生成session，这里要存储的将是大量的信息，包括学生课程相关的信息
+	                    show_bug($z);//数据库中查询到的用户信息那一条记录
+	                    //登录信息持久化，生成session，这里要存储的将是大量的信息，包括学生课程相关的信息
+	                    //性别在数据库中存储为1,2两种形式，如果为数字1就是男，数字2就是女，这里写一个判断
+	                    if ($z['student_user_sex'] == 1) {
+	                        session('student_user_sex','男');//存储用户性别adminuser_sex
+	                    } else if ($z['student_user_sex'] == 2){
+	                        session('student_user_sex','女');//存储用户性别adminuser_sex
+	                    } else {
+	                        session('student_user_sex','未知');//存储用户性别adminuser_sex
+	                    }
+	                    //在session中存储其他信息
+	                    session('student_user_id',$z['student_user_id']);//存储用户信息在数据表中的ID值student_user_id
+	                    session('student_user_username',$z['student_user_username']);//存储用户名student_user_username
+	                    session('student_user_email',$z['student_user_email']);//存储用户注册邮箱student_user_email
+	                    session('student_user_tel',$z['student_user_tel']);//存储电话号码
+	                    session('student_user_qq',$z['student_user_qq']);//存储QQ
+	                    session('student_user_addr',$z['student_user_addr']);//存储地址
+	                    session('student_user_pic',$z['student_user_pic']);//存储用户头像路径
+	                    session('student_user_intro',$z['student_user_intro']);//存储用户个人介绍
 	                    
-	                    
+	                    echo "session生成成功！";
 	                }
 	            }
 	        }
@@ -88,6 +106,7 @@ class StudentUserController extends Controller {
 	 * 展示个人基本信息，提供基本信息的修改功能
 	 */
 	function personalCenter(){
+	    
 	    $this->display();
 	}
 	
