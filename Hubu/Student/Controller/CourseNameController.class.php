@@ -23,7 +23,7 @@ class CourseNameController extends Controller {
      */
     function all(){
         $m = M('CourseName');
-        $where = '';
+        $where = '';//查询条件为空，即查询出所有的课程
         $p = getpage($m,$where,5);
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
@@ -37,7 +37,7 @@ class CourseNameController extends Controller {
      */
     function computer(){
         $m = M('CourseName');
-        $where = 'course_name_class = 1';
+        $where = 'course_name_class = 1';//课程类别信息在hubu_course_class里面有定义，之所以不在字段中字节定义是因为int型数据查询更快，而这个地方是查询最多的项
         $p = getpage($m,$where,5);
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
