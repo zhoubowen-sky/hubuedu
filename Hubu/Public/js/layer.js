@@ -1,6 +1,11 @@
 ﻿if($('.layui-layer'.length==0)){
     $('#login-div-1').hide();
     $('#login-div-2').hide();
+	$(".login-1 #user").each(function(){
+        var maxwidth=6;
+        if($(this).text().length>maxwidth){ $(this).text($(this).text().substring(0,maxwidth)); $(this).html($(this).html()+'…');
+        }
+    });
 }
  $('#login').on('click', function() {
      layer.open({
@@ -31,6 +36,7 @@
 $('a#m-nav-other').click(function () {
      $(this).removeClass().addClass("btn btn-warning").siblings().removeClass().addClass('btn btn-link');
 });
+
 
 
     

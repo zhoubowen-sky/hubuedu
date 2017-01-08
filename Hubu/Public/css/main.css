@@ -83,7 +83,24 @@ a{text-decoration:none}
 .header-top .row .login span{
     color: white;
 }
-
+.header-top .row .login-1{
+    width: 40%;
+    height: auto;
+    position: relative;
+	top: -20px;
+    left: 220px;
+}
+.header-top .row .login-1 a{
+    text-decoration:none;
+    color: lightgoldenrodyellow;
+    font-size: 16px;
+}
+.header-top .row .login-1 span{
+    color: white;
+}
+.header-top .row .login-1 img{
+    width:40px;
+}
 /*图片轮播*/
 .swiper-container {
     width: 100%;
@@ -91,7 +108,7 @@ a{text-decoration:none}
     margin-left: auto;
     margin-right: auto;
 	position:relative;
-	top:-20px;
+	top:-22px;
 }
 .swiper-slide {
     width: 1205px;
