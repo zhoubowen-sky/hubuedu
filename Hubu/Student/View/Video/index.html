@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Video-高等数学</title>
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
+    <script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>
+
+</head>
+<body>
+	{/**下面这个header*/}
+	<include file="Public/header" />
+
+	
+	
+	
+	
+	<div>这里是视频播放页面</div>
+	
+	{/**video模板，载入时涉及参数传递，就不使用include了*/}
+	<div>
+    	<iframe scrolling="no" frameborder="0" src="__MODULE__/Video/videoPlayer" name="videoPlayer" width="800" height="500"></iframe>
+    </div>
+	
+	{/*下面是章节列表信息的展示，与CourseChapter控制器里面的章节列表信息相同，数据源相同，但是使用的模板文件不同,两个模板文件样式不一样*/}
+	<div>
+		<iframe scrolling="no" frameborder="0" src="__MODULE__/Video/section_chapter" name="section_chapter" width="100%" height="600"></iframe>
+	</div>
+	
+	{/*下面是评论留言，笔记，教学资料，三个板块*/}
+	<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/comment" target="content_block"><b>评论留言</b></a></div>
+	<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/note" target="content_block"><b>笔记</b></a></div>
+	<div><a href="__MODULE__/Video/studyingData" target="content_block"><b>教学资料</b></a></div>
+	
+	<div>
+		<iframe scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/CourseChapter/comment" name="content_block" width="100%" height="600"></iframe>
+	</div>
+	
+	
+	
+	
+	{/*这里放置的是bottom*/}
+	<div>
+	    <iframe scrolling="auto" frameborder="0" src="__MODULE__/Index/bottom" name="bottom" width="100%" height="100%"></iframe>
+	</div>
+	<script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
+	<script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
+	<script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
+</body>
+</html>
