@@ -26,10 +26,5 @@ class IndexController extends Controller {
 	    $this->display();
 	}
 	
-	function test(){
-	    //echo "test";
-	    $this->display();
-	}
-	
 	
 }
