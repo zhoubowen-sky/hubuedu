@@ -74,11 +74,11 @@ function getPage(&$m,$where,$pagesize=10){
 
 /**
  * 用以生成符合输出课程章节列表数组的方法，从数据库获取指定数据并生成对应格式返回
- * @param 课程章表里面对应的课程名$course_section_course_name字段的值  $course_section_course_name
+ * @param 课程章表里面对应的课程名$course_section_course_name字段的值，实际就是课程名course_name里面对应课程的code或者id  $course_section_course_name
  * @param 课程节表里面对应的课程名$course_chapter_course_name字段的值  $course_chapter_course_name
  * @return Ambigous <multitype:, \Think\mixed, Arrary数组>
  */
-function getCourseSectionChapterList($course_section_course_name,$course_chapter_course_name){
+function getCourseSectionChapterList($course_section_course_name/* ,$course_chapter_course_name */){
     /**这里section代表章，例如第一章，chapter代表节，例如1-1节*/
     $info_chapter = D('CourseChapter');//实例化CourseChapter 好获取数据表hubu_course_chapter中的数据
     $info_section = M('CourseSection');//实例化Model

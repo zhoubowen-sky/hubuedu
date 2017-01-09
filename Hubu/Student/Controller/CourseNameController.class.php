@@ -28,6 +28,7 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        //show_bug($list);
         $this->assign('course_name',$list);
         $this->display('course_name');
     }

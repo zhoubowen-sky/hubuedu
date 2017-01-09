@@ -11,7 +11,8 @@
 		<div><a href='#'><h3>{$Think.lang.$key}{/*这个是输出数组键名*/}</h3></a></div>
 		
 			<foreach name = 'section_chapter' item = 'section_chapter'>
-					<div><a href='#'>{$section_chapter.course_chapter_name}</a></div>
+				{/**这里链接指向视频播放页面，并且将该门课程的信息传递给Video控制器下面的相应方法，好让页面展示指定课程的信息，并播放此页面点击的课程视频*/}
+					<div><a href='{$Think.const.SITE_URL}index.php/Student/Video/index' target="_blank">{$section_chapter.course_chapter_name}</a></div>
 					
 			</foreach>
 		

@@ -14,7 +14,8 @@ class VideoController extends Controller {
 	/**
 	 * 视频播放模板展示与控制
 	 */
-	function videoPlayer(){
+	function videoPlayer($video_url = 'Uploads/hubuedu_src_test/video_test1.mp4'){
+	    $this->assign('video_url',$video_url);
 	    $this->display();
 	}
 	
@@ -48,5 +49,24 @@ class VideoController extends Controller {
 	    $this->assign('section_chapter',$section_chapter);
 	    $this->display();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

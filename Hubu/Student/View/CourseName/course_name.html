@@ -23,7 +23,8 @@
 
         <foreach name = 'course_name' item = 'voo'>
         <div class="media">
-            <a class="media-left" href="#">
+        	{/**这里是跳转到课程列表的链接，例如，跳转到高等数学课程Chapter的网页链接,course_name_code是该课程在数据表里面的代码，也可以用ID表示，实际上与ID值course_name_id相同*/}
+            <a class="media-left" href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$voo.course_name_id}" target="_blank">
                 <img src="..." alt="...">
             </a>
             <div class="media-body">
