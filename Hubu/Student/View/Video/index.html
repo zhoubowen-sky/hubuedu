@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Video-高等数学</title>
+    <title>{$chapter_info.course_chapter_name}{/**章节名称*/}</title>
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
@@ -14,22 +14,44 @@
 <body>
 	{/**下面这个header*/}
 	<include file="Public/header" />
-
-	
-	
-	
 	
 	<div>这里是视频播放页面</div>
 	
-	{/**video模板，载入时涉及参数传递，就不使用include了*/}
+	{/***************建议这个视频播放页面，不同模块就都尽量写在一个页面里面，不然参数传递会特别的麻烦，我试过分开写成不同的.html，然后又改成现在只写一个页面了**********************/}
+	{/**video播放模块*/}
 	<div>
-    	<iframe scrolling="no" frameborder="0" src="__MODULE__/Video/videoPlayer" name="videoPlayer" width="1100" height="800"></iframe>
-    </div>
+		{/*下面直接使用的H5的video标签，是为了兼容移动端，移动端没有Flash，播放器样式要调整，禁止视频下载*/}
+		<video src="{$Think.const.ADMIN_IMG_UPLOADS}{$chapter_info.course_chapter_video_url}" controls="controls">浏览器不支持HTML5,请更换成Chrome浏览器</video>
+	</div>
 	
-	{/*下面是章节列表信息的展示，与CourseChapter控制器里面的章节列表信息相同，数据源相同，但是使用的模板文件不同,两个模板文件样式不一样*/}
+	<!-- {/**video模板，载入时涉及参数传递，就不使用include了*/}
+	<div>
+		{/**视频链接*/}
+    	<iframe scrolling="no" frameborder="0" src="__MODULE__/Video/videoPlayer/video_url/{$chapter_info.course_chapter_video_url}" name="videoPlayer" width="1100" height="800"></iframe>
+    </div> -->
+	
+	{/**课程章节列表*/}
+	<div>
+		<foreach name = 'section_chapter' item = 'section_chapter'>
+			
+			<div><a href='#'><h3>{$Think.lang.$key}{/*这个是输出数组键名*/}</h3></a></div>
+		
+			<foreach name = 'section_chapter' item = 'section_chapter'>
+				{/*下面这个链接地址应该是，在点击后，视频播放界面的播放内容变为相应节的视频，和imooc视频播放界面一样，看能否用JS在这里实现点击后，更改上述video标签的url值，如果可以,下面就是视频url，如果不行，就再想其他方案*/}
+				<div><a href='#0000'>{$section_chapter.course_chapter_name}{$section_chapter.course_chapter_video_url}</a></div>
+					
+			</foreach>
+		
+		</foreach>
+	</div>
+	
+	
+	<!-- {/*下面是章节列表信息的展示，与CourseChapter控制器里面的章节列表信息相同，数据源相同，但是使用的模板文件不同,两个模板文件样式不一样*/}
 	<div>
 		<iframe scrolling="no" frameborder="0" src="__MODULE__/Video/section_chapter" name="section_chapter" width="100%" height="600"></iframe>
-	</div>
+	</div> -->
+	
+	
 	
 	{/*下面是评论留言，笔记，教学资料，三个板块*/}
 	<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/comment" target="content_block"><b>评论留言</b></a></div>

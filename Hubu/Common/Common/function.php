@@ -78,7 +78,7 @@ function getPage(&$m,$where,$pagesize=10){
  * @param 课程节表里面对应的课程名$course_chapter_course_name字段的值  $course_chapter_course_name
  * @return Ambigous <multitype:, \Think\mixed, Arrary数组>
  */
-function getCourseSectionChapterList($course_section_course_name/* ,$course_chapter_course_name */){
+function getCourseSectionChapterList($course_section_course_name /*,$course_chapter_course_name ,$course_chapter_section */){
     /**这里section代表章，例如第一章，chapter代表节，例如1-1节*/
     $info_chapter = D('CourseChapter');//实例化CourseChapter 好获取数据表hubu_course_chapter中的数据
     $info_section = M('CourseSection');//实例化Model
@@ -95,14 +95,15 @@ function getCourseSectionChapterList($course_section_course_name/* ,$course_chap
         $res[$value['course_section_name']][] = $value['course_section_name'];
 
         //获取新的$rst
-        $sql = "select * from hubu_course_chapter where course_chapter_course_name = 1 and course_chapter_section = $key+1";//查询出该课程所有章节
+        /* 下面应该用 $course_chapter_course_name 但其实本函数前两个值一样 */
+        $sql = "select * from hubu_course_chapter where course_chapter_course_name = $course_section_course_name and course_chapter_section = $key+1";//查询出该课程所有章节
         $rst = $info_chapter->query($sql);
 
         foreach ($rst as $k => $v){
             $res[$value['course_section_name']][$k] = $v;
         }
     }
-    //show_bug($res);
+    //print_r($res);
     //所需要的数组格式如下
     /* $test_arr = array(
         '第一章hahaha'=>array(

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>CourseChapter-课程章节信息展示模板</title>
+	<title>{$course_info.course_name_name}-课程章节{/**网页标题也展示这门课的信息*/}</title>
 	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
@@ -13,7 +13,6 @@
 <body>
 	{/**下面这个header*/}
 	<include file="Public/header" />
-	
 	<div><h2>{$course_info.course_name_name}{/**课程名称*/}</h2></div>
 	<div><a href = "#">点击开始学习</a></div>{/**，加入到已选课程。have choosed*/}
 	<div><b>简介：</b>{$course_info.course_name_intro}{/**这里是课程简介*/}</div>
@@ -24,7 +23,7 @@
 	
 	
 	
-	{/*下面使用的是iframe,默认显示的是章节板块的内容,我这里长宽就写死了，需要改成自适应的*/}
+	{/*下面使用的是iframe,默认显示的是章节板块的内容，使用的是另一个section_chapter模板，模板名称一样，但内容不一样,我这里长宽就写死了，需要改成自适应的*/}
 	<div>
 		<iframe scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/CourseChapter/section_chapter/course_name_id/{$course_info.course_name_id}" name="content_block" width="100%" height="600"></iframe>
 	</div>

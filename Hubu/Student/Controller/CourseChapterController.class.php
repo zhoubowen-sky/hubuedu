@@ -31,11 +31,15 @@ class CourseChapterController extends Controller {
 	 * 第二章 xxxxx
 	 * 上述使用的是一个.html模板
 	 */
+	/**
+	 * 查询出这门课的简介，课程名等等信息$course_section_course_name ,$course_chapter_course_name
+	 * @param 传入的是课程的ID $course_name_id
+	 */
 	function section_chapter($course_name_id = 0){
 	    //$$course_name_id指的是课程的ID信息
-	    if($course_name_id){
+	    if($course_name_id > 0){
 	        //echo $course_name_id;
-    	    $section_chapter = getCourseSectionChapterList($course_name_id);//高等数学1，信号系统2
+    	    $section_chapter = getCourseSectionChapterList($course_name_id);//高等数学1,1    信号系统2,2  
     	    //show_bug($section_chapter);//查看从数据库中查询出来的信息是否正确
     	    $this->assign('section_chapter',$section_chapter);
     	    $this->display();
@@ -43,6 +47,10 @@ class CourseChapterController extends Controller {
 	        echo "数据查询不成功，联系管理员处理";
 	    }
 	    
+	}
+	
+	function test(){
+	    show_bug(getCourseSectionChapterList(2,2));
 	}
 	
 	
