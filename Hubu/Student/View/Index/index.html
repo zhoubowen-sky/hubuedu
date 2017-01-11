@@ -69,7 +69,11 @@
                 <!--<div class="swiper-button-next"></div>-->
                 <!--<div class="swiper-button-prev"></div>-->
     <!--</div>-->
-    <include file="Public/imgturn" />
+    {/**首页轮播图要做成能够随时在后台更改，所以使用include不合适，这产权改成iframe,这里的宽度也需要做出适配调整*/}
+    <!-- <include file="Public/imgturn" /> -->
+    <div>
+    	<iframe scrolling="no" frameborder="0" src="__MODULE__/Index/imgturn" name="imgturn" width="100%" height="550"></iframe>
+    </div>
     <!-- 这里我把登陆以及注册的简单表单写在这里，回头改一下，我觉得改成那种点击登陆后，像alert弹出来登陆表单就行，jquery就可以实现，后期你想咋改随意昂，表单我先塞这儿 -->
     {/*学生用户登录的表单*/}
     <!--<div id='login-div-1'>-->

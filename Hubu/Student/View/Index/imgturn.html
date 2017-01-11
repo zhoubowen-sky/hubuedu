@@ -3,30 +3,38 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Swiper demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="Public/css/swiper-3.4.0.min.css">
-    <link rel="stylesheet" href="Public/css/main.css">
+    <title>网站首页ImgTurn模板</title>
+   <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
+	<script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $.adaptiveBackground.run();	
+        });
+
+    </script>
+	
 </head>
 <body>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="Public/images/1.jpg" alt=""></div>
-        <div class="swiper-slide"><img src="Public/images/2.jpg" alt=""></div>
-        <div class="swiper-slide"><img src="Public/images/3.jpg" alt=""></div>
-        <div class="swiper-slide"><img src="Public/images/4.jpg" alt=""></div>
-        <div class="swiper-slide"><img src="Public/images/5.jpg" alt=""></div>
+    	<foreach name = 'info' item = 'info'>
+    		<!-- {$info.img_turn_href} -->{/**左边这个注释掉的内容是点击轮播图片后，要跳转到新网页的链接，我直接在这里加上a标签后，好像就不能轮播了*/}
+        	<div class="swiper-slide"><img id="{$info.img_turn_id}" src="{$Think.const.ADMIN_IMG_UPLOADS}{$info.img_turn_pic_url}" alt="" data-adaptive-background></div>
+        </foreach>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
 </div>
 
-<!-- Swiper JS -->
-<script src="Public/js/jquery.js"></script>
-<script src="Public/js/swiper-3.4.0.jquery.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script src="Public/js/imgturn.js"></script>
+<script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
+<script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
+<script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
 </body>
 </html>
