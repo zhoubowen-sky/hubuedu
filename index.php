@@ -1,7 +1,7 @@
 <?php
 //ThinkPHP框架入口
 //设置head头，防止乱码
-header("content-type:text/html,charset=utf-8");
+header("Content-type:text/html,charset=utf-8");
 
 /**
  * 功能：制作一个输出调试函数，便于开发的时候使用
