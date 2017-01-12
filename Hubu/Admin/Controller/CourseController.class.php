@@ -16,25 +16,37 @@ class CourseController extends Controller {
             //show_bug($course_name_class);
             if($course_name_class != null){
                 //传进来的值不为空
-                $course_name = D('CourseName')->where("course_name_class = $course_name_class")->select();
-                //show_bug($course_name);
+                $m = M('CourseName');
+                $where = "course_name_class = $course_name_class";
+                $p = getpage($m,$where,5);
+                $course_name = $m->field(true)->where($where)->select();
+                $this->course_name = $course_name;
+                $this->page = $p->show();
                 $this->assign('course_name',$course_name);
                 $this->display();
             }else {
                 //传进来的值为空，即默认选了全选
-                $course_name = D('CourseName')->select();
+                $m = M('CourseName');
+                $where = '';
+                $p = getpage($m,$where,5);
+                $course_name = $m->field(true)->where($where)->select();
+                $this->course_name = $course_name;
+                $this->page = $p->show();
                 $this->assign('course_name',$course_name);
                 $this->display();
             }
-            
         }else {
             //没有表单提交
             //echo "无表单数据提交";
-            $course_name = D('CourseName')->select();
+            $m = M('CourseName');
+            $where = '';
+            $p = getpage($m,$where,5);
+            $course_name = $m->field(true)->where($where)->select();
+            $this->course_name = $course_name;
+            $this->page = $p->show();
             $this->assign('course_name',$course_name);
             $this->display();
         }
-        
     }
 	
     function feedback($feedback_id = 0){
