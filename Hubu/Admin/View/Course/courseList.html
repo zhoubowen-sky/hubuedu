@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title>课程列表查看</title>
+<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}pintuer.css">
+<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}admin.css">
+<script src="{$Think.const.ADMIN_JS_URL}jquery.js"></script>
+<script src="{$Think.const.ADMIN_JS_URL}pintuer.js"></script>
+</head>
+<body>
+
+  <div class="panel admin-panel">
+    <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong></div>
+    <div class="padding border-bottom">
+      <ul class="search" style="padding-left:10px;">
+        <form method="post" action="__SELF__" id="listform">
+	        <li>课程类别：
+	          <select name="course_name_class" class="input" onchange="changesearch()" style="width:100px; line-height:17px; display:inline-block">
+	            <option value="">全选</option>
+	            <option value="1">计算机</option>
+	            <option value="2">经济管理</option>
+	            <option value="3">心理学</option>
+	            <option value="4">外语</option>
+	            <option value="5">文学历史</option>
+	            <option value="6">艺术设计</option>
+	            <option value="7">工学</option>
+	            <option value="8">理学</option>
+	            <option value="9">生命科学</option>
+	            <option value="10">哲学</option>
+	            <option value="11">法学</option>
+	            <option value="12">教育教学</option>
+	            <option value="13">其他</option>
+	          </select>
+	        </li>
+	        <li>
+				<button type="submit" class="button border-main icon-search"> 点击查询</button>
+	        </li>
+        </form>
+      </ul>
+    </div>
+    <table class="table table-hover text-center">
+      <tr>
+        <th width="30" style="text-align:left; padding-left:20px;">ID</th>
+        <th width="10%">课程名称</th>
+        <th>课程图片</th>
+        <th>教师</th>
+        <th>类别</th>
+        <th width="20%">课程简介</th>
+        <th width="10%">更新时间</th>
+        <th width="310">操作</th>
+      </tr>
+      {/*下面使用模板循环输出相应课程的信息*/}
+      <foreach name='course_name' item='course_name'>
+         <tr>
+          <td style="text-align:left; padding-left:20px;">{$course_name.course_name_id}</td>
+          <td>{$course_name.course_name_name}</td>
+          <td width="10%"><img src="images/11.jpg" alt="" width="70" height="50" /></td>
+          <td>{$course_name.course_name_adder}</td>
+          <td><font color="#00CC99">{$course_name.course_name_class}</font></td>
+          <td>{$course_name.course_name_intro}</td>
+          <td>{$course_name.course_name_time}</td>
+          <td><div class="button-group"> <a class="button border-main" href="add.html"><span class="icon-edit"></span> 查看</a> <a class="button border-main" href="add.html"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> </div></td>
+        </tr>
+      </foreach>
+    </table>
+  </div>
+
+<script type="text/javascript">
+
+//单个删除
+function del(id,mid,iscid){
+	if(confirm("您确定要删除吗?")){
+		
+	}
+}
+
+</script>
+</body>
+</html>
