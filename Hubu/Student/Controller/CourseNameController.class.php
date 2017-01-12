@@ -201,6 +201,18 @@ class CourseNameController extends Controller {
         $this->display('course_name');
     }
 	
-	
+    /**
+     * 其他
+     */
+    function elseCourse(){
+        $m = M('CourseName');
+        $where = 'course_name_class = 13';
+        $p = getpage($m,$where,5);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('course_name',$list);
+        $this->display('course_name');
+    }
 	
 }
