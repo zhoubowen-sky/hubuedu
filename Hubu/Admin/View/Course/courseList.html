@@ -8,6 +8,7 @@
 <title>课程列表查看</title>
 <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}pintuer.css">
 <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}admin.css">
+<link href="{$Think.const.ADMIN_CSS_URL}/page.css" rel="stylesheet">
 <script src="{$Think.const.ADMIN_JS_URL}jquery.js"></script>
 <script src="{$Think.const.ADMIN_JS_URL}pintuer.js"></script>
 </head>
@@ -60,13 +61,36 @@
           <td>{$course_name.course_name_name}</td>
           <td width="10%"><img src="images/11.jpg" alt="" width="70" height="50" /></td>
           <td>{$course_name.course_name_adder}</td>
-          <td><font color="#00CC99">{$course_name.course_name_class}</font></td>
+          {/**这里的课程类别要做判断，不能输出数字*/}
+          <switch name="course_name.course_name_class">
+			<case value="1"><td><font color="#00CC99">计算机</font></td></case>
+			<case value="2"><td><font color="#00CC99">经济管理</font></td></case>
+			<case value="3"><td><font color="#00CC99">心理学</font></td></case>
+			<case value="4"><td><font color="#00CC99">外语</font></td></case>
+			<case value="5"><td><font color="#00CC99">文学历史</font></td></case>
+			<case value="6"><td><font color="#00CC99">艺术设计</font></td></case>
+			<case value="7"><td><font color="#00CC99">工学</font></td></case>
+			<case value="8"><td><font color="#00CC99">理学</font></td></case>
+			<case value="9"><td><font color="#00CC99">生命科学</font></td></case>
+			<case value="10"><td><font color="#00CC99">哲学</font></td></case>
+			<case value="11"><td><font color="#00CC99">法学</font></td></case>
+			<case value="12"><td><font color="#00CC99">教育教学</font></td></case>
+			<case value="13"><td><font color="#00CC99">其他</font></td></case>
+			<default />default
+		  </switch>
           <td>{$course_name.course_name_intro}</td>
           <td>{$course_name.course_name_time}</td>
-          <td><div class="button-group"> <a class="button border-main" href="add.html"><span class="icon-edit"></span> 查看</a> <a class="button border-main" href="add.html"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> </div></td>
+          <td>
+	          <div class="button-group"> 
+		          <a class="button border-main" href="add.html"><span class="icon-edit"></span> 查看</a> 
+		          <a class="button border-main" href="add.html"><span class="icon-edit"></span> 修改</a> 
+		          <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> 
+	          </div>
+          </td>
         </tr>
       </foreach>
     </table>
+    <div class="pages">{$page}</div>
   </div>
 
 <script type="text/javascript">
