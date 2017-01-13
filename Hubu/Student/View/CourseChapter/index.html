@@ -13,10 +13,14 @@
 <body>
 	{/**下面这个header*/}
 	<include file="Public/header" />
-	<div><h2>{$course_info.course_name_name}{/**课程名称*/}</h2></div>
-	<div><a href = "#">点击开始学习</a></div>{/**，加入到已选课程。have choosed*/}
-	<div><b>简介：</b>{$course_info.course_name_intro}{/**这里是课程简介*/}</div>
-	
+    <div>
+        <div class="hd-fix">
+            <div class="hd-title"><h2>{$course_info.course_name_name}{/**课程名称*/}</h2></div>
+            <div class="hd-check"><a href = "#" class="btn btn-success">点击开始学习{/**，加入到已选课程。have choosed*/}</a></div>
+        </div>
+    </div>
+    <div><b>简介：</b>{$course_info.course_name_intro}{/**这里是课程简介*/}</div>
+	<div></div>
 	<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/section_chapter/course_name_id/{$course_info.course_name_id}" target="content_block"><b>章节</b></a></div>
 	<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/comment" target="content_block"><b>评论留言</b></a></div>
 	<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/note" target="content_block"><b>笔记</b></a></div>
