@@ -208,6 +208,8 @@ a{text-decoration:none}
 .My-footer .row{
     width: 1349px;
     height: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 .My-footer .footer-logo{
     margin-top: 30px;
