@@ -215,7 +215,61 @@ class CourseController extends Controller {
         }
     }
     
-    function updateCourseInfo(){
+    /**
+     * TODO 修改课程名称简介以及其他信息的方法
+     * @param number $course_name_id
+     */
+    function updateCourseInfo($course_name_id = 0){
+        //判断有无表单提交
+        if (empty($_POST)){
+            //echo $course_name_id;
+            if($course_name_id){
+                $courseinfo = D('CourseName')->where("course_name_id = $course_name_id")->find();
+                //show_bug($courseinfo);
+                $this->assign('courseinfo',$courseinfo);
+                $this->display();
+            }else {
+                $this->error('程序出现错误');
+            }
+        }else {
+            //有表单提交，收集表单数据
+            if(empty($_FILES['course_name_pic']['tmp_name'])){
+                //没有附件上传
+                $this->error('没有选择课程图片');
+            }else {
+                //选择了课程图片
+                //自定义文件接收相关配置
+                $config = array(
+                    'rootPath'      =>  'Hubu/Public/', //保存根路径,Andim目录下面public目录定义为Admin的根目录，这里的路径设置是以admin.php所在路径为依据设置
+                    'savePath'      =>  'Uploads/', //保存路径为Uploads，TP框架会自动生成如2016-12-18的日期文件夹
+                );
+                //print_r($_FILES);//是个二维数组
+                $upload = new \Think\Upload($config);//实例化Upload对象
+                //show_bug($upload);
+                $z = $upload->uploadOne($_FILES['course_name_pic']);//执行上传操作
+                //print_r($z);
+                //show_bug($z);
+                if (!$z){
+                    //show_bug($upload->getError());
+                    $this->error($upload->getError());//输出错误
+                } else {
+                    //$this->success("文件上传成功！");
+                    echo "文件上传成功！";
+                }
+                }
+                $_POST['course_name_pic'] = $z['savepath'].$z['savename'];/**这里存储用户头像的文件路径*/
+                $_POST['course_name_time'] = date('Y-m-d H:i:s');
+                $course = D('CourseName')->create();
+                //show_bug($course);
+                //show_bug($_POST);
+                $rst = D('CourseName')->where("course_name_id = $course_name_id")->save();//更新数据库
+                if ($rst){
+                    $this->success('数据更新成功！');
+                }else {
+                    $this->error('数据更新失败！');
+                }
+            }
+        
         
     }
     
