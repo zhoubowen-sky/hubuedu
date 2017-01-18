@@ -277,6 +277,39 @@ class CourseController extends Controller {
         
     }
     
+    /**
+     * TODO 删除课程的所有信息，包括所有小节信息
+     * @param number $course_name_id
+     */
+    function deleteCourse($course_name_id = 0){
+        if ($course_name_id){
+            //删除课程以及该课程的所有章节信息
+            $rst_course = D('CourseName')->where("course_name_id = $course_name_id")->delete();//删除课程信息
+            $rst_chapter = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->delete();
+            if ($rst_chapter or $rst_course){
+                $this->success('删除成功');
+            }else {
+                $this->error('删除失败');
+            }
+        }
+    }
+    
+    /**
+     * TODO 删除课程的某一个小节
+     * @param number $course_chapter_id
+     */
+    function deleteCourseChapter($course_chapter_id = 0){
+        if ($course_chapter_id){
+            //执行删除课程小结操作
+            $rst = D('CourseChapter')->where("course_chapter_id = $course_chapter_id")->delete();
+            if ($rst){
+                $this->success('删除成功');
+            }else {
+                $this->error('删除失败');
+            }
+        }
+    }
+    
     
     
     
