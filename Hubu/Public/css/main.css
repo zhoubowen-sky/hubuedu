@@ -162,6 +162,13 @@ a{text-decoration:none}
     padding-right: 5px;
     background: #f7f7f7;
 }
+.m-nav .m-nav-btn{
+    width: 920px;
+}
+.m-nav .m-nav-btn .btn{
+    width: 130px;
+    height: 34px;
+}
 .m-nav span{
     font-size: 16px;
     color: #333;
@@ -172,6 +179,8 @@ a{text-decoration:none}
 .m-nav i{
     color: #333;
 }
+
+
 /*课程展示页面*/
 .hd-fix{
     width: 1200px;
