@@ -13,10 +13,30 @@
 <body>
 	{/**下面这个header*/}
 	<include file="Public/header" />
-    <div>
+   <div>
+        <div class="hd-header">
         <div class="hd-fix">
-            <div class="hd-title"><h2>{$course_info.course_name_name}{/**课程名称*/}</h2></div>
-            <div class="hd-check"><a href = "#" class="btn btn-success">点击开始学习{/**，加入到已选课程。have choosed*/}</a></div>
+            <div class="hd-title"><h2>{$course_info.course_name_name}</h2></div>
+            <div class="hd-check">
+                <div class="row">
+                    <div class="col-md-1">
+                    <a href = "#" class="btn btn-success btn-lg">点击开始学习{/**，加入到已选课程。have choosed*/}</a>
+                    </div>
+                    <div class="col-md-1 col-md-offset-1 hd-check-1">
+                        <p>学习人数</p>
+                        <p>211231</p>
+                    </div>
+                    <div class="col-md-1 hd-check-1">
+                        <p>课程节数</p>
+                        <p>211231</p>
+                    </div>
+                    <div class="col-md-1">
+                        <p>课程难度</p>
+                        <p>211231</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
     <div><b>简介：</b>{$course_info.course_name_intro}{/**这里是课程简介*/}</div>

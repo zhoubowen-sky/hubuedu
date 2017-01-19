@@ -182,12 +182,16 @@ a{text-decoration:none}
 
 
 /*课程展示页面*/
+.hd-header{
+    width: 100%;
+    height: 212px;
+    background: black;
+}
 .hd-fix{
     width: 1200px;
     height: 212px;
     margin-left: auto;
     margin-right: auto;
-    background: black;
 }
 .hd-fix .hd-title h2{
     font-size: 32px;
@@ -201,13 +205,18 @@ a{text-decoration:none}
 }
 .hd-fix .hd-check{
     position: relative;
-    top: 80px;
+    top: 95px;
     left: 30px;
 }
-
-
-
-
+.hd-fix .hd-check p{
+    color: white;
+    text-align: center;
+    line-height: 140%;
+}
+.hd-fix .hd-check .hd-check-1{
+    border-right: 1px solid white;
+    height: 46px;
+}
 /*footer*/
 .My-footer{
     background: #1e6f46;
@@ -217,8 +226,6 @@ a{text-decoration:none}
 .My-footer .row{
     width: 1349px;
     height: auto;
-	margin-left: auto;
-	margin-right: auto;
 }
 .My-footer .footer-logo{
     margin-top: 30px;
