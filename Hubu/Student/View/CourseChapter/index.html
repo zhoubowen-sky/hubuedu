@@ -5,7 +5,6 @@
 	<title>{$course_info.course_name_name}-课程章节{/**网页标题也展示这门课的信息*/}</title>
 	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
-    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
     <script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>
@@ -51,7 +50,7 @@
 	
 	{/*下面使用的是iframe,默认显示的是章节板块的内容，使用的是另一个section_chapter模板，模板名称一样，但内容不一样,我这里长宽就写死了，需要改成自适应的*/}
 	<div>
-		<iframe scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/CourseChapter/section_chapter/course_name_id/{$course_info.course_name_id}" name="content_block" width="100%" height="600"></iframe>
+		<iframe id="iframepage" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="iFrameHeight()" src="{$Think.const.SITE_URL}index.php/Student/CourseChapter/section_chapter/course_name_id/{$course_info.course_name_id}" name="content_block"></iframe>
 	</div>
 	
 	{/*这里放置的是bottom*/}
@@ -59,5 +58,15 @@
 <script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
 <script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
 <script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
+<script type="text/javascript" language="javascript">   
+function iFrameHeight() {   
+var ifm= document.getElementById("iframepage");   
+var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;   
+if(ifm != null && subWeb != null) {
+   ifm.height = subWeb.body.scrollHeight;
+   ifm.width = subWeb.body.scrollWidth;
+}   
+}   
+</script>
 </body>
 </html>

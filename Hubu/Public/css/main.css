@@ -244,6 +244,31 @@ a{text-decoration:none}
     font-size: 20px;
     color: black;
 }
+.chapter{
+	width:auto;
+	height: auto;
+	margin-bottom:30px;
+	margin-left:13px;
+}
+.chapter-head{
+    width: 756px;
+    height: 45px;
+    padding-left: 10px;
+}
+.chapter-contain{
+    width: 712px;
+    height: 40px;
+	margin-top: 10px;
+    margin-left: 30px;
+    background: #f3f5f7;
+    padding-left: 15px;
+    padding-top: 8px;
+}
+.chapter-contain a{
+    text-decoration: none;
+    color: #93999f;
+    font-size: 14px;
+}
 /*footer*/
 .My-footer{
     background: #1e6f46;
