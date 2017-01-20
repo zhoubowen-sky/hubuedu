@@ -8,6 +8,7 @@ div{
     margin: 0;
 }
 a{text-decoration:none}
+
 /*头部导航*/
 .header-top{
     width: 100%;
@@ -216,6 +217,32 @@ a{text-decoration:none}
 .hd-fix .hd-check .hd-check-1{
     border-right: 1px solid white;
     height: 46px;
+}
+.class-contain-text-div .class-contain-text{
+    font-size: 14px;
+    color: #4d555d;
+    line-height: 28px;
+    padding: 0;
+    margin: 0;
+}
+.class-contain-text-div{
+    width: 824px;
+    height: 56px;
+    padding-left: 26px;
+    padding-right: 26px;
+}
+.class-contain-btn-div{
+    width: 824px;
+    height: 56px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.class-contain-btn-div a{
+    display: block;
+}
+.class-contain-btn-div span{
+    font-size: 20px;
+    color: black;
 }
 /*footer*/
 .My-footer{

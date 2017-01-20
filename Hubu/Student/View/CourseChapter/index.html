@@ -39,12 +39,14 @@
         </div>
         </div>
     </div>
-    <div><b>简介：</b>{$course_info.course_name_intro}{/**这里是课程简介*/}</div>
-	<div></div>
-	<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/section_chapter/course_name_id/{$course_info.course_name_id}" target="content_block"><b>章节</b></a></div>
-	<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/comment" target="content_block"><b>评论留言</b></a></div>
-	<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/note" target="content_block"><b>笔记</b></a></div>
-	
+    <div class="class-contain-text-div"><p class="class-contain-text">简介:{$course_info.course_name_intro}{/**这里是课程简介*/}</p></div>
+<div class="class-contain-btn-div">
+<div class="btn-group">
+<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/section_chapter/course_name_id/{$course_info.course_name_id}" class="btn btn-link" target="content_block" style="text-decoration: none;"><span>章节</span></a>
+<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/comment" class="btn btn-link" target="content_block" style="text-decoration: none;"><span>评论留言</span></a>
+<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/note" class="btn btn-link" target="content_block" style="text-decoration: none;"><span>笔记</span></a>
+</div>
+</div>
 	
 	
 	{/*下面使用的是iframe,默认显示的是章节板块的内容，使用的是另一个section_chapter模板，模板名称一样，但内容不一样,我这里长宽就写死了，需要改成自适应的*/}
