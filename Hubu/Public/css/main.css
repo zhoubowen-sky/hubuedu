@@ -180,7 +180,27 @@ a{text-decoration:none}
 .m-nav i{
     color: #333;
 }
-
+.class-media{
+    width: 930px;
+    height: 150px;
+	margin-top: 16px;
+}
+.class-media-name{
+    font-size: 20px;
+    font-weight: bold;
+}
+.class-media-teacher{
+    font-size: 12px;
+}
+.class-media-contain{
+    font-size: 13px;
+}
+.class-media-student{
+    padding-top: 35px;
+}
+.class-media-student i{
+    font-size: 18px;
+}
 
 /*课程展示页面*/
 .hd-header{
