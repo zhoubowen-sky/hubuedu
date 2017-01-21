@@ -34,7 +34,7 @@
 </div>
 		{/*下面使用的是iframe,默认显示的是所有的课程,我这里长宽就写死了，需要改成自适应的*/}
 		<div>
-		  <iframe scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/CourseName/all" name="coursename" width="100%" height="800"></iframe>
+		  <iframe id="iframepage" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="iFrameHeight()" src="{$Think.const.SITE_URL}index.php/Student/CourseName/all" name="coursename" width="100%" height="800"></iframe>
 		</div>
     </div>
 
