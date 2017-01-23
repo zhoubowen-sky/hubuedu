@@ -19,16 +19,16 @@
 	
 	{/***************建议这个视频播放页面，不同模块就都尽量写在一个页面里面，不然参数传递会特别的麻烦，我试过分开写成不同的.html，然后又改成现在只写一个页面了**********************/}
 	{/**video播放模块*/}
-	<div>
+	<!-- <div>
 		{/*下面直接使用的H5的video标签，是为了兼容移动端，移动端没有Flash，播放器样式要调整，禁止视频下载*/}
 		<video src="{$Think.const.ADMIN_IMG_UPLOADS}{$chapter_info.course_chapter_video_url}" controls="controls">浏览器不支持HTML5,请更换成Chrome浏览器</video>
-	</div>
+	</div> -->
 	
-	<!-- {/**video模板，载入时涉及参数传递，就不使用include了*/}
+	{/**video模板，载入时涉及参数传递，就不使用include了*/}
 	<div>
-		{/**视频链接*/}
+		{/**视频链接，这里的src要写一个方法，用videoPlayer() 方法来控制模版的输出*/}
     	<iframe scrolling="no" frameborder="0" src="__MODULE__/Video/videoPlayer/video_url/{$chapter_info.course_chapter_video_url}" name="videoPlayer" width="1100" height="800"></iframe>
-    </div> -->
+    </div>
 	
 	{/**课程章节列表*/}
 	<div>
@@ -38,7 +38,7 @@
 		
 			<foreach name = 'section_chapter' item = 'section_chapter'>
 				{/*下面这个链接地址应该是，在点击后，视频播放界面的播放内容变为相应节的视频，和imooc视频播放界面一样，看能否用JS在这里实现点击后，更改上述video标签的url值，如果可以,下面就是视频url，如果不行，就再想其他方案*/}
-				<div><a href='#0000'>{$section_chapter.course_chapter_name}{$section_chapter.course_chapter_video_url}</a></div>
+				<div><a href="__MODULE__/Video/videoPlayer/video_url/{$section_chapter.course_chapter_video_url}" target = "videoPlayer">{$section_chapter.course_chapter_name}</a></div>
 					
 			</foreach>
 		
