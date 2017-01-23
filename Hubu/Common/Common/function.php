@@ -144,3 +144,28 @@ function getCourseSectionChapterList($course_section_course_name /*,$course_chap
     ); */
     return $res;
 }
+
+/**
+ * URL安全编码函数
+ * @param 需要转换的URL路径 $string
+ * @return mixed
+ */
+function urlsafe_b64encode($string) {
+    $data = base64_encode($string);
+    $data = str_replace(array('+','/','='),array('-','_',''),$data);
+    return $data;
+}
+
+/**
+ * URL安全解码函数
+ * @param 编码后的URL地址 $string
+ * @return string
+ */
+function urlsafe_b64decode($string) {
+    $data = str_replace(array('-','_'),array('+','/'),$string);
+    $mod4 = strlen($data) % 4;
+    if ($mod4) {
+        $data .= substr('====', $mod4);
+    }
+    return base64_decode($data);
+}
