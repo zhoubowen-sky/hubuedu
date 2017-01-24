@@ -273,8 +273,125 @@ class CourseController extends Controller {
         
     }
     
+    /**
+     * 用于展示添加课程模板的方法
+     */
+    function showAddCourse(){
+        $courseList = D('CourseName')->select();
+        $sectionList = D('CourseSection')->select();
+        //show_bug($sectionList);
+        //show_bug($courseList);
+        $this->assign('sectionList',$sectionList);
+        $this->assign('courseList',$courseList);
+        $this->assign('courseList2',$courseList);
+        $this->display();
+    }
+    
     function addCourse(){
-        
+        //show_bug($_POST);
+        if (!empty($_POST)){
+            //有表单数据提交
+            if(empty($_FILES['course_name_pic']['tmp_name'])){
+                //没有附件上传
+                $this->error('没有选择课程图片');
+            }else {
+                //选择了课程图片
+                //自定义文件接收相关配置
+                $config = array(
+                    'rootPath'      =>  'Hubu/Public/', //保存根路径,Andim目录下面public目录定义为Admin的根目录，这里的路径设置是以admin.php所在路径为依据设置
+                    'savePath'      =>  'Uploads/', //保存路径为Uploads，TP框架会自动生成如2016-12-18的日期文件夹
+                );
+                //print_r($_FILES);//是个二维数组
+                $upload = new \Think\Upload($config);//实例化Upload对象
+                //show_bug($upload);
+                $z = $upload->uploadOne($_FILES['course_name_pic']);//执行上传操作
+                //print_r($z);
+                //show_bug($z);
+                if (!$z){
+                    //show_bug($upload->getError());
+                    $this->error($upload->getError());//输出错误
+                } else {
+                    //$this->success("文件上传成功！");
+                    echo "文件上传成功！";
+                }
+            }
+            $_POST['course_name_pic'] = $z['savepath'].$z['savename'];/**这里存储用户头像的文件路径*/
+            $_POST['course_name_time'] = date('Y-m-d H:i:s');
+            $course = D('CourseName')->create();
+            //show_bug($course);
+            //show_bug($_POST);
+            $rst = D('CourseName')->add();//添加数据到数据库
+            if ($rst){
+                $this->success('数据添加成功！');
+            }else {
+                $this->error('数据添加失败！');
+            }
+        }
+    }
+    
+    function addSection(){
+        if (!empty($_POST)){
+            //有表单数据提交,收集表单数据
+            //show_bug($_POST);
+            $_POST['course_section_time'] = date('Y-m-d H:i:s');//添加时间戳
+            $courseSection = D('CourseSection')->create();
+            //show_bug($courseSection);
+            $rst = D('CourseSection')->add();//添加数据到数据库
+            if ($rst){
+                $this->success('数据添加成功！');
+            }else {
+                $this->error('数据添加失败！');
+            }
+        }else {
+            //从数据库中查询数据，并且添加到模板之中
+            //这一步就在showAddCourse里面已经完成
+        }
+    }
+    
+    function addChapter(){
+        //show_bug($_POST);
+        if (!empty($_POST)){
+            //有表单数据提交
+            //print_r($_FILES);
+            if(empty($_FILES['course_chapter_video_url']['tmp_name'])){
+                //没有附件上传
+                $this->error('没有选择视频文件');
+            }else {
+                //自定义文件接收相关配置
+                $config = array(
+                    'rootPath'      =>  'Hubu/Public/', //保存根路径,Andim目录下面public目录定义为Admin的根目录，这里的路径设置是以admin.php所在路径为依据设置
+                    'savePath'      =>  'Uploads/', //保存路径为Uploads，TP框架会自动生成如2016-12-18的日期文件夹
+                    'maxSize'       =>  0, //上传的文件大小限制 (0-不做限制)
+                );
+                //print_r($_FILES);//是个二维数组
+                $upload = new \Think\Upload($config);//实例化Upload对象
+                //show_bug($upload);
+                $z = $upload->upload();//执行上传操作，如果视频和PPT都有，这里需要上传两个文件，PPT以及视频
+                //print_r($z);
+                //show_bug($z);
+                if (!$z){
+                    //show_bug($upload->getError());
+                    $this->error($upload->getError());//输出错误
+                } else {
+                    //$this->success("文件上传成功！");
+                    echo "文件上传成功！";
+                }
+            }
+            $_POST['course_chapter_video_url'] = $z['course_chapter_video_url']['savepath'].$z['course_chapter_video_url']['savename'];/**这里存储视频的文件路径*/
+            $_POST['course_chapter_video_size'] = $z['course_chapter_video_url']['size'];//存储视频文件的大小
+            $_POST['course_chapter_ppt_url'] = $z['course_chapter_ppt_url']['savepath'].$z['course_chapter_ppt_url']['savename'];/**这里存储PPT的文件路径*/
+            $_POST['course_chapter_ppt_size'] = $z['course_chapter_ppt_url']['size'];//存储PPT文件的大小
+            $_POST['course_chapter_time'] = date('Y-m-d H:i:s');
+            $course = D('CourseChapter')->create();
+            //show_bug($course);
+            //show_bug($_POST);
+            $rst = D('CourseChapter')->add();//添加数据到数据库
+            if ($rst){
+                $this->success('数据添加成功！');
+            }else {
+                $this->error('数据添加失败！');
+            }
+        }
     }
     
     /**
