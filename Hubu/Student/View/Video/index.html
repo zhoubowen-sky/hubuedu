@@ -9,14 +9,16 @@
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
     <script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>
-	
+	<style>
+	.player{
+	position:relative;
+	top:-20px;
+	}
+	</style>
 </head>
 <body>
 	{/**下面这个header*/}
 	<include file="Public/header" />
-	
-	<div>这里是视频播放页面</div>
-	
 	{/***************建议这个视频播放页面，不同模块就都尽量写在一个页面里面，不然参数传递会特别的麻烦，我试过分开写成不同的.html，然后又改成现在只写一个页面了**********************/}
 	{/**video播放模块*/}
 	<!-- <div>
@@ -25,7 +27,7 @@
 	</div> -->
 	
 	{/**video模板，载入时涉及参数传递，就不使用include了*/}
-	<div>
+	<div class='player'>
 		{/**视频链接，这里的src要写一个方法，用videoPlayer() 方法来控制模版的输出*/}
     	<iframe id="iframepage1" frameborder="0"  marginheight="0" marginwidth="0" src="__MODULE__/Video/videoPlayer/video_url/{$chapter_info.course_chapter_video_url}" name="videoPlayer" width='auto' height='620px'></iframe>
     </div>
