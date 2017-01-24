@@ -19,7 +19,12 @@
             <div class="hd-check">
                 <div class="row">
                     <div class="col-md-1">
-                    <a href = "#" class="btn btn-success btn-lg">点击开始学习{/**，加入到已选课程。have choosed*/}</a>
+                    {/**这里作出判断，如果学生已经选择了这门课程则展示“继续学习”并且按钮为空连接，没有选择就展示“点击开始学习”，点击后触发选择此课程的方法写入一条数据到数据库*/}
+                    <if condition="empty($check)">
+                    	<a href = "__MODULE__/CourseChapter/chooseCourse/course_name_id/{$course_info.course_name_id}" class="btn btn-success btn-lg">点击开始学习{/**加入到已选课程*/}</a>
+                    <else />
+                    	<a href = "#" class="btn btn-success btn-lg">继续学习{/**加入到已选课程*/}</a>
+                    </if>
                     </div>
                     <div class="col-md-1 col-md-offset-1 hd-check-1">
                         <p>学习人数</p>

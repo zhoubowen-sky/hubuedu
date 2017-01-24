@@ -71,6 +71,7 @@ class StudentUserController extends Controller {
 	                    session('student_user_intro',$z['student_user_intro']);//存储用户个人介绍
 	                    
 	                    echo "session生成成功！";
+	                    $this->success('登录成功！');
 	                }
 	            }
 	        }

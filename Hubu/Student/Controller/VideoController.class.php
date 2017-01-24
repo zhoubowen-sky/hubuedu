@@ -6,12 +6,32 @@ class VideoController extends Controller {
 	/**
 	 * 展示视频播放页的方法，并将课程的参数传递进来
 	 * @param 课程名的id $course_name
-	 * @param 课程章节的id $id
+	 * @param 课程小节chapter的id $id
 	 */
     function index($course_name,$id){
         //echo $course_name;
         //echo $id;
         header("Content-Type:text/html; charset=utf-8");//首页不乱码
+        
+        /**通过session值查询数据库中的信息，判断用户是否选了这门课程**/
+        //echo session('student_user_id');
+        if (isset($_SESSION['student_user_id'])){
+            //用户已经登陆，查询数据表hubu_choose_course看用户有没有选择这门课
+            $user_id = session('student_user_id');
+            $check = M('ChooseCourse')->where("choose_course_choosed = $course_name and choose_course_student = $user_id")->find();
+            //show_bug($check);
+            if ($check){
+                //echo "真";
+                
+            }else {
+                //echo "假";
+                //用户没有选择这门课程，弹出提示让他选择，否则不能观看视频
+                $this->error('您还没有选择这门课程，不能观看视频',SITE_URL);
+            }
+        }else {
+            $this->error('请登陆后再查看视频');
+        }
+        
         //echo $course_name.'<br>';
         //echo $id;
         //根据传进来的参数，获取课程的信息，该节视频的信息，该门课程的信息

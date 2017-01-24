@@ -15,6 +15,21 @@ class CourseChapterController extends Controller {
 		//show_bug($info);
 		$course_info = $info->where("course_name_id = $course_name_id")->find();
 		//show_bug($course_info);
+		/**通过session值查询数据库中的信息，判断用户是否选了这门课程**/
+		//echo session('student_user_id');
+		if (isset($_SESSION['student_user_id'])){
+		    //用户已经登陆，查询数据表hubu_choose_course看用户有没有选择这门课
+		    $user_id = session('student_user_id');
+		    $check = M('ChooseCourse')->where("choose_course_choosed = $course_name_id and choose_course_student = $user_id")->find();
+		    //show_bug($check);
+		    if ($check){
+		        //echo "真";
+		        $this->assign('check',true);
+		    }else {
+		        //echo "假";
+		        $this->assign('check',false);
+		    }
+		}
 		
 		/**查询出课程学习人数，课程节数，总时长等信息，输出到模板**/
 		$choosed_count = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
@@ -31,6 +46,26 @@ class CourseChapterController extends Controller {
 		$this->assign('chapter_count',$chapter_count);
 		$this->assign('course_info',$course_info);//将信息输出到模板
 		$this->display('index');
+	}
+	
+	/**
+	 * 将该课程添加到已选课程
+	 * @param 课程的ID信息 $course_name_id
+	 */
+	function chooseCourse($course_name_id = 0){
+	    if($course_name_id){
+	        $data = array(
+	            'choose_course_student' => session('student_user_id'),
+	            'choose_course_choosed' => $course_name_id,
+	        );
+	        //show_bug($data);
+	        $rst = M('ChooseCourse')->add($data);
+	        if ($rst){
+	            $this->success('添加成功');
+	        }else {
+	            $this->error('添加失败');
+	        }
+	    }
 	}
 	
 	/**
