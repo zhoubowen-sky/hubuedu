@@ -12,12 +12,24 @@ class CourseChapterController extends Controller {
 		//这里传进来的$course_name_id是课程的ID值
 		//根据上述ID查询出该课程的名称等信息
 		$info = D('CourseName');
-		
 		//show_bug($info);
 		$course_info = $info->where("course_name_id = $course_name_id")->find();
 		//show_bug($course_info);
-		$this->assign('course_info',$course_info);//将信息输出到模板
 		
+		/**查询出课程学习人数，课程节数，总时长等信息，输出到模板**/
+		$choosed_count = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+		//show_bug($choosed_count);
+		$chapter_count = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+		//show_bug($chapter_count);
+		$sql = "SELECT SUM(choose_course_score) FROM hubu_choose_course WHERE choose_course_choosed = $course_name_id";//查询出分数求和值
+		$course_score = M('ChooseCourse')->query($sql);//查询出来的结果是个二维数组
+		//show_bug($course_score[0]['sum(choose_course_score)']);
+		$course_score = round($course_score[0]['sum(choose_course_score)']/$choosed_count , 1) ;//算平均评分,四舍五入一位小数
+		//show_bug($course_score);
+		$this->assign('course_score',$course_score);
+		$this->assign('choosed_count',$choosed_count);
+		$this->assign('chapter_count',$chapter_count);
+		$this->assign('course_info',$course_info);//将信息输出到模板
 		$this->display('index');
 	}
 	
