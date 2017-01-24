@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Video</title>
+  <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+
+  <!-- If you'd like to support IE8 -->
+  <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 </head>
+
 <body>
-	<div>这是videoPlayer页面的模版</div>
-	<div>
-		{/*下面直接使用的H5的video标签，是为了兼容移动端，移动端没有Flash，播放器样式要调整，禁止视频下载*/}
-		<video src="{$video_url}" controls="controls">浏览器不支持HTML5,请更换成Chrome浏览器</video>
-	</div>
-	
-	
+  <video id="my-video" class="video-js" controls preload="auto" width="1349" height="564"
+  poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+    <source src="{$video_url}" type='video/mp4'>
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a web browser that
+      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+  </video>
+
+  <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
 </body>
 </html>
