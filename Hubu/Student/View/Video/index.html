@@ -9,7 +9,7 @@
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
     <script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>
-
+	
 </head>
 <body>
 	{/**下面这个header*/}
@@ -29,7 +29,10 @@
 		{/**视频链接，这里的src要写一个方法，用videoPlayer() 方法来控制模版的输出*/}
     	<iframe id="iframepage1" frameborder="0"  marginheight="0" marginwidth="0" src="__MODULE__/Video/videoPlayer/video_url/{$chapter_info.course_chapter_video_url}" name="videoPlayer" width='auto' height='620px'></iframe>
     </div>
-	
+	<script>
+	var iframeWidth = $(window).width();
+	$("#iframepage1").width(iframeWidth);
+	</script>
 	{/**课程章节列表*/}
 	<div>
 		<foreach name = 'section_chapter' item = 'section_chapter'>

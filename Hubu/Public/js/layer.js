@@ -45,9 +45,7 @@ function iFrameHeight() {
 		ifm.width = subWeb.body.scrollWidth;
 	}   
 }
-var iframeWidth = $(window).width();
-$("#iframepage1").width(iframeWidth);
-$("#my-video_html5_api").width(iframeWidth);
+
 
 
 
