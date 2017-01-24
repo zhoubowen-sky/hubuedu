@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hotCourse-热门课程</title>
+</head>
+<body>
+	<div><h2>热门课程</h2></div>
+	<hr>
+	<div>
+		<foreach name='hot' item='hot'>
+			<div>
+				<img alt="..." src="{$Think.const.ADMIN_IMG_UPLOADS}{$hot.course_name_pic}" width="260px" height="150px">
+				<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$hot.course_name_id}" target='_blahk'>课程链接</a>
+				<div>课程名称：{$hot.course_name_name}</div>
+				<div>讲师：{$hot.course_name_adder}</div>
+				<div>1120人参加</div>
+				<div>课程简介：{$hot.course_name_intro}</div>
+			</div>
+		</foreach>
+		<hr>
+		<div><h2><a href='__MODULE__/Course/index' target='_blank'>查看更多课程</a></h2></div>
+	</div>
+</body>
+</html>

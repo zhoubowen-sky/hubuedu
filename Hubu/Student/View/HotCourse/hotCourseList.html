@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hotCourse-热门课程</title>
+</head>
+<body>
+	<div><h2>热门课程列表</h2></div>
+	<hr>
+	<div>
+		<foreach name='hot' item='hot'>
+			<div>
+				<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$hot.course_name_id}" target='_blahk'>课程链接</a>
+				<div>课程名称：{$hot.course_name_name}</div>
+			</div>
+		</foreach>
+	</div>
+</body>
+</html>

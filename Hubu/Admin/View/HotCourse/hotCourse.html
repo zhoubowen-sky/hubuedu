@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hotCourse-热门课程</title>
+</head>
+<body>
+	<div>所有热门课程列表</div>
+	<hr>
+	<div>
+		<foreach name='hot' item='hot'>
+			<div>
+				<div>课程ID：{$hot.course_name_id}</div>
+				<div>课程名称：{$hot.course_name_name}</div>
+				<div>讲师：{$hot.course_name_adder}</div>
+				<div>课程简介：{$hot.course_name_intro}</div>
+			</div>
+			<a href='__MODULE__/HotCourse/deleteHotCourse/hot_course_id/{$hot.course_name_id}'>删除</a>
+			<hr>
+		</foreach>
+	</div>
+	
+	<div>增加一门课程为热门课程</div>
+	<form id="form1" name="form1" method="post" action="__MODULE__/HotCourse/addHotCourse">
+	  	<foreach name='courseList' item='courseList'>
+    		<label><input type="radio" name="hot_course_course_name" value="{$courseList.course_name_id}" id="章所属课程_1" />{$courseList.course_name_name}</label>
+    	</foreach>
+  		<input type="submit" name="submit" id="submit" value="点击增添" />
+	</form>
+	
+</body>
+</html>
