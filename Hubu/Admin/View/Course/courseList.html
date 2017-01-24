@@ -59,7 +59,7 @@
          <tr>
           <td style="text-align:left; padding-left:20px;">{$course_name.course_name_id}</td>
           <td>{$course_name.course_name_name}</td>
-          <td width="10%"><img src="images/11.jpg" alt="" width="70" height="50" /></td>
+          <td width="10%"><img src="{$Think.const.ADMIN_IMG_UPLOADS}{$course_name.course_name_pic}" alt="" width="70" height="50" /></td>
           <td>{$course_name.course_name_adder}</td>
           {/**这里的课程类别要做判断，不能输出数字*/}
           <switch name="course_name.course_name_class">
