@@ -36,6 +36,7 @@
 $('a#m-nav-other').click(function () {
      $(this).removeClass().addClass("btn btn-warning").siblings().removeClass().addClass('btn btn-link');
 });
+
 function iFrameHeight() {   
 	var ifm= document.getElementById("iframepage");   
 	var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;   
@@ -43,7 +44,11 @@ function iFrameHeight() {
 		ifm.height = subWeb.body.scrollHeight;
 		ifm.width = subWeb.body.scrollWidth;
 	}   
-}   
+}
+var iframeWidth = $(window).width();
+$("#iframepage1").width(iframeWidth);
+$("#my-video_html5_api").width(iframeWidth);
+
 
 
     
