@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
 
   <!-- If you'd like to support IE8 -->
@@ -14,15 +15,22 @@
 </head>
 
 <body>
-  <video id="my-video" class="video-js" controls preload="auto" height='600px'
-  poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+  <video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" height='600px'
+ data-setup="{}">
     <source src="{$video_url}" type='video/mp4'>
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
+    <p class="vjs-no-js">播放视频需要启用 JavaScript，推荐使用支持HTML5的浏览器访问。</p>
   </video>
-
+  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
   <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+  <script>
+	var player = videojs('my-video');  
+	// 检测播放时间
+	player.on('timeupdate', function () {
+    var a = player.currentTime();
+    var b = player.duration();
+    var c = parseInt(a/b * 100);
+    console.log('当前进度为'+c+'%'); 
+	});
+  </script>
 </body>
 </html>
