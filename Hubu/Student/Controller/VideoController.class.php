@@ -29,7 +29,7 @@ class VideoController extends Controller {
                 $this->error('您还没有选择这门课程，不能观看视频',SITE_URL);
             }
         }else {
-            $this->error('请登陆后再查看视频');
+            $this->error('请登陆后再查看视频',SITE_URL);
         }
         
         //echo $course_name.'<br>';
