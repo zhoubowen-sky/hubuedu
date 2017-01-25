@@ -28,6 +28,13 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         //show_bug($list);
         $this->assign('course_name',$list);
         $this->display('course_name');
@@ -43,6 +50,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -57,6 +70,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -71,6 +90,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -85,6 +110,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -99,6 +130,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -113,6 +150,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -127,6 +170,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -141,6 +190,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -155,6 +210,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -169,6 +230,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -183,6 +250,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -197,6 +270,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
@@ -211,6 +290,12 @@ class CourseNameController extends Controller {
         $list = $m->field(true)->where($where)->select();
         $this->list = $list;
         $this->page = $p->show();
+        /**循环查询出每门课程的选课人数以及总节数*/
+        foreach ($list as $k => $v){
+            $course_name_id = $v['course_name_id'];
+            $list[$k]['course_choosed_count'] = M('ChooseCourse')->where("choose_course_choosed = $course_name_id")->count();//已选这门课程总人数
+            $list[$k]['course_chapter_count'] = D('CourseChapter')->where("course_chapter_course_name = $course_name_id")->count();//统计这门课程总节数
+        }
         $this->assign('course_name',$list);
         $this->display('course_name');
     }
