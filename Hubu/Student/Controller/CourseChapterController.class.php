@@ -54,17 +54,23 @@ class CourseChapterController extends Controller {
 	 */
 	function chooseCourse($course_name_id = 0){
 	    if($course_name_id){
-	        $data = array(
-	            'choose_course_student' => session('student_user_id'),
-	            'choose_course_choosed' => $course_name_id,
-	        );
-	        //show_bug($data);
-	        $rst = M('ChooseCourse')->add($data);
-	        if ($rst){
-	            $this->success('添加成功');
+	        if (isset($_SESSION['student_user_id'])){
+    	        $data = array(
+    	            'choose_course_student' => session('student_user_id'),
+    	            'choose_course_choosed' => $course_name_id,
+    	        );
+    	        //show_bug($data);
+    	        $rst = M('ChooseCourse')->add($data);
+    	        if ($rst){
+    	            $this->success('课程添加成功！');
+    	        }else {
+    	            $this->error('课程添加失败！');
+    	        }
 	        }else {
-	            $this->error('添加失败');
+	            $this->error('请先登陆！',SITE_URL);
 	        }
+	    }else {
+	        $this->error('出现未知错误，请联系管理员！',SITE_URL);
 	    }
 	}
 	
