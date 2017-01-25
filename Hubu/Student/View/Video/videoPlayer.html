@@ -24,14 +24,14 @@
   <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.timers.min'></script>
   <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
   <script>
-  var player = videojs('my-video');
+  	var player = videojs('my-video');
   player.play();
   player.currentTime();//接受上次播放的进度单位为秒
   var c = 0;
   var time = 0;
-  var alltime = parseInt(player.duration());//播放总时间
   time = setInterval("c++",1000);//开始计算时间
   player.on('timeupdate', function () {
+  var alltime = parseInt(player.duration());//播放总时间
   player.on('pause', function() {  
         console.log('pause');
         clearInterval(time);
@@ -41,9 +41,10 @@
         clearInterval(time);
         time = setInterval("c++",1000);
   });
-      FinalSchedule = (c/alltime);
+      FinalSchedule = parseInt(c*100/alltime);
       console.log('当前进度为'+FinalSchedule+'%');    
   });
+  </script>
   </script>
 </body>
 </html>
