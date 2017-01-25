@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
+	<script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>
+
+</head>
+<body>
+	{/**下面这个header*/}
+    <include file="Public/header" />
+    
+    <div><h2>我的课程</h2></div>
+    <foreach name='myCourseInfo' item='myCourseInfo'>
+		<div class="class-media">
+		<div class="media">
+            {/**这里是跳转到课程列表的链接，例如，跳转到高等数学课程Chapter的网页链接,course_name_code是该课程在数据表里面的代码，也可以用ID表示，实际上与ID值course_name_id相同*/}
+            
+            <div class="media-body">
+                <p class="class-media-name">{$myCourseInfo.course_name_name}</p>
+                <p class="class-media-teacher">讲师/主讲人：{$myCourseInfo.course_name_adder}</p>
+                <p class="class-media-contain">课程简介：{$myCourseInfo.course_name_intro}</p>
+                <a href="{$Think.const.SITE_URL}index.php/Student/I/deleteChoosedCourse/course_name_id/{$myCourseInfo.course_name_id}">退出该课程</a>
+				<a class="media-left" href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$myCourseInfo.course_name_id}" target="_blank">继续学习</a>
+            </div>
+            {/**没有评分则展示评分选项，已经评过就不展示评分选项*/}
+            <if condition="$myCourseInfo.course_name_score eq 0">
+            	<form method="post" action="__MODULE__/I/marking/course_name_id/{$myCourseInfo.course_name_id}" id="marking">
+			        <li>请给课程打分：
+			          <select name="choose_course_score" class="input"style="width:100px; line-height:17px; display:inline-block">
+			            <option value="0">待打分</option>
+			            <option value="1">1分</option>
+			            <option value="2">2分</option>
+			            <option value="3">3分</option>
+			            <option value="4">4分</option>
+			            <option value="5">5分</option>
+			            <option value="6">6分</option>
+			            <option value="7">7分</option>
+			            <option value="8">8分</option>
+			            <option value="9">9分</option>
+			            <option value="10">10分</option>
+			          </select>
+			          <input type="submit" name="submit" id="submit" value="提交" />
+			        </li>
+        		</form>
+            <else />
+            	<div>你对该课程的评分为：{$myCourseInfo.course_name_score}分</div>
+            </if>
+        </div>
+		</div>
+    </foreach>
+    
+    
+    
+    
+    {/*这里放置的是bottom*/}
+    <include file="Public/footer" />
+    <script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
+    <script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
+    <script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
+</body>
+</html>

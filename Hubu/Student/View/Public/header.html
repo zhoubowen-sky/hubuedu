@@ -29,7 +29,7 @@
             	{/**student_user_username 值不为空，说明用户已经登陆了,这里就显示用户的头像以及用户名*/}
             	
             	<div class="login-1">
-	                <a id="user" href='#'>{$Think.session.student_user_username}{/**这里是用户名*/}</a>
+	                <a id="user" href='__MODULE__/I/index' target='_blank'>{$Think.session.student_user_username}{/**这里是用户名*/}</a>
 	                <img src="{$Think.const.ADMIN_IMG_UPLOADS}{$Think.session.student_user_pic}" alt="..." class="img-circle" width='40px'>{/**左边这两个结合返回的是用户头像的URL地址*/}
 					<a href='{$Think.const.SITE_URL}index.php/Student/StudentUser/logout'>注销</a>
 	            </div>
