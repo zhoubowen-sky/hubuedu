@@ -48,6 +48,11 @@
       FinalSchedule = parseInt(c*100/alltime);
       console.log('当前进度为'+FinalSchedule+'%');    
   });
+ $(document).ready(function(){
+    $(document).bind("contextmenu",function(e){
+          return false;
+    });
+});
   </script>
 
 </body>
