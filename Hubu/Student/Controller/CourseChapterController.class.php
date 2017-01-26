@@ -39,7 +39,8 @@ class CourseChapterController extends Controller {
 		$sql = "SELECT SUM(choose_course_score) FROM hubu_choose_course WHERE choose_course_choosed = $course_name_id";//查询出分数求和值
 		$course_score = M('ChooseCourse')->query($sql);//查询出来的结果是个二维数组
 		//show_bug($course_score[0]['sum(choose_course_score)']);
-		$course_score = round($course_score[0]['sum(choose_course_score)']/$choosed_count , 1) ;//算平均评分,四舍五入一位小数
+		$choosed_marked_count = M('ChooseCourse')->where("choose_course_choosed = $course_name_id and choose_course_score > 0")->count();//已选这门课程且已评分的总人数
+		$course_score = round($course_score[0]['sum(choose_course_score)']/$choosed_marked_count , 1) ;//算平均评分,四舍五入一位小数
 		//show_bug($course_score);
 		$this->assign('course_score',$course_score);
 		$this->assign('choosed_count',$choosed_count);
