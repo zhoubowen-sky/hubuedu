@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>hotCourse-热门课程</title>
+ <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+ <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
 </head>
 <body>
-	<div><h2>热门课程</h2></div>
-	<hr>
-	<div>
+	<p class="hot-class-p text-center"><span class="hot-class-text">热门课程</span></p>
+	<div class='row hot-class-row'>
 		<foreach name='hot' item='hot'>
-			<div>
+			<div class='col-lg-4'>
 				<img alt="..." src="{$Think.const.ADMIN_IMG_UPLOADS}{$hot.course_name_pic}" width="260px" height="150px">
 				<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$hot.course_name_id}" target='_blahk'>课程链接</a>
 				<div>课程名称：{$hot.course_name_name}</div>
