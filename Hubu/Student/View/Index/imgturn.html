@@ -18,7 +18,12 @@
         });
 
     </script>
-	
+	<style>
+	img
+  {
+  vertical-align:text-top;
+  }
+	</style>
 </head>
 <body>
 <div class="swiper-container">
@@ -32,9 +37,14 @@
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
 </div>
-
+<script>
+	$(window.parent.document).find("#imgTurn").load(function(){
+	var main = $(window.parent.document).find("#imgTurn");
+	var thisheight = $(document).height();
+	main.height(thisheight);
+	});
+	</script>
 <script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
 <script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
-<script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
 </body>
 </html>
