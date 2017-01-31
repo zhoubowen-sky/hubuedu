@@ -181,6 +181,12 @@ a{text-decoration:none}
 .hot-class-contain{
     width: 260px;
 }
+.hot-center-btn{
+    width: 600px;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
 /*课程页面*/
 .m-nav{
     width: 930px;
