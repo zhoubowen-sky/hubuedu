@@ -40,7 +40,13 @@
 		</div>
     </foreach>
 	<div class = "pages">{$page}</div>
-    
+    <script>
+	$(window.parent.document).find("#CourseList").load(function(){
+	var main = $(window.parent.document).find("#CourseList");
+	var thisheight = $(document).height();
+	main.height(thisheight);
+	});
+	</script>
     
 <script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
 </body>
