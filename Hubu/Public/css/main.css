@@ -206,14 +206,21 @@ a{text-decoration:none}
     text-overflow:ellipsis;
 }
 /*课程页面*/
+.course{
+	width:1280px;
+}
 .m-nav{
     width: 930px;
-    height: 129px;
-    padding-top: 23px;
-    padding-bottom: 23px;
+    height: 100px;
+    padding-top: 15px;
+    padding-bottom: 20px;
     padding-left: 5px;
     padding-right: 5px;
     background: #f7f7f7;
+}
+#CourseList{
+	margin-bottom:30px;
+	margin-top:20px;
 }
 .m-nav .m-nav-btn{
     width: 920px;
