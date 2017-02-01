@@ -7,7 +7,7 @@ class HotCourseController extends Controller {
      * "热门课程"的模版页面，展示模版页面并向其输出数据
      */
     function hotCourse(){
-        $hotCourse = D('HotCourse')->limit(8)->getField('hot_course_course_name',true);//查询出所有课程的ID信息,只查询出前8个
+        $hotCourse = D('HotCourse')->getField('hot_course_course_name',true);//查询出所有课程的ID信息,查询出全部信息
         //show_bug($hotCourse);
         //print_r($hotCourse);
         //通过上述ID，循环查询出所有课程的信息并存储到数组中
