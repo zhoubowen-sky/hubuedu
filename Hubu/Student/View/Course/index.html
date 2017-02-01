@@ -35,12 +35,12 @@
 	</div>
 		{/*下面使用的是iframe,默认显示的是所有的课程,我这里长宽就写死了，需要改成自适应的*/}
 		<div>
-		  <iframe id="CourseList" src="{$Think.const.SITE_URL}index.php/Student/CourseName/all" name="coursename" width="100%" ></iframe>
+		  <iframe id="CourseList" scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/CourseName/all" name="coursename" width="100%" ></iframe>
 		</div>
 		
 		{/*热门课程的iframe*/}
 		<div>
-		  <iframe id="hotCourseList"  src="{$Think.const.SITE_URL}index.php/Student/HotCourse/hotCourseList" name="coursename" width="100%"></iframe>
+		  <iframe id="hotCourseList" scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/HotCourse/hotCourseList" name="coursename" width="100%"></iframe>
 		</div>
 		<script>
 		$("#CourseList").load(function(){
