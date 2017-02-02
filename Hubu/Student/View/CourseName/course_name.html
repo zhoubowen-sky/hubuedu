@@ -8,14 +8,6 @@
     <link rel="stylesheet" href="{$Think.const.ADMIN_ROOT_URL}layui/css/layui.css">
     <link href="{$Think.const.ADMIN_CSS_URL}/page.css" rel="stylesheet">
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
-	<script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>  
-    <script type="text/javascript">
-
-        $(document).ready(function(){
-            $.adaptiveBackground.run();	
-        });
-
-    </script>
 
 </head>
 <body>
@@ -46,8 +38,19 @@
 	var thisheight = $(document).height();
 	main.height(thisheight);
 	});
+	var spancurrent = $('span.current').width();
+	if(spancurrent != null){spancurrent = 28;}
+	var aprev = $('a.prev').width();
+	if(aprev != null){aprev = 62;console.log()}
+	var alength = $('a.num').length;
+	var anum = $('a.num').width();
+	if(anum != null){anum = 32;}
+	var anext = $('a.next').width();
+	if(anext != null){anext = 62;}
+	var lirows = $('li.rows').width();
+	var pageWidth = aprev+(anum*alength)+anext+lirows+spancurrent+35;
+	$('div.page-contain').css('width',pageWidth);
 	</script>
     
-<script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
 </body>
 </html>

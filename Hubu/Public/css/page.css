@@ -4,14 +4,14 @@
     background:#f7f7f7;
     width: 930px;
     height: 60px;
-	padding-top:14px;
+	padding-top:10px;
 }
 .page-contain{
-	width: 416px;
+	display:block;
 	height:32px;
 }
 .pages a,.pages span {
- padding:6px 10px;
+ padding:8px 12px;
  margin:0 1px;
 }
 .pages a,.pages li {
@@ -19,9 +19,14 @@
  list-style: none;
  text-decoration:none;
 }
+.pages li{
+	padding-top:6px;
+	padding-bottom:6px;
+}
 .pages a.first,.pages a.prev,.pages a.next,.pages a.end{
  margin:0;
 }
+
 .pages a:hover{
  background:#61A500;
  color:white;
