@@ -239,28 +239,83 @@ a{text-decoration:none}
 .m-nav i{
     color: #333;
 }
+/*课程列表*/
 .class-media{
     width: 930px;
+    height: 192px;
+    padding-top: 21px;
+    border-bottom: 1px solid #e6e6e6;
+}
+.class-media:hover{
+    background:#f5f5f5;
+}
+.media{
+    width: 930px;
     height: 150px;
-	margin-top: 16px;
 }
-.class-media-name{
-    font-size: 20px;
-    font-weight: bold;
+.media-body{
+    width: 640px;
+    height: 150px;
 }
-.class-media-teacher{
+.class-media-name span{
+    font-size: 16px;
+    line-height: 21px;
+    height: 21px;
+    color: black;
+}
+.class-media-name span:hover{
+    color: #55b929 !important;
+}
+.class-media-teacher span{
+    height: 20px;
     font-size: 12px;
+    line-height: 15px;
+    margin-top: 10px;
+    color: #999;
+}
+.class-media-teacher span:hover{
+    color: #55b929 !important;
 }
 .class-media-contain{
     font-size: 13px;
+    width: 640px;
+    height: 44px;
+    padding-right: 15px;
+    margin-top: 10px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    margin-left: 0;
+}
+.class-media-contain span{
+	color:black;
+}
+.class-media-contain span:hover{
+    color: #55b929 !important;
 }
 .class-media-student{
-    padding-top: 35px;
+    width: 930px;
+    height: 25px;
+    margin: 0 !important;
+    padding-top: 5px;
 }
 .class-media-student i{
-    font-size: 18px;
+    font-size: 12px;
 }
-
+.class-media-student p.col-lg-3{
+    padding-left: 0 !important;
+}
+.class-media-student span{
+    font-size: 13px;
+    line-height: 15px;
+}
+.class-media-time{
+    color: #55b929 !important;
+}
+.class-media-student div.col-lg-3{
+	width:230px;
+	float:left;
+	padding-left:0;
+}
 /*课程展示页面*/
 .hd-header{
     width: 100%;

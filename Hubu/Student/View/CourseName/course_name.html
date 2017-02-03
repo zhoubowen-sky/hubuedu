@@ -5,7 +5,6 @@
     <title>course_name</title>
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
-    <link rel="stylesheet" href="{$Think.const.ADMIN_ROOT_URL}layui/css/layui.css">
     <link href="{$Think.const.ADMIN_CSS_URL}/page.css" rel="stylesheet">
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
 
@@ -13,19 +12,32 @@
 <body>
 	
     <foreach name = 'course_name' item = 'voo'>
-        <div class="class-media">
-		<div class="media">
+        <div class="class-media" id="class-media">
+			<div class="media">
+            <!--<div id='.class-href'>{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$voo.course_name_id}</div>-->
             {/**这里是跳转到课程列表的链接，例如，跳转到高等数学课程Chapter的网页链接,course_name_code是该课程在数据表里面的代码，也可以用ID表示，实际上与ID值course_name_id相同*/}
             <a class="media-left" href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$voo.course_name_id}" target="_blank">
                 <img src="{$Think.const.ADMIN_IMG_UPLOADS}{$voo.course_name_pic}" alt="..." width="260px" height="150px">
             </a>
             <div class="media-body">
-                <p class="class-media-name">{$voo.course_name_name}</p>
-                <p class="class-media-teacher">讲师/主讲人：{$voo.course_name_adder}</p>
-                <p class="class-media-contain">课程简介：{$voo.course_name_intro}</p>
+               <p class="class-media-name">
+                    <a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$voo.course_name_id}" target="_blank" style="text-decoration: none;">
+                    <span>{$voo.course_name_name}</span>
+					</a>
+				</p>
+                <p class="class-media-teacher">
+                    <a class="media-left" href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$voo.course_name_id}" target="_blank" style="text-decoration: none;">
+                        <span>讲师/主讲人：{$voo.course_name_adder}</span>
+					</a>	
+				</p>
+                <p class="class-media-contain">
+				<a class="media-left" href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$voo.course_name_id}" target="_blank" style="text-decoration: none;">
+                        <span>课程简介：{$voo.course_name_intro}<span>
+				</a>
+				</p>
                 <div class="row class-media-student">
-                <p class="class-media-student-1 col-md-3"><i class="glyphicon glyphicon-user"></i>&nbsp;{$voo.course_choosed_count}人学习</p>
-                <p class="class-media-student-2 col-md-3"><i class="glyphicon glyphicon-time"></i>&nbsp;已进行{$voo.course_chapter_count}节</p>
+                <div class="col-lg-3"><i class="glyphicon glyphicon-user"></i>&nbsp;<span>{$voo.course_choosed_count}人学习</span></div>
+                <div class="col-lg-3 class-media-time"><i class="glyphicon glyphicon-time"></i>&nbsp;<span>{$voo.course_chapter_count}节</span></div>
                 </div>
             </div>
         </div>
@@ -38,6 +50,11 @@
 	var thisheight = $(document).height();
 	main.height(thisheight);
 	});
+	$(".class-media-contain").each(function(){
+        var maxwidth=142;
+        if($(this).text().length>maxwidth){ $(this).text($(this).text().substring(0,maxwidth)); $(this).html($(this).html()+'…');
+        }
+    });
 	var spancurrent = $('span.current').width();
 	if(spancurrent != null){spancurrent = 28;}
 	var aprev = $('a.prev').width();
