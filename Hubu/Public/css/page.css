@@ -13,6 +13,7 @@
 .pages a,.pages span {
  padding:8px 12px;
  margin:0 1px;
+ color:black;
 }
 .pages a,.pages li {
  display:inline-block;
