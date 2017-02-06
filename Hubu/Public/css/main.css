@@ -378,30 +378,46 @@ a{text-decoration:none}
     font-size: 20px;
     color: black;
 }
+/*课程列表*/
 .chapter{
-	width:auto;
-	height: auto;
-	margin-bottom:30px;
-	margin-left:13px;
-}
-.chapter-head{
-    width: 756px;
-    height: 45px;
-    padding-left: 10px;
+    width: 824px;
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 .chapter-contain{
-    width: 712px;
-    height: 40px;
-	margin-top: 10px;
-    margin-left: 30px;
-    background: #f3f5f7;
-    padding-left: 15px;
-    padding-top: 8px;
+    width: 824px;
+    padding: 0 24px 12px;
+    border-bottom: 1px solid #d9dde1 ;
 }
-.chapter-contain a{
-    text-decoration: none;
+.chapter-contain-title{
+    height: 65px;
+    font-size: 18px;
+    line-height: 65px;
+    margin: 0;
+}
+.chapter-contain-title span{
+    margin-left: 8px;
+}
+.chapter-contain-title i{
     color: #93999f;
-    font-size: 14px;
+    position: relative;
+    bottom:1px;
+}
+.chapter-class-list{
+    padding: 0 0 4px 32px;
+}
+.chapter-class-list .list-group a{
+    height: 40px;
+    padding-left: 8px;
+    margin-bottom: 8px;
+    background: #f3f5f7;
+    color: #93999f;
+    border: 0;
+}
+.chapter-class-list .list-group a:hover{
+    background: #14191e;
+    color: white;
 }
 /*footer*/
 .My-footer{

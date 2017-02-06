@@ -4,22 +4,32 @@
 <meta charset="UTF-8">
 <title>section_chapter</title>
 <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}font-awesome.min.css">
 <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
 </head>
 <body>
 	<div class="chapter">
 	<foreach name = 'section_chapter' item = 'section_chapter'>
-			
-		<div class="chapter-head"><h3><i class="glyphicon glyphicon-info-sign"></i>{$Think.lang.$key}{/*这个是输出数组键名*/}</h3></div>
-		
+		<div class="chapter-contain">
+		<p class="chapter-contain-title"><i class="fa fa-info-circle" aria-hidden="true"></i><span>{$Think.lang.$key}{/*这个是输出数组键名*/}</span></p>
+		<div class="chapter-class-list">
+        <div class="list-group">
 			<foreach name = 'section_chapter' item = 'section_chapter'>
 				{/**这里链接指向视频播放页面，并且将该门课程的信息传递给Video控制器下面的相应方法，好让页面展示指定课程的信息，并播放此页面点击的课程视频*/}
-					<div class="chapter-contain"><a href='{$Think.const.SITE_URL}index.php/Student/Video/index/course_name/{$section_chapter.course_chapter_course_name}/id/{$section_chapter.course_chapter_id}' target="_blank">{$section_chapter.course_chapter_name}</a></div>
+				<a class="list-group-item" href='{$Think.const.SITE_URL}index.php/Student/Video/index/course_name/{$section_chapter.course_chapter_course_name}/id/{$section_chapter.course_chapter_id}' target="_blank"><i class="fa fa-play-circle"></i>&nbsp;&nbsp;{$section_chapter.course_chapter_name}</a>
 					
 			</foreach>
-		
+		</div>
+		</div>
+		</div>
 	</foreach>
 	</div>
-	
+	<script>
+	$(window.parent.document).find("#chapter").load(function(){
+	var main = $(window.parent.document).find("#chapter");
+	var thisheight = $(document).height();
+	main.height(thisheight);
+	});
+	</script>
 </body>
 </html>

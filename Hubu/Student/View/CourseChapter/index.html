@@ -56,9 +56,14 @@
 	
 	{/*下面使用的是iframe,默认显示的是章节板块的内容，使用的是另一个section_chapter模板，模板名称一样，但内容不一样,我这里长宽就写死了，需要改成自适应的*/}
 	<div>
-		<iframe id="iframepage" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="iFrameHeight()" src="{$Think.const.SITE_URL}index.php/Student/CourseChapter/section_chapter/course_name_id/{$course_info.course_name_id}" name="content_block"></iframe>
+		<iframe id='chapter' frameborder="0" scrolling="no"  src="{$Think.const.SITE_URL}index.php/Student/CourseChapter/section_chapter/course_name_id/{$course_info.course_name_id}" name="content_block" width='824px;'></iframe>
 	</div>
-	
+	<script>
+	$("#chapter").load(function(){
+	var mainheight = $(this).contents().find("body").height();
+	$(this).height(mainheight);
+	});
+	</script>
 	{/*这里放置的是bottom*/}
  <include file="Public/footer" />
 <script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
