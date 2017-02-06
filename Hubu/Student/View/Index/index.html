@@ -24,11 +24,11 @@
 	{/*包含header.html模板*/}
 	<include file="Public/header" />
 	{/*轮播图*/}
-    <div>
+    <div class='imgturn-container'>
     	<iframe id="imgTurn" scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/Index/imgturn" name="imgturn" width="100%"></iframe>
     </div>
     {/**这里是热门课程的iframe*/}
-    <div >
+    <div class='hotCourse-container'>
     	<iframe id="hotCourse" scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/HotCourse/hotCourse" name="hotCourse" width='100%'></iframe>
     </div>
     {/*这里放置的是bottom*/}
