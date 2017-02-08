@@ -125,7 +125,19 @@ a{text-decoration:none}
     height: 100%;
 	display:block;
 }
-
+/*精品推荐*/
+.recommended{
+    width: 200px;
+    margin-left: 20px;
+}
+.recommended .list-group-item{
+    font-size: 20px;
+    padding: 15px 15px 15px 42px ;
+}
+.recommended .list-group-item:hover{
+    color: #55b929;
+    border-left: 5px solid #55b929;
+}
 /*登录页面*/
 .login-form{
     width:400px;
