@@ -16,6 +16,7 @@ class HotCourseController extends Controller {
             //使用SQL语句查询，或者使用TP自带的CURD方法操作，推荐使用TP的封装方法
             $info = D('CourseName')->where("course_name_id = $v")->find();
             //show_bug($info);
+            $info['course_name_choosed_num'] = M('ChooseCourse')->where("choose_course_choosed = $v")->count();//已选这门课程总人数
             //将上述查询到的结果存储到$hot数组里面
             $hot[$k] = $info;
         }
