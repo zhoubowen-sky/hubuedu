@@ -3,8 +3,10 @@
 400---从服务端数据获取成功
 401---从服务端数据获取失败
 403---数据库连接失败
+405---课程名称数据获取成功
+406---课程名称数据获取失败
 
-
+/*************************************************************************************************************/
 
 接口json数据格式说明：
 {
@@ -31,7 +33,7 @@
  
 
 
-
+/*************************************************************************************************************/
 
 接口访问方法：
 
@@ -58,11 +60,11 @@
 
 
 
-
+/*************************************************************************************************************/
 
 接口详细介绍：
 1.课程大类接口
-	URL：http://120.27.104.19:3002/Hubu/Interface/Android/course_class_list.php
+	URL：http://120.27.104.19:3002/Hubu/Interface/Android/course_class_list.php?format=json
 	数据格式：
 		{
 		    "code": 400,
@@ -83,10 +85,53 @@
 		    ]
 		}
 	说明：icon为课程大类图标，这个数据服务端无法提供，是否让其为空或是去掉这个字段，待定
+		?format=json可有可无，没有时默认输出json格式数据
 
 
-
-
+2.某一类课程/所有类 下面所有课程名称接口
+	URL：http://120.27.104.19:3002/Hubu/Interface/Android/course_name_list.php?format=json&course_class_code=8
+	数据格式：
+		{
+		    "code": 400,
+		    "message": "课程类别数据获取成功",
+		    "data": [
+		        {
+		            "course_id": "1",
+		            "name": "高等数学",
+		            "image": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-26/5889ec9cf1513.png",
+		            "description": "这是高等数学的课程介绍，这句话是写在数据库里面的",
+		            "teacher": "admin000",
+		            "choose_count": 2,
+		            "class": 12
+		        },
+		        {
+		            "course_id": "14",
+		            "name": "线性代数",
+		            "image": "http://120.27.104.19:3002/Hubu/Public/",
+		            "description": "xd",
+		            "teacher": "胡",
+		            "choose_count": 0,
+		            "class": 0
+		        }
+		    ]
+		}
+	说明：?format=json 可有可无，没有时默认输出json格式数据
+		course_class_code=8 这个必须要有，用以指明需要获得的是哪一类课程的数据
+		
+		course_class_code=1 计算机
+		course_class_code=2 经济管理
+		course_class_code=3 心理学
+		course_class_code=4 外语
+		course_class_code=5 文学历史
+		course_class_code=6 艺术设计
+		course_class_code=7 工学
+		course_class_code=8 理学
+		course_class_code=9 生命科学
+		course_class_code=10 哲学
+		course_class_code=11 法学
+		course_class_code=12 教育教学
+		course_class_code=13 其他
+		course_class_code=20 所有课程
 
 
 
