@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>精品推荐</title>
+</head>
+<body>
+	<a href='http://web.hubu.edu:3002/index.php/Student/Recommended/recommended' target='_blank'>精品推荐，方便调试，弄好后直接删了</a>
+	<div>精品推荐。。。。</div>
+	
+	{/**下面计算机是一个类别，然后相应的下面我会输出一个类别为计算机的课程，其中计算机类别ID为1，经济管理为2，以此类推，这样可以使用这个来对应两者关系*/}
+	
+	<div>
+		<p>计算机{/**1*/}</p>
+		<p>经济管理{/**2*/}</p>
+		<p>艺术设计{/**6*/}</p>
+		<p>工学{/**7*/}</p>
+		<p>理学{/**8*/}</p>
+		<p>生命科学{/**9*/}</p>
+		<p><a href='__MODULE__/Course/index' target='_blank'>更多</a></p>
+	</div>
+	
+	<div>
+		<foreach name='recommended' item='recommended'>
+		<div class="">
+			<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$hot.course_name_id}" target='_blahk'><img alt="..." src="{$Think.const.ADMIN_IMG_UPLOADS}{$recommended.course_name_pic}" width="260px" height="150px"></a>
+			<div><span class="">课程名称：{$recommended.course_name_name}</span></div>
+			<div><span class="">讲师：{$recommended.course_name_adder}</span></div>
+			<div><span class="">{$recommended.course_name_choosed_num}人参加</span></div>
+			<div><span class="">课程简介：{$recommended.course_name_intro}</span></div>
+			<div>课程类别ID，可以用这个值区分不同的课程信息{$recommended.course_name_class}</div>
+		</div>
+		</foreach>
+	</div>
+	
+	
+	
+</body>
+</html>
