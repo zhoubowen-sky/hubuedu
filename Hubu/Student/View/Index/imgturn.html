@@ -30,7 +30,7 @@
     <div class="swiper-wrapper">
     	<foreach name = 'info' item = 'info'>
     		<!-- {$info.img_turn_href} -->{/**左边这个注释掉的内容是点击轮播图片后，要跳转到新网页的链接，我直接在这里加上a标签后，好像就不能轮播了*/}
-        	<div class="swiper-slide"><img id="{$info.img_turn_id}" src="{$Think.const.ADMIN_IMG_UPLOADS}{$info.img_turn_pic_url}" alt="" data-adaptive-background></div>
+        	<div class="swiper-slide" style="cursor:pointer" ><img id="{$info.img_turn_id}" src="{$Think.const.ADMIN_IMG_UPLOADS}{$info.img_turn_pic_url}" onclick="window.open('{$info.img_turn_href}')" alt="" data-adaptive-background ></div>
         </foreach>
     </div>
     <div class="swiper-pagination"></div>
