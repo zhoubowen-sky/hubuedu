@@ -1,0 +1,38 @@
+@charset "utf-8";
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+/*垂直方向的下按钮*/
+::-webkit-scrollbar-button:vertical:increment {
+    background:#5e5e5e;
+    height:6px;
+}
+/*横向的右边按钮*/
+::-webkit-scrollbar-button:horizontal:increment {
+    background:#5e5e5e;
+    width:6px;
+}
+/*垂直方向的上按钮*/
+::-webkit-scrollbar-button:vertical:decrement {
+    background:#5e5e5e;
+    height:6px;
+}
+/*横向的左按钮*/
+::-webkit-scrollbar-button:horizontal:decrement {
+    background:#5e5e5e;
+    width:6px;
+}
+/*滚动槽的颜色 */
+::-webkit-scrollbar-track-piece {
+    background-color:#5e5e5e;
+}
+/* 滑轮的颜色 */
+::-webkit-scrollbar-thumb:vertical {
+    height: 10px;
+    background-color: #14191e;
+}
+::-webkit-scrollbar-thumb:horizontal{
+    height: 10px;
+    background-color: #9cdbff;
+}
