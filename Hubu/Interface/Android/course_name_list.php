@@ -1,10 +1,6 @@
 <?php
 //接口URL地址：http://120.27.104.19:3002/Hubu/Interface/Android/course_class_list.php?format=json
 
-/**
- * 本接口是用来向客户端提供课程大类信息的数据
- */
-
 require_once 'response.php';    //引入公共文件
 require_once 'db.php';          //数据库连接文件
 
