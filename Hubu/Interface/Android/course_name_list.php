@@ -24,8 +24,11 @@ $course_class_code = isset($_GET['course_class_code']) ? $_GET['course_class_cod
 //当$course_class_code为20的时候，选取出所有的课程
 if ($course_class_code == 20){
     $sql = 'select * from hubu_course_name';
-}elseif ($course_class_code >= 0){
+}elseif ($course_class_code >= 1 && $course_class_code <=13){
     $sql = 'select * from hubu_course_name where course_name_class = '.$course_class_code;
+}else {
+    //$course_class_code 字符不合法或者为0
+    return Response::show(407,'客户端未指定所要获取的课程大类信息或者指定的变量不合法');
 }
 
 $course_name_list_tmp = array();         //用以存储某一大类课程名称信息的临时数组
