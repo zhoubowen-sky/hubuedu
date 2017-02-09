@@ -127,16 +127,26 @@ a{text-decoration:none}
 }
 /*精品推荐*/
 .recommended{
-    width: 200px;
-    margin-left: 20px;
+    width: 1000px;
+    margin-left: 50px;
+    margin-bottom: 50px;
 }
-.recommended .list-group-item{
-    font-size: 20px;
-    padding: 15px 15px 15px 42px ;
+.recommended-left{
+    width: 300px;
 }
-.recommended .list-group-item:hover{
+.recommended-left .list-group-item{
+    font-size: 23px;
+    padding: 20px 20px 20px 65px ;
+}
+.recommended-left .list-group-item:hover{
     color: #55b929;
     border-left: 5px solid #55b929;
+}
+.recommended-right{
+    width: 650px;
+    height: 512px;
+    border: 1px solid #ddd;
+    border-left: 0;
 }
 /*登录页面*/
 .login-form{

@@ -47,7 +47,11 @@ $(this).height(mainheight);
 $("#imgTurn").load(function(){
 var mainheight = $(this).contents().find("body").height();
 $(this).height(mainheight);
-}); 
+});
+$("#recommended").load(function(){
+var mainheight = $(this).contents().find("body").height();
+$(this).height(mainheight);
+});  
 </script>
 <script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
 <script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
