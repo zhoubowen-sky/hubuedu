@@ -17,7 +17,7 @@
 	<div class="recommended row">
     <div class="recommended-left pull-left">
         <div class="list-group">
-            <a href="#1" aria-controls="home" role="tab" data-toggle="tab"  class="list-group-item"><i class="glyphicon glyphicon-inbox"></i>&nbsp;<span>计算机</span></a>
+            <a href="#1" aria-controls="home" role="tab" data-toggle="tab"  class="list-group-item list-group-item-hover"><i class="glyphicon glyphicon-inbox"></i>&nbsp;<span>计算机</span></a>
             <a href="#2" aria-controls="home" role="tab" data-toggle="tab"  class="list-group-item"><i class="glyphicon glyphicon-euro"></i>&nbsp;<span>经济管理</span></a>
             <a href="#6" aria-controls="home" role="tab" data-toggle="tab"  class="list-group-item"><i class="glyphicon glyphicon-pencil"></i>&nbsp;<span>艺术设计</span></a>
             <a href="#7" aria-controls="home" role="tab" data-toggle="tab"  class="list-group-item"><i class="glyphicon glyphicon-wrench"></i>&nbsp;<span>工学</span></a>
@@ -55,6 +55,11 @@
 	var main = $(window.parent.document).find("#recommended");
 	var thisheight = $(document).height();
 	main.height(thisheight);
+	});
+	$('#1').addClass('active');
+	$('.recommended-left .list-group a').hover(function () {
+    $(this).removeClass().addClass("list-group-item list-group-item-hover").siblings().removeClass().addClass('list-group-item');
+	$(this).tab('show')
 	});
 	</script>
 <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}bootstrap.min.js'></script>
