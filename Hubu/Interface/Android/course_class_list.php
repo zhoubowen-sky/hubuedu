@@ -32,7 +32,6 @@ while($course_class = mysql_fetch_assoc($result)) {
 foreach ($course_class_list_tmp as $k => $v){
     $course_class_list[$k]['college_id'] = $v['course_class_id'];
      $course_class_list[$k]['name']       = $v['course_class_name'];
-     $course_class_list[$k]['icon']       = '';
      $course_class_list[$k]['type']       = $v['course_class_type'];
 }
 
