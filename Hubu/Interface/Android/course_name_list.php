@@ -29,6 +29,7 @@ if ($course_class_code == 20){
 }else {
     //$course_class_code 字符不合法或者为0
     return Response::show(407,'客户端未指定所要获取的课程大类信息或者指定的变量不合法');
+    exit();
 }
 
 $course_name_list_tmp = array();         //用以存储某一大类课程名称信息的临时数组
