@@ -177,26 +177,3 @@ function getCourseSectionChapterList($course_id){
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

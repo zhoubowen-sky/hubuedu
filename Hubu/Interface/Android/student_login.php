@@ -23,9 +23,22 @@ if (!empty($_POST)){
     
     //接收POST数据
     $str = $_POST['userinfo'];
-    //$str = '{"username":"Alan","password":"123456"}';//开发测试数据，上线时会删掉
+    //判断是否为JSON格式
+    if(is_null(json_decode($str))){
+        return Response::show(421, '学生用户登录API使用错误，post上传的数据不是标准的JSON格式');
+        exit();
+    }
     
     $userinfo_obj = json_decode($str,true);//解析JSON数据
+    
+    if (empty($userinfo_obj['username'])){
+        //echo 'username不存在';
+        return Response::show(419, '学生用户登录API使用错误，里面不含有 username 字段');
+        exit();
+    }elseif (empty($userinfo_obj['password'])){
+        return Response::show(420, '学生用户登录API使用错误，里面不含有 password 字段');
+        exit();
+    }
     
     $username = $userinfo_obj['username'];
     $password = $userinfo_obj['password'];
