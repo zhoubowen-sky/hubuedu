@@ -83,7 +83,7 @@ function getCourseSectionChapterList($course_section_course_name /*,$course_chap
     $info_chapter = D('CourseChapter');//实例化CourseChapter 好获取数据表hubu_course_chapter中的数据
     $info_section = M('CourseSection');//实例化Model
      
-    $sql_section = "select * from hubu_course_section WHERE course_section_course_name = $course_section_course_name";//选出该课程的所有章信息
+    $sql_section = "select * from hubu_course_section WHERE course_section_course_name = $course_section_course_name order by course_section_section_num";//选出该课程的所有章信息
     $rst_section = $info_section->query($sql_section);//章信息存储在$rst_section里面
      
     //$sql_chapter = "select * from hubu_course_chapter where course_chapter_course_name = $course_chapter_course_name and course_chapter_section = $course_chapter_section";//查询出该课程所有节信息
