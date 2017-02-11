@@ -6,6 +6,8 @@
 405---课程名称数据获取成功
 406---课程名称数据获取失败
 407---客户端未指定所要获取的课程大类信息或者指定的变量不合法
+408---热门课程信息获取成功
+409---热门课程信息获取失败
 
 
 
@@ -138,8 +140,34 @@
 		course_class_code=20 所有课程
 
 
-
-
+3.热门课程信息的接口
+	URL：http://120.27.104.19:3002/Hubu/Interface/Android/hot_course_list.php?format=json
+	数据格式：
+		{
+		    "code": 408,
+		    "message": "热门课程信息获取成功",
+		    "data": [
+		        {
+		            "course_id": "1",
+		            "name": "高等数学",
+		            "image": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-26/5889ec9cf1513.png",
+		            "description": "这是高等数学的课程介绍，这句话是写在数据库里面的",
+		            "teacher": "admin000",
+		            "choose_count": 2,
+		            "class": 12
+		        },
+		        {
+		            "course_id": "2",
+		            "name": "信号与系统",
+		            "image": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-02-03/589488e3d94d4.png",
+		            "description": "这是信号与系统的介绍",
+		            "teacher": "zbw",
+		            "choose_count": 2,
+		            "class": 8
+		        }
+		    ]
+		}
+	说明：?format=json 可有可无，没有时默认输出json格式数据
 
 
 
