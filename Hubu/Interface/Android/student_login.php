@@ -9,7 +9,7 @@ require_once 'response.php';    //引入公共文件
 require_once 'db.php';          //数据库连接文件
 require_once 'common.php';
 
-$_POST['userinfo'] = '{"username":"1784225410@qq.com","password":"123456"}';
+//$_POST['userinfo'] = '{"username":"1784225410@qq.com","password":"123456"}';
 
 if (!empty($_POST)){
     
