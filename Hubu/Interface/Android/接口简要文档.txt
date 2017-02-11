@@ -8,7 +8,9 @@
 407---客户端未指定所要获取的课程大类信息或者指定的变量不合法
 408---热门课程信息获取成功
 409---热门课程信息获取失败
-
+410---客户端指定的课程的ID信息不合法或者未指定
+411---课程章节列表信息获取成功
+412---课程章节列表细心获取失败
 
 
 
@@ -169,8 +171,39 @@
 		}
 	说明：?format=json 可有可无，没有时默认输出json格式数据
 
-
-
+4.课程章节列表信息的接口
+	URL：http://120.27.104.19:3002/Hubu/Interface/Android/course_info.php?format=json&course_id=2
+	数据格式：
+		{
+		    "code": 411,
+		    "message": "课程章节列表细心获取成功",
+		    "data": [
+		        {
+		            "chapter_name": "第一章 测试数据1",
+		            "section": [
+		                {
+		                    "section_id": "25",
+		                    "name": "1.1 红楼梦1.1",
+		                    "video_url": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-24/5886e8740dbaa.mp4",
+		                    "ppt_url": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-24/5886e874125e3.ppt"
+		                }
+		            ]
+		        },
+		        {
+		            "chapter_name": "第二章 红楼梦2",
+		            "section": [
+		                {
+		                    "section_id": "26",
+		                    "name": "2.1 红楼梦测试",
+		                    "video_url": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-24/5886e8d1c3754.mp4",
+		                    "ppt_url": "http://120.27.104.19:3002/Hubu/Public/"
+		                }
+		            ]
+		        }
+		    ]
+		}
+	说明：?format=json 可有可无，没有时默认输出json格式数据
+		course_id=2 必须要有，course_id是课程的ID，根据这个ID来获取这门课程的章节信息
 
 
 
