@@ -96,7 +96,7 @@ function getCourseSectionChapterList($course_section_course_name /*,$course_chap
 
         //获取新的$rst
         /* 下面应该用 $course_chapter_course_name 但其实本函数前两个值一样 */
-        $sql = "select * from hubu_course_chapter where course_chapter_course_name = $course_section_course_name and course_chapter_section = $key+1";//查询出该课程所有章节
+        $sql = "select * from hubu_course_chapter where course_chapter_course_name = $course_section_course_name and course_chapter_section = $key+1  order by course_chapter_section,course_chapter_name";//查询出该课程所有章节
         $rst = $info_chapter->query($sql);
 
         foreach ($rst as $k => $v){
