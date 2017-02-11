@@ -7,14 +7,14 @@
 //定义路径常量，直接定义http绝对路径，框架在应用的时候会自动将SITE_URL 与 CSS等资源路径进行组合得到一个统一资源定位符
 define("SITE_URL", "http://120.27.104.19:3002/");//站点路径
 define("ADMIN_ROOT_URL", SITE_URL."Hubu/Public/");//资源根路径
-define("ADMIN_CSS_URL", SITE_URL."Hubu/Public/css/");//css路径
-define("ADMIN_JS_URL", SITE_URL."Hubu/Public/js/");//js路径
-define("ADMIN_IMG_URL", SITE_URL."Hubu/Public/images/");//images图片路径
-define("ADMIN_IE_URL", SITE_URL."Hubu/Public/ie/");//适配ie9以下浏览器的js文件
+//define("ADMIN_CSS_URL", SITE_URL."Hubu/Public/css/");//css路径
+//define("ADMIN_JS_URL", SITE_URL."Hubu/Public/js/");//js路径
+//define("ADMIN_IMG_URL", SITE_URL."Hubu/Public/images/");//images图片路径
+//define("ADMIN_IE_URL", SITE_URL."Hubu/Public/ie/");//适配ie9以下浏览器的js文件
 //为上传用户头像路径设置路径
 define("ADMIN_IMG_UPLOADS", SITE_URL."Hubu/Public/");
 //定义用户头像默认存储位置
-define("ADMIN_DEFAULT_IMG", "Uploads/default/default_admin_user.jpg");
+//define("ADMIN_DEFAULT_IMG", "Uploads/default/default_admin_user.jpg");
 
 /**
  * 获取一门课程的选课人数
@@ -176,5 +176,27 @@ function getCourseSectionChapterList($course_id){
         return 0;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
