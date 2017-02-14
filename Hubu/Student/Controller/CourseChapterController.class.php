@@ -95,6 +95,26 @@ class CourseChapterController extends Controller {
 	        //echo $course_name_id;
     	    $section_chapter = getCourseSectionChapterList($course_name_id);//高等数学1,1    信号系统2,2  
     	    //show_bug($section_chapter);//查看从数据库中查询出来的信息是否正确
+    	    
+    	    //查询出用户的本课程的学习进度，首先用户要已选课，其次用户要处于登陆状态
+    	    if (isset($_SESSION['student_user_id'])){
+    	        //用户已经登录
+    	        //查询用户是否已经选了这门课
+    	        $rst = M('ChooseCourse')->where('choose_course_choosed = '.$course_name_id.' and choose_course_student = '.session('student_user_id'))->select();
+    	        if (!empty($rst)){
+    	            //用户选了这门课
+            	    $chapter_progress = A('Student/ChapterProgress')->getChapterProgress($course_name_id,session('student_user_id'));
+            	    //show_bug($chapter_progress);
+            	    foreach ($section_chapter as $k => &$v){
+            	        //echo $k;
+            	        foreach ($v as $kk => &$vv){
+            	            //show_bug($vv);
+            	            $vv['course_chapter_progress'] = $chapter_progress[$vv['course_chapter_id']];//将学习进度记录拼装到数组中
+            	        }
+            	    }
+    	        }
+    	    }
+    	    
     	    $this->assign('section_chapter',$section_chapter);
     	    $this->display();
 	    }else {
