@@ -18,26 +18,35 @@
     <style type="text/css"> 
 	#low_right{ 
 		position: fixed; 
-		width: 60px; 
-		height: 120px; 
-		background: #eee; 
-		bottom: 20px; 
+		bottom: 50px; 
 		right: 20px; 
-		background-color: #DCFCE9; 
-		border: 8px double #06F867; 
-		padding: 10px; 
-		margin: 10px; 
+	}
+	.low_right_div{
+		width:50px;
+		height:50px;
+		padding: 10px 10px 10px 10px;
+		background-color:white;
+		border:1px solid #D8D8D8;
+		border-radius: 1px;
+	}
+	.low_right_span{
+		width:30px;
+		height:30px;
+	}
+	.low_right_span i{
+		font-size:30px;
+		color:#666666;
 	}
 	</style>
 
 	<div id="low_right"> 
-		<div>
-			反馈
+		<div class='low_right_div'>
+			<span class='low_right_span'><a href='#'><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
 		</div>
-		<div>
-			手机{/**这里的二维码图片就放在 Public/Uploads/default/ 目录下面吧*/}
+		<div class='low_right_div'>
+			<span class='low_right_span'><a href='#'><i class="fa fa-android" aria-hidden="true"></i></a></span>{/**这里的二维码图片就放在 Public/Uploads/default/ 目录下面吧*/}
 		</div>
-		<div>
-			顶部
+		<div class='low_right_div'>
+			<span class='low_right_span'><a href='#'><i class="fa fa-caret-square-o-up" aria-hidden="true"></i></a></span>
 		</div>
 	</div> 
