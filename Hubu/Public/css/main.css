@@ -354,6 +354,43 @@ a{text-decoration:none}
 	float:left;
 	padding-left:0;
 }
+/*播放列表*/
+.video-controler{
+    height: 600px;
+    width: auto;
+    overflow-y:auto;
+    position: relative;
+    top: -22px;
+    background: #14191e;
+	overflow-x: hidden;
+}
+.video-controler-ul{
+    list-style: none;
+    margin-top: 20px;
+}
+.video-controler-ul-first{
+    width: 300px;
+    height: 21px;
+    padding-bottom: 10px;
+}
+.video-controler-ul-li{
+    width: 300px;
+    height: 21px;
+    margin-top: 15px;
+}
+.video-controler-ul-li a{
+    text-decoration: none !important;
+    color: #787d82;
+    font-size: 12px;
+    line-height: 20px;
+    margin-left: 15px;
+}
+.video-controler-ul-title{
+    font-size: 14px;
+    color: #787d82;
+    line-height: 20px;
+    text-align: left;
+}
 /*课程展示页面*/
 .CourseChapter-row{
 	width: 1300px;
