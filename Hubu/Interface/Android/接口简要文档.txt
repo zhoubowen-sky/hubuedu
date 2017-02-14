@@ -20,6 +20,9 @@
 419---学生用户登录API使用错误，里面不含有 username 字段
 420---学生用户登录API使用错误，里面不含有 password 字段
 421---学生用户登录API使用错误，post上传的数据不是标准的JSON格式
+422---客户端指定的学生用户的ID信息不合法，不是int类型
+423---课程介绍信息获取成功，未提供学生ID因而不反馈学生的学习进度等信息
+424---课程介绍信息获取成功，学生该课程学习进度获取成功
 
 
 
@@ -252,9 +255,51 @@
 		客户端的数据提交方式应为post，
 		即$_POST['userinfo'] = '{"username":"1784225410@qq.com","password":"123456"}';字段都已规定好，更改后接口会失效
 
-
-
-
+6.课程介绍的数据接口，顺便承接接口4，此接口也提供学生相关课程的学习进度的数据
+	URL：http://120.27.104.19:3002/Hubu/Interface/Android/course_introduce.php?format=json&course_id=1&student_id=9
+	数据格式：
+		//课程ID与学生ID都提供
+		{
+		    "code": 424,
+		    "message": "课程介绍信息获取成功，学生该课程学习进度获取成功",
+		    "data": {
+		        "course_introduce": [
+		            {
+		                "course_name_id": "1",
+		                "course_name_name": "高等数学",
+		                "course_name_class": "8",
+		                "course_name_adder": "admin000",
+		                "course_name_intro": "这是高等数学的课程介绍，这句话是写在数据库里面的",
+		                "course_name_pic": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-26/5889ec9cf1513.png",
+		                "course_name_time": "2017-01-26 20:33:33"
+		            }
+		        ],
+		        "my_study_progress": {
+		            "test": "处于测试阶段，学习进度模块还没有做"
+		        }
+		    }
+		}
+		//只提供课程ID则获取的是课程的信息，没有该学生的学习进度信息
+		{
+		    "code": 423,
+		    "message": "课程介绍信息获取成功，未提供学生ID因而不反馈学生的学习进度等信息",
+		    "data": {
+		        "course_introduce": [
+		            {
+		                "course_name_id": "1",
+		                "course_name_name": "高等数学",
+		                "course_name_class": "8",
+		                "course_name_adder": "admin000",
+		                "course_name_intro": "这是高等数学的课程介绍，这句话是写在数据库里面的",
+		                "course_name_pic": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-26/5889ec9cf1513.png",
+		                "course_name_time": "2017-01-26 20:33:33"
+		            }
+		        ]
+		    }
+		}
+		说明：?format=json 可有可无，没有时默认输出json格式数据
+			&course_id为必须，是课程的ID信息
+			student_id为非必须，是学生ID，如果提供，则展示课程信息的同时，也展示该学生该课程的学习进度
 
 
 
