@@ -6,6 +6,7 @@
     <title>{$chapter_info.course_chapter_name}{/**章节名称*/}</title>
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}font-awesome.min">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}scroll.css">
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
@@ -37,7 +38,7 @@
 	$("#iframepage1").width(iframeWidth * 0.8);
 	</script>
 	{/**课程章节列表*/}
-	<div class="video-controler pull-left">
+	<div class="video-controler pull-left scrollbar">
         
 		<foreach name = 'section_chapter' item = 'section_chapter'>
 			<ul class="video-controler-ul">
