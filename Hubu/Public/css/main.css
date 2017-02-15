@@ -497,12 +497,11 @@ a{text-decoration:none}
     bottom:1px;
 }
 .chapter-class-list{
-    padding: 0 0 4px 32px;
+    padding: 0 0 0 32px;
 }
 .chapter-class-list .list-group a{
     height: 40px;
     padding-left: 8px;
-    margin-bottom: 8px;
     background: #f3f5f7;
     color: #93999f;
     border: 0;
