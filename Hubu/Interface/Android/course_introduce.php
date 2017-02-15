@@ -62,13 +62,13 @@ if (is_numeric($course_id) && $course_id > 0){
             }
             //var_dump($chapter_progress_tmp);
             //数组调整为 chapter_id => 进度记录 这种形式
-            foreach ($chapter_progress_tmp as $k => $v){
+            /* foreach ($chapter_progress_tmp as $k => $v){
                 $chapter_progress[$v['chapter_progress_chapter']] = $v['chapter_progress_state'];
-            }
+            } */
         }
         //var_dump($chapter_progress);
         
-        $course_introduce['my_study_progress'] = $chapter_progress;
+        $course_introduce['my_study_progress'] = $chapter_progress_tmp;
         
         return Response::show(424,'课程介绍信息获取成功，学生该课程学习进度获取成功',$course_introduce);
         exit();
