@@ -111,17 +111,17 @@ class CourseChapterController extends Controller {
     	        if (!empty($rst)){
     	            //用户选了这门课
             	    $chapter_progress = A('Student/ChapterProgress')->getChapterProgress($course_name_id,session('student_user_id'));
-            	    //show_bug($chapter_progress);
+            	    show_bug($chapter_progress);
             	    foreach ($section_chapter as $k => &$v){
             	        //echo $k;
             	        foreach ($v as $kk => &$vv){
             	            //show_bug($vv);
-            	            $vv['course_chapter_progress'] = $chapter_progress[$vv['course_chapter_id']];//将学习进度记录拼装到数组中
+            	            $vv['course_chapter_progress'] = (int) $chapter_progress[$vv['course_chapter_id']];//将学习进度记录拼装到数组中
             	        }
             	    }
     	        }
     	    }
-    	    
+    	    //show_bug($section_chapter);
     	    $this->assign('section_chapter',$section_chapter);
     	    $this->display();
 	    }else {
