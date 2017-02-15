@@ -21,7 +21,12 @@ class ChapterProgressController extends Controller {
         
     }
     
-    
+    /**
+     * 获取用户某一课程所有小节的学习进度
+     * @param 课程ID $course_id
+     * @param 学生用户ID $student_id
+     * @return array
+     */
     function getChapterProgress($course_id ,$student_id){
         
         $progress = D('ChapterProgress')->where('chapter_progress_student = '.$student_id.' and chapter_progress_course = '.$course_id)->select();

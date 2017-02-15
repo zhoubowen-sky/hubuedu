@@ -24,6 +24,9 @@ class CourseChapterController extends Controller {
 		    //show_bug($check);
 		    if ($check){
 		        //echo "真";
+		        /**查询出该生该课程的总得学习进度    学习总进度 = 小节进度和/小节数   */
+		        $wheres = 'chapter_progress_student = '.$user_id.' and chapter_progress_course = '.$course_name_id;
+		        $progress_tmp = M('ChapterProgress')->where($wheres)->sum('chapter_progress_state');
 		        $this->assign('check',true);
 		    }else {
 		        //echo "假";
@@ -42,6 +45,10 @@ class CourseChapterController extends Controller {
 		$choosed_marked_count = M('ChooseCourse')->where("choose_course_choosed = $course_name_id and choose_course_score > 0")->count();//已选这门课程且已评分的总人数
 		$course_score = round($course_score[0]['sum(choose_course_score)']/$choosed_marked_count , 1) ;//算平均评分,四舍五入一位小数
 		//show_bug($course_score);
+		/**计算出该生该课程的总学习进度    学习总进度 = 小节进度和/小节数   */
+		$course_progress = round($progress_tmp/($chapter_count*100),3)*100;//算平均评分,四舍五入一位小数
+		//echo $course_progress;
+		$this->assign('course_progress',$course_progress);
 		$this->assign('course_score',$course_score);
 		$this->assign('choosed_count',$choosed_count);
 		$this->assign('chapter_count',$chapter_count);
