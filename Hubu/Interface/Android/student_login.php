@@ -68,6 +68,7 @@ if (!empty($_POST)){
                 
                 $i = array();//存储用户个人信息的数组 hubu_student_user里面的数据
                 foreach ($userinfo as $k => $v){
+                    $i['student_id']    = $v['student_user_id'];
                     $i['email']    = $v['student_user_email'];
                     $i['username'] = $v['student_user_username'];
                     $i['sex']      = $v['student_user_sex'];
