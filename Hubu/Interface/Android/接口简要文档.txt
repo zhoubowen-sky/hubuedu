@@ -274,14 +274,57 @@
 		                "course_name_time": "2017-01-26 20:33:33"
 		            }
 		        ],
-		        "my_study_progress": {
-		            "1": "60",
-		            "2": "30",
-		            "3": "90",
-		            "4": "78",
-		            "12": "25",
-		            "13": "69"
-        		}
+		        "chapter_progress": [
+		            {
+		                "chapter_progress_id": "1",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "1",
+		                "chapter_progress_state": "60",
+		                "chapter_progress_time": "2017-02-14 20:54:47"
+		            },
+		            {
+		                "chapter_progress_id": "2",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "2",
+		                "chapter_progress_state": "30",
+		                "chapter_progress_time": "2017-02-14 21:03:41"
+		            },
+		            {
+		                "chapter_progress_id": "3",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "3",
+		                "chapter_progress_state": "90",
+		                "chapter_progress_time": "2017-02-14 22:22:46"
+		            },
+		            {
+		                "chapter_progress_id": "4",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "4",
+		                "chapter_progress_state": "78",
+		                "chapter_progress_time": "2017-02-14 22:22:43"
+		            },
+		            {
+		                "chapter_progress_id": "5",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "12",
+		                "chapter_progress_state": "25",
+		                "chapter_progress_time": "2017-02-14 22:59:26"
+		            },
+		            {
+		                "chapter_progress_id": "6",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "13",
+		                "chapter_progress_state": "69",
+		                "chapter_progress_time": "2017-02-14 22:59:29"
+		            }
+		        ],
+		        "course_progress": 29.3
 		    }
 		}
 		//只提供课程ID则获取的是课程的信息，没有该学生的学习进度信息
@@ -305,7 +348,9 @@
 		说明：?format=json 可有可无，没有时默认输出json格式数据
 			&course_id为必须，是课程的ID信息
 			student_id为非必须，是学生ID，如果提供，则展示课程信息的同时，也展示该学生该课程的学习进度
-			my_study_progress 中的数据，"1": "60", 1为该门课程这一小节的ID，后面60位其学习进度60%
+			course_progress 整个课程的学习进度
+			chapter_progress 课程每一小节的进度，没有数据的小节进度一律为0
+			course_introduce 课程的相关基本信息
 
 
 

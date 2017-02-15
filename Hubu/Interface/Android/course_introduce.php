@@ -65,10 +65,27 @@ if (is_numeric($course_id) && $course_id > 0){
             /* foreach ($chapter_progress_tmp as $k => $v){
                 $chapter_progress[$v['chapter_progress_chapter']] = $v['chapter_progress_state'];
             } */
+            /**查询并计算该课程总得学习进度*/
+            $sql5 = 'select sum(chapter_progress_state) from hubu_chapter_progress where chapter_progress_student = '.$student_id.' and chapter_progress_course = '.$course_id;
+            $result5 = mysql_query($sql5, $connect);//结果集5
+            while($tmp5 = mysql_fetch_assoc($result5)) {
+                $course_progresss_tmp = $tmp5;
+                //var_dump($course_progresss_tmp);
+            }
+            //echo $course_progresss_tmp['sum(chapter_progress_state)'];//学习进度求和
+            //课程总的小节数
+            $sql6 = 'select * from hubu_course_chapter where course_chapter_course_name = '.$course_id;
+            $result6 = mysql_query($sql6, $connect);//结果集6
+            $chapter_count = mysql_num_rows($result6);//课程小节数
+            //echo $chapter_count;
+            $course_progresss = round($course_progresss_tmp['sum(chapter_progress_state)']/($chapter_count*100),3)*100;//算平均评分,四舍五入一位小数,再换算成百分数形式
+            //var_dump($course_progresss);
+            //echo $course_progresss;
         }
         //var_dump($chapter_progress);
         
-        $course_introduce['my_study_progress'] = $chapter_progress_tmp;
+        $course_introduce['chapter_progress'] = $chapter_progress_tmp;
+        $course_introduce['course_progress'] = $course_progresss;
         
         return Response::show(424,'课程介绍信息获取成功，学生该课程学习进度获取成功',$course_introduce);
         exit();

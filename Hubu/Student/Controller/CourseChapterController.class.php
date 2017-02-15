@@ -46,7 +46,7 @@ class CourseChapterController extends Controller {
 		$course_score = round($course_score[0]['sum(choose_course_score)']/$choosed_marked_count , 1) ;//算平均评分,四舍五入一位小数
 		//show_bug($course_score);
 		/**计算出该生该课程的总学习进度    学习总进度 = 小节进度和/小节数   */
-		$course_progress = round($progress_tmp/($chapter_count*100),3)*100;//算平均评分,四舍五入一位小数
+		$course_progress = round($progress_tmp/($chapter_count*100),3)*100;//算平均评分,四舍五入一位小数,再换算成百分数形式
 		//echo $course_progress;
 		$this->assign('course_progress',$course_progress);
 		$this->assign('course_score',$course_score);
