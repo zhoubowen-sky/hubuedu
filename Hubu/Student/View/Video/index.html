@@ -40,7 +40,7 @@
                             wmode="opaque"
                             allowTransparency="true"
 							marginwidth="0" 
-							src="__MODULE__/Video/videoPlayer/video_url/{$chapter_info.course_chapter_video_url}" 
+							src="__MODULE__/Video/videoPlayer/video_url/{$chapter_info.course_chapter_video_url}/course_id/{$chapter_info.course_id}/chapter_id/{$chapter_info.chapter_id}/student_id/{$chapter_info.student_id}" 
 							name="videoPlayer" 
 							width='auto' 
 							height='620px'>
@@ -59,7 +59,10 @@
 		
 			<foreach name = 'section_chapter' item = 'section_chapter'>
 				{/*下面这个链接地址应该是，在点击后，视频播放界面的播放内容变为相应节的视频，和imooc视频播放界面一样，看能否用JS在这里实现点击后，更改上述video标签的url值，如果可以,下面就是视频url，如果不行，就再想其他方案*/}
-				 <li class="video-controler-ul-li"><a href="__MODULE__/Video/videoPlayer/video_url/{$section_chapter.course_chapter_video_url}" target = "videoPlayer">{$section_chapter.course_chapter_name}</a></li>
+				 <li class="video-controler-ul-li">
+					 <a href="__MODULE__/Video/videoPlayer/video_url/{$section_chapter.course_chapter_video_url}/course_id/{$section_chapter.course_id}/chapter_id/{$section_chapter.chapter_id}/student_id/{$section_chapter.student_id}" 
+					 target = "videoPlayer">{$section_chapter.course_chapter_name}</a>
+				 </li>
 					
 			</foreach>
 		 </ul>

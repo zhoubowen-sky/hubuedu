@@ -38,7 +38,7 @@ class VideoController extends Controller {
         //$course_chapter_sql = "select * from hubu_course_chapter where course_chapter_name = $course_name and course_chapter_id = $id";
         $course_info = getCourseSectionChapterList($course_name);
         //show_bug($course_info);
-        /**下面用循环将$course_info 里面的url地址统一用url安全编码方法进行编码**/
+        /**下面用循环将$course_info 里面的url地址统一用url安全编码方法进行编码，同时将课程进度记录要用的参数拼接进去**/
         foreach ($course_info as $k => &$v){
             //show_bug($v);
             foreach ($v as $kk => &$vv){
@@ -46,6 +46,14 @@ class VideoController extends Controller {
                 //echo $vv['course_chapter_video_url'].'<br>';
                 $vv['course_chapter_video_url'] = urlsafe_b64encode(ADMIN_IMG_UPLOADS.$vv['course_chapter_video_url']);
                 //echo $vv['course_chapter_video_url'];
+                
+                /**课程进度记录相关的代码*/
+                //课程进度记录需要四个参数，课程ID，小节ID，用户ID，还有播放进度，将其加入到下面的section_chapter中
+                //需要添加的信息有 课程ID 用户ID ，小节ID已经有了,
+                $vv['course_id'] = $course_name;
+                $vv['student_id'] = $_SESSION['student_user_id'];
+                $vv['chapter_id'] = $vv['course_chapter_id'];//换个名字在存储一次
+                
             }
             unset($vv);//取消引用
         }
@@ -60,6 +68,16 @@ class VideoController extends Controller {
         $chapter_info['course_chapter_video_url'] = urlsafe_b64encode($chapter_info['course_chapter_video_url']);//url编码
         //echo $chapter_info['course_chapter_video_url'];
         //echo urlsafe_b64decode($chapter_info['course_chapter_video_url']);
+        //show_bug($chapter_info);
+        //show_bug($course_info);
+        //课程进度记录需要四个参数，课程ID，小节ID，用户ID，还有播放进度，将其加入到下面的$chapter_info中
+        //需要添加的信息有 课程ID 用户ID ，小节ID已经有了,
+        $chapter_info['course_id']  = $course_name;
+        $chapter_info['student_id'] = $_SESSION['student_user_id'];
+        $chapter_info['chapter_id'] = $chapter_info['course_chapter_id'];
+        //show_bug($chapter_info);
+        
+        //section_chapter中添加了进度记录的几个参数，因为在模板中要用到
         $this->assign('chapter_info',$chapter_info);
         $this->assign('section_chapter',$course_info);
 		$this->display('index');
@@ -70,12 +88,27 @@ class VideoController extends Controller {
 	 * ADMIN_IMG_UPLOADS这个常量与其拼接之后才是完整的url地址
 	 * 这里强调一下，因为url地址里面有/符号，所以需要用到一种方案将斜杠/以及其他字符转变为其他的字符串，随后使用的时候将其解码
 	 */
-	function videoPlayer($video_url = ''){
+	function videoPlayer($video_url = '',$course_id = 0 ,$chapter_id = 0 ,$student_id = 0 ){
 	    //echo $video_url;
 	    //echo urlencode($video_url);//
 	    //echo urlsafe_b64decode($video_url);//url解码
 	    $video_url = urlsafe_b64decode($video_url);
 	    //echo $video_url;
+	    
+	    /**此方法还承担着接收以及输出相关课程小节学习进度记录的资料*/
+	    /* $course_id = 
+	    $chapter_id = 
+	    $student_id = 
+	    $chapter_progress = */
+	    //存储用get方式传进来的参数的值
+	    $parameter = array(
+	        'chapter_id' => $chapter_id,
+	        'student_id' => $student_id,
+	        'course_id'  => $course_id
+	    );
+	    //show_bug($parameter);
+	    
+	    $this->assign('parameter',$parameter);
 	    $this->assign('video_url',$video_url);
 	    $this->display();
 	}
@@ -110,11 +143,6 @@ class VideoController extends Controller {
 	    $this->assign('section_chapter',$section_chapter);
 	    $this->display();
 	} */
-	
-	
-	
-	
-	
 	
 	
 	

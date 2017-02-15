@@ -9,17 +9,7 @@ class ChapterProgressController extends Controller {
         show_bug($info);
     }
     
-    /**
-     * 接收前端传过来的用户小节视频播放进度记录
-     * @param 数据表这条数据的ID $id
-     * @param 学生用户的ID $student_id
-     * @param 课程ID值 $course_id
-     * @param 章节ID值 $chapter_id
-     * @param 状态记录，60%记录为60 $state
-     */
-    function receiveChapterProgress($id ,$student_id ,$course_id ,$chapter_id ,$state){
-        
-    }
+    
     
     /**
      * 获取用户某一课程所有小节的学习进度
@@ -38,8 +28,66 @@ class ChapterProgressController extends Controller {
         //show_bug($progress_chapter);
         return $progress_chapter;
     }
-    
-    
+    /**
+     * 接收前台Ajax传来的用户视频播放进度数据
+     * 并将数据存储到数据库中
+     */
+    function receiveChapterProgress(){
+        //if (IS_POST){
+            $student_id       = $_POST['student_id'];
+            $course_id        = $_POST['course_id'];
+            $chapter_id       = $_POST['chapter_id'];
+            $chapter_progress = $_POST['chapter_progress'];
+            $wheres = 'chapter_progress_student = '.$student_id.' and chapter_progress_course = '.$course_id.' and chapter_progress_chapter = '.$chapter_id;
+            $info = M('ChapterProgress')->where($wheres)->find();
+            //show_bug($info);
+            if (!empty($info)){
+                //原来数据库中有这条记录，则更新这条记录即可
+                if ($info['chapter_progress_state'] < 100){
+                    //echo '小雨100';
+                    $chapter_progress1 = $chapter_progress + $info['chapter_progress_state'];
+                    if ($chapter_progress1 >= 100){
+                        $chapter_progress1 = 100;
+                    }else {
+                        //不进行操作
+                    }
+                    $arr = array(
+                        'chapter_progress_state' => $chapter_progress1
+                    );
+                    //更新数据库
+                    //show_bug($arr);
+                    $rst = M('ChapterProgress')->where('chapter_progress_id = '.$info['chapter_progress_id'])->save($arr);
+                    //show_bug($rst);
+                    if ($rst){
+                        $this->ajaxReturn(json_encode('data-save-success'.$chapter_progress));
+                    }else {
+                        $this->ajaxReturn(json_encode('data-save-fail'.$chapter_progress));
+                    }
+                    
+                }elseif ($info['chapter_progress_state'] >= 100){
+                    //什么也不做，不操作数据库
+                    $this->ajaxReturn(json_encode('data-is-100%'.$chapter_progress));
+                }
+                
+            }else {
+                //原来数据库中没有这条数据，插入一条新的记录
+                $arr = array(
+                    'chapter_progress_state'   => $chapter_progress,
+                    'chapter_progress_student' => $student_id,
+                    'chapter_progress_course'  => $course_id,
+                    'chapter_progress_chapter' => $chapter_id,
+                    'chapter_progress_time'    => date('y-m-d h:i:s',time())
+                );
+                $rst = M('ChapterProgress')->add($arr);
+                //show_bug($rst);
+                if ($rst){
+                    $this->ajaxReturn(json_encode('data-save-success'.$chapter_progress));
+                }else {
+                    $this->ajaxReturn(json_encode('data-save-fail'.$chapter_progress));
+                }
+            }
+        //}
+    }
     
     
     

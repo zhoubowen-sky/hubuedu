@@ -12,16 +12,47 @@
 </head>
 
 <body>
+	
+	{/**添加隐藏域，用来存储记录课程进度所需的 用户ID 课程ID 小节ID ，记录这些信息后，js收集这些信息以及播放进度，使用Ajax传递到后台*/}
+	<input type="hidden" name="course_id"  id="course_id"  value="{$parameter.course_id}">
+	<input type="hidden" name="student_id" id="student_id" value="{$parameter.student_id}">
+	<input type="hidden" name="chapter_id" id="chapter_id" value="{$parameter.chapter_id}">
+	
+
   <video id="my-video" class="video-js" controls preload="auto"  
    data-setup="{}">
     <source src="{$video_url}" type='video/mp4'>
     <p class="vjs-no-js">
-     请跟换支持HTML5的浏览器
+     请更换支持HTML5的浏览器
     </p>
   </video>
   <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
   <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
   <script>
+  
+  /**向后台提交视频播放进度的代码，使用ajax传值*/
+  /**
+  * 下面是向后台提交用户播放进度的方法
+  * progress_data 为百分比参数，例如已经播放20% 则传入20
+  */
+  function sendChapterProgress(progress_data){
+	  $.post("http://web.hubu.edu:3002/index.php/Student/ChapterProgress/receiveChapterProgress", 
+			  {
+		  		//用户ID参数
+		  		student_id:$('#student_id').val(),
+		  		//课程ID参数
+		  		course_id:$('#course_id').val(),
+		  		//小节ID参数
+		  		chapter_id:$('#chapter_id').val(),
+		  		//小节的播放进度
+		  		chapter_progress:progress_data
+			  },
+			   function(data){
+			     //alert(data);
+			     console.log(data);
+			   }, "json");
+  }
+  
   var player = videojs('my-video');
   player.play();
   player.currentTime();//接受上次播放的进度单位为秒
@@ -33,6 +64,8 @@
   var alltime = parseInt(player.duration());//播放总时间
   player.on('pause', function() {  
         console.log('pause');
+        //点一次暂停就向后台传一次值
+        sendChapterProgress(1);
         clearInterval(time);
   });
   player.on('play', function() {  
@@ -47,7 +80,7 @@
   });
       FinalSchedule = parseInt(c*100/alltime);
 	  if(FinalSchedule > 98){FinalSchedule = 100};
-      console.log('当前进度为'+FinalSchedule+'%');    
+      console.log('当前进度为'+FinalSchedule+'%');
   });
   
   
@@ -57,7 +90,13 @@
           return false;
     });
 });
+ 
+ 
   </script>
+  
+  
+  
+  
 
 </body>
 </html>
