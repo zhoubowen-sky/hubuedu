@@ -24,7 +24,7 @@
 				<a id='list-group-item-{$section_chapter.course_chapter_id}' class="list-group-item" href='{$Think.const.SITE_URL}index.php/Student/Video/index/course_name/{$section_chapter.course_chapter_course_name}/id/{$section_chapter.course_chapter_id}' target="_blank"><i class="fa fa-play-circle"></i>&nbsp;&nbsp;{$section_chapter.course_chapter_name}<span id="progress-list-group-item-{$section_chapter.course_chapter_id}" class="chapter-class-progress pull-right">开始学习</span></a>
 			    
 			    {/**下面是进度条的代码，只输出一个小于100的数字，作为百分比*/}
-			    <div id="jqmeter-container-{$section_chapter.course_chapter_progress}"><span id='{$section_chapter.course_chapter_progress}' class='chapter-progress'></span></div>
+			    <div class="jqmeter-container-{$section_chapter.course_chapter_progress}"><span id='{$section_chapter.course_chapter_progress}' class='chapter-progress'></span></div>
 			    
 			</foreach>
 		</div>
@@ -51,7 +51,7 @@
 	$('.chapter-progress').each(function () {
 		var progress = $(this).attr('id');
 		console.log(progress);
-		$('#jqmeter-container-'+progress).jQMeter({
+		$('.jqmeter-container-' + progress).jQMeter({
 			goal:'$100',
 			raised:'$'+progress+'',
 			width:'744px',
