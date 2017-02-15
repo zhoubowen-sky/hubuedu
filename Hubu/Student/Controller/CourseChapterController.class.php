@@ -111,7 +111,7 @@ class CourseChapterController extends Controller {
     	        if (!empty($rst)){
     	            //用户选了这门课
             	    $chapter_progress = A('Student/ChapterProgress')->getChapterProgress($course_name_id,session('student_user_id'));
-            	    show_bug($chapter_progress);
+            	    //show_bug($chapter_progress);
             	    foreach ($section_chapter as $k => &$v){
             	        //echo $k;
             	        foreach ($v as $kk => &$vv){
