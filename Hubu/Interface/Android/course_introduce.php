@@ -29,7 +29,7 @@ if (is_numeric($course_id) && $course_id > 0){
     if (is_numeric($student_id) && $student_id > 0){
         //课程ID与学生ID都指定正确，输出课程信息以及该学生的该课程的学习进度等信息
         $sql2    = 'select * from hubu_course_name where course_name_id = '.$course_id;//查询出课程的信息的SQL语句
-        $result2 = mysql_query($sql2, $connect);//结果集1
+        $result2 = mysql_query($sql2, $connect);//结果集2
         $course_tmp2 = array();//存储课程介绍信息
         //循环取出结果集中的数据
         while($tmp2 = mysql_fetch_assoc($result2)) {
@@ -43,20 +43,32 @@ if (is_numeric($course_id) && $course_id > 0){
         $course_introduce = array();
         $course_introduce['course_introduce'] = $course_tmp2;
         
-        //学生的学习进度等信息
+        //学生的学习进度等信息，首先判断用户是否登录，如果已经登录，再判断用户是否选了这门课
+        //不判断登录，由于提供了用户ID，所以直接查询是否选了这门课
+        $sql3 = 'select * from hubu_choose_course where choose_course_choosed = '.$course_id.' and choose_course_student = '.$student_id;
+        //echo $sql3;
+        $result3 = mysql_query($sql3, $connect);//结果集3
+        if (mysql_num_rows($result3) > 0){
+            //用户选了这门课程
+            //echo mysql_num_rows($result3);
+            $sql4 = 'select * from hubu_chapter_progress where chapter_progress_student = '.$student_id.' and chapter_progress_course = '.$course_id;
+            //echo $sql4;
+            $result4 = mysql_query($sql4, $connect);//结果集4
+            $chapter_progress_tmp = array();//存储章节进度信息临时数组
+            $chapter_progress     = array();//存储章节进度信息最终数组
+            //循环取出结果集中的数据
+            while($tmp4 = mysql_fetch_assoc($result4)) {
+                $chapter_progress_tmp[] = $tmp4;
+            }
+            //var_dump($chapter_progress_tmp);
+            //数组调整为 chapter_id => 进度记录 这种形式
+            foreach ($chapter_progress_tmp as $k => $v){
+                $chapter_progress[$v['chapter_progress_chapter']] = $v['chapter_progress_state'];
+            }
+        }
+        //var_dump($chapter_progress);
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        $course_introduce['my_study_progress'] = array('test' => '处于测试阶段，学习进度模块还没有做');
+        $course_introduce['my_study_progress'] = $chapter_progress;
         
         return Response::show(424,'课程介绍信息获取成功，学生该课程学习进度获取成功',$course_introduce);
         exit();
