@@ -58,19 +58,23 @@
   player.currentTime();//接受上次播放的进度单位为秒
   var c = 0;
   var time = 0;
-  
+  var nowpause = false;
   time = setInterval("c++",1000);//开始计算时间
   player.on('timeupdate', function () {
   var alltime = parseInt(player.duration());//播放总时间
   player.on('pause', function() {  
         console.log('pause');
         //点一次暂停就向后台传一次值
-        sendChapterProgress(1);
-        clearInterval(time);
+        clearInterval(time);	
+		if(nowpause = false){
+		sendChapterProgress(1);
+		ispause = ture;
+		}
   });
   player.on('play', function() {  
         console.log('play');
         clearInterval(time);
+		nowpause = false;
         time = setInterval("c++",1000);
   });
   player.on('ended', function() {  
