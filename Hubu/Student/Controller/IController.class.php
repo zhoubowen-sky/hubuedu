@@ -25,11 +25,18 @@ class IController extends Controller {
                 $myCourseInfo[$k] = D('CourseName')->where("course_name_id = $choose_course_choosed")->find();
                 //把课程的评分加到$myCourseInfo里面去
                 $myCourseInfo[$k]['course_name_score'] = (int)$myCourseID[$k]['choose_course_score'];
+                //查询出课程的总的学习进度信息，并添加到 $myCourseInfo 里面
+                $wheres = 'chapter_progress_student = '.$student_user_id.' and chapter_progress_course = '.$choose_course_choosed;
+                $progress_tmp = M('ChapterProgress')->where($wheres)->sum('chapter_progress_state');
+                $chapter_count = D('CourseChapter')->where("course_chapter_course_name = $choose_course_choosed")->count();//统计这门课程总节数
+                /**计算出该生该课程的总学习进度    学习总进度 = 小节进度和/小节数   */
+                $course_progress = round($progress_tmp/($chapter_count*100),3)*100;//算平均评分,四舍五入一位小数,再换算成百分数形式
+                $myCourseInfo[$k]['course_progress'] = $course_progress;
             }
             
             //show_bug($myCourseInfo);
             $this->assign('myCourseInfo',$myCourseInfo);
-            $this->assign('studentUserInfo',$studentUserInfo);//向叶面输出用户信息
+            $this->assign('studentUserInfo',$studentUserInfo);//向页面输出用户信息
             $this->display();
         }else {
             $this->error('请先登录！',SITE_URL);
