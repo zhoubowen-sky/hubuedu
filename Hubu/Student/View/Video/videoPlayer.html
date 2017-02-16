@@ -68,14 +68,16 @@
         clearInterval(time);	
 		if(nowpause = false){
 		sendChapterProgress(1);
-		ispause = ture;
+		nowpause = ture;
 		}
+		console.log(nowpause);
   });
   player.on('play', function() {  
         console.log('play');
         clearInterval(time);
 		nowpause = false;
         time = setInterval("c++",1000);
+		console.log(nowpause);
   });
   player.on('ended', function() {  
         console.log('ended');
