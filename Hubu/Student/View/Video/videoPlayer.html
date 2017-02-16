@@ -54,42 +54,62 @@
 			     console.log(data);
 			   }, "json");
   }
-  
+  $(function() {    
+        //定时请求刷新  
+        setInterval(runajax,1000);   
+  });
   var player = videojs('my-video');
   player.play();
   player.currentTime();//接受上次播放的进度单位为秒
   var c = 0;
   var time = 0;
-  var nowpause = false;
+  var alltime = 0;
+  var progress_currentTime = 0;
   time = setInterval("c++",1000);//开始计算时间
   player.on('timeupdate', function () {
-  var alltime = parseInt(player.duration());//播放总时间
-  var progress_currentTime = player.currentTime();//进度条最后停留时间点
+  window.alltime = parseInt(player.duration());//播放总时间
+  window.progress_currentTime = player.currentTime();//进度条最后停留时间点
   FinalSchedule = parseInt(c*100/alltime);
   if(FinalSchedule > 98){FinalSchedule = 100};
-  player.on('pause', function() {  
-        console.log('pause');
-        //点一次暂停就向后台传一次值
-        clearInterval(time);	
-		if(nowpause == false){
-		sendChapterProgress(FinalSchedule,progress_currentTime);
-		nowpause = true;
-		}
-  });
-  player.on('play', function() {  
-        console.log('play');
+  player.on('pause', function() {    
         clearInterval(time);
-		nowpause = false;
+		ispause = true;		
+  });
+  player.on('play', function() {     
+        clearInterval(time);
         time = setInterval("c++",1000);
+		ispause = false;
   });
   player.on('ended', function() {  
         console.log('ended');
         clearInterval(time); // 播放结束
         player.controls(false);
   });
-      console.log('当前进度为'+FinalSchedule+'%');
+		
+	  //console.log('当前时间为'+c+'s');
+      //console.log('当前进度为'+FinalSchedule+'%');
+	  
   });
+ 
+  var playtime = parseInt(5);
   
+  ispause = false;
+  player.on('pause', function() {  
+		ispause = true;	
+		console.log('pause');		
+  });
+  player.on('play', function() {  
+		console.log('play');
+		ispause = false;
+  });
+  function runajax(){
+	if( ispause == false && c%playtime == 0 ){
+	var progress_time = parseInt(playtime*100/alltime);
+	sendChapterProgress(progress_time,progress_currentTime);
+	}
+  }
+		
+  //if(c%playtime == 0){console.log('发送，当前时间为'+c+'s')}
   
   
  $(document).ready(function(){
