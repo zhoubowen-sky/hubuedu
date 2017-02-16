@@ -35,7 +35,7 @@
   * 下面是向后台提交用户播放进度的方法
   * progress_data 为百分比参数，例如已经播放20% 则传入20
   */
-  function sendChapterProgress(progress_data){
+  function sendChapterProgress(progress_data,progress_currentTime){
 	  $.post("http://web.hubu.edu:3002/index.php/Student/ChapterProgress/receiveChapterProgress", 
 			  {
 		  		//用户ID参数
@@ -45,7 +45,9 @@
 		  		//小节ID参数
 		  		chapter_id:$('#chapter_id').val(),
 		  		//小节的播放进度
-		  		chapter_progress:progress_data
+		  		chapter_progress:progress_data,
+				//小节的播放进度记录
+				chapter_nowprogress:progress_currentTime
 			  },
 			   function(data){
 			     //alert(data);
@@ -67,7 +69,7 @@
         //点一次暂停就向后台传一次值
         clearInterval(time);	
 		if(nowpause == false){
-		sendChapterProgress(1);
+		sendChapterProgress(1,1);
 		nowpause = true;
 		}
   });
