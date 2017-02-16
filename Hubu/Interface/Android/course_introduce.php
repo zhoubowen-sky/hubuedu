@@ -78,7 +78,13 @@ if (is_numeric($course_id) && $course_id > 0){
             $result6 = mysql_query($sql6, $connect);//结果集6
             $chapter_count = mysql_num_rows($result6);//课程小节数
             //echo $chapter_count;
-            $course_progresss = round($course_progresss_tmp['sum(chapter_progress_state)']/($chapter_count*100),3)*100;//算平均评分,四舍五入一位小数,再换算成百分数形式
+            if($chapter_count){
+                $course_progresss = round($course_progresss_tmp['sum(chapter_progress_state)']/($chapter_count*100),3)*100;//算平均评分,四舍五入一位小数,再换算成百分数形式
+            }else {
+                //没有小节，则进度为0
+                $course_progresss = 0;
+            }
+            
             //var_dump($course_progresss);
             //echo $course_progresss;
         }
