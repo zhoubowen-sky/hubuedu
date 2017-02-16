@@ -38,7 +38,7 @@
   * progress_data 为百分比参数，例如已经播放20% 则传入20
   */
   function sendChapterProgress(progress_data,progress_currentTime){
-	  $.post("http://web.hubu.edu:3002/index.php/Student/ChapterProgress/receiveChapterProgress", 
+	  $.post("{$Think.const.SITE_URL}index.php/Student/ChapterProgress/receiveChapterProgress", 
 			  {
 		  		//用户ID参数
 		  		student_id:$('#student_id').val(),
