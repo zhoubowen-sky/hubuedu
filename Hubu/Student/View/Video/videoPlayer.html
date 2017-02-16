@@ -60,9 +60,11 @@
         //定时请求刷新  
         setInterval(runajax,1000);   
   });
+  //获取上次播放的进度单位为秒
+  var nowtime = $('#chapter_current_time').val();
   var player = videojs('my-video');
   player.play();
-  player.currentTime();//接受上次播放的进度单位为秒
+  player.currentTime(nowtime);//接受上次播放的进度单位为秒
   var c = 0;
   var time = 0;
   var alltime = 0;
@@ -92,26 +94,24 @@
       //console.log('当前进度为'+FinalSchedule+'%');
 	  
   });
- 
-  var playtime = parseInt(2);//设置多少秒发送一次数据
-  
+  //设置多少秒发送一次数据
+  var playtime = parseInt(2);
+  //布尔开关来防止暂停时候多次发送数据
   ispause = false;
   player.on('pause', function() {  
-		ispause = true;	
-		console.log('pause');		
+		ispause = true;			
   });
   player.on('play', function() {  
-		console.log('play');
 		ispause = false;
   });
   function runajax(){
 	if( ispause == false && c%playtime == 0 ){
+	//计算每发送一次数据时间与总时间的比
 	var progress_time = parseInt(playtime*100/alltime);
 	sendChapterProgress(progress_time,progress_currentTime);
 	}
   }
 		
-  //if(c%playtime == 0){console.log('发送，当前时间为'+c+'s')}
   
   
  $(document).ready(function(){
