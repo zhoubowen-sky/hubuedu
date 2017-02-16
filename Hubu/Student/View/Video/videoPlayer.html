@@ -64,12 +64,15 @@
   time = setInterval("c++",1000);//开始计算时间
   player.on('timeupdate', function () {
   var alltime = parseInt(player.duration());//播放总时间
+  var progress_currentTime = player.currentTime();//进度条最后停留时间点
+  FinalSchedule = parseInt(c*100/alltime);
+  if(FinalSchedule > 98){FinalSchedule = 100};
   player.on('pause', function() {  
         console.log('pause');
         //点一次暂停就向后台传一次值
         clearInterval(time);	
 		if(nowpause == false){
-		sendChapterProgress(1,1);
+		sendChapterProgress(FinalSchedule,progress_currentTime);
 		nowpause = true;
 		}
   });
@@ -84,8 +87,6 @@
         clearInterval(time); // 播放结束
         player.controls(false);
   });
-      FinalSchedule = parseInt(c*100/alltime);
-	  if(FinalSchedule > 98){FinalSchedule = 100};
       console.log('当前进度为'+FinalSchedule+'%');
   });
   
