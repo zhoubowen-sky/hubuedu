@@ -38,28 +38,31 @@ class ChapterProgressController extends Controller {
             $course_id        = $_POST['course_id'];
             $chapter_id       = $_POST['chapter_id'];
             $chapter_progress = $_POST['chapter_progress'];
+            $chapter_nowprogress = round($_POST['chapter_nowprogress'],2);//四舍五入保留两位小时
             $wheres = 'chapter_progress_student = '.$student_id.' and chapter_progress_course = '.$course_id.' and chapter_progress_chapter = '.$chapter_id;
             $info = M('ChapterProgress')->where($wheres)->find();
             //show_bug($info);
             if (!empty($info)){
                 //原来数据库中有这条记录，则更新这条记录即可
                 if ($info['chapter_progress_state'] < 100){
-                    //echo '小雨100';
-                    $chapter_progress1 = $chapter_progress + $info['chapter_progress_state'];
+                    //echo '小于100';
+                    $chapter_progress1    = $chapter_progress + $info['chapter_progress_state'];//百分比累加
                     if ($chapter_progress1 >= 100){
                         $chapter_progress1 = 100;
+                        $chapter_nowprogress = 0;//时间归零
                     }else {
                         //不进行操作
                     }
                     $arr = array(
-                        'chapter_progress_state' => $chapter_progress1
+                        'chapter_progress_state' => $chapter_progress1,
+                        'chapter_progress_current_time' => $chapter_nowprogress,
                     );
                     //更新数据库
                     //show_bug($arr);
                     $rst = M('ChapterProgress')->where('chapter_progress_id = '.$info['chapter_progress_id'])->save($arr);
                     //show_bug($rst);
                     if ($rst){
-                        $this->ajaxReturn(json_encode('data-save-success'.$chapter_progress));
+                        $this->ajaxReturn(json_encode('data-save-success'.$chapter_progress.'A'.$chapter_nowprogress));
                     }else {
                         $this->ajaxReturn(json_encode('data-save-fail'.$chapter_progress));
                     }
@@ -76,6 +79,7 @@ class ChapterProgressController extends Controller {
                     'chapter_progress_student' => $student_id,
                     'chapter_progress_course'  => $course_id,
                     'chapter_progress_chapter' => $chapter_id,
+                    'chapter_progress_current_time' => $chapter_nowprogress,
                     'chapter_progress_time'    => date('y-m-d h:i:s',time())
                 );
                 $rst = M('ChapterProgress')->add($arr);

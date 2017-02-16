@@ -54,6 +54,14 @@ class VideoController extends Controller {
                 $vv['student_id'] = $_SESSION['student_user_id'];
                 $vv['chapter_id'] = $vv['course_chapter_id'];//换个名字在存储一次
                 
+                //该小节课程之前的学习进度
+                $wheres = 'chapter_progress_student = '.$_SESSION['student_user_id'].' and chapter_progress_course = '.$course_name.' and chapter_progress_chapter = '.$vv['course_chapter_id'];
+                //echo $wheres;
+                $chapter_current_time_tmp = M('ChapterProgress')->where($wheres)->find();
+                //show_bug($chapter_current_time_tmp);
+                //echo $chapter_current_time_tmp['chapter_progress_current_time'];
+                $vv['chapter_current_time'] = (int)$chapter_current_time_tmp['chapter_progress_current_time'];
+                
             }
             unset($vv);//取消引用
         }
@@ -75,6 +83,11 @@ class VideoController extends Controller {
         $chapter_info['course_id']  = $course_name;
         $chapter_info['student_id'] = $_SESSION['student_user_id'];
         $chapter_info['chapter_id'] = $chapter_info['course_chapter_id'];
+        //该小节课程之前的学习进度
+        $wheres = 'chapter_progress_student = '.$_SESSION['student_user_id'].' and chapter_progress_course = '.$course_name.' and chapter_progress_chapter = '.$chapter_info['course_chapter_id'];
+        //echo $wheres;
+        $chapter_current_time_tmp = M('ChapterProgress')->where($wheres)->find();
+        $chapter_info['chapter_current_time'] = (int)$chapter_current_time_tmp['chapter_progress_current_time'];
         //show_bug($chapter_info);
         
         //section_chapter中添加了进度记录的几个参数，因为在模板中要用到
@@ -88,7 +101,7 @@ class VideoController extends Controller {
 	 * ADMIN_IMG_UPLOADS这个常量与其拼接之后才是完整的url地址
 	 * 这里强调一下，因为url地址里面有/符号，所以需要用到一种方案将斜杠/以及其他字符转变为其他的字符串，随后使用的时候将其解码
 	 */
-	function videoPlayer($video_url = '',$course_id = 0 ,$chapter_id = 0 ,$student_id = 0 ){
+	function videoPlayer($video_url = '',$course_id = 0 ,$chapter_id = 0 ,$student_id = 0 ,$chapter_current_time = 0){
 	    //echo $video_url;
 	    //echo urlencode($video_url);//
 	    //echo urlsafe_b64decode($video_url);//url解码
@@ -96,15 +109,13 @@ class VideoController extends Controller {
 	    //echo $video_url;
 	    
 	    /**此方法还承担着接收以及输出相关课程小节学习进度记录的资料*/
-	    /* $course_id = 
-	    $chapter_id = 
-	    $student_id = 
-	    $chapter_progress = */
+	    //echo $chapter_current_time;
 	    //存储用get方式传进来的参数的值
 	    $parameter = array(
 	        'chapter_id' => $chapter_id,
 	        'student_id' => $student_id,
-	        'course_id'  => $course_id
+	        'course_id'  => $course_id,
+	        'chapter_current_time' => $chapter_current_time
 	    );
 	    //show_bug($parameter);
 	    
