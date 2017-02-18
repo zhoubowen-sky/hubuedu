@@ -6,7 +6,18 @@
 $('a#m-nav-other').click(function () {
      $(this).removeClass().addClass("btn btn-warning").siblings().removeClass().addClass('btn btn-link');
 });
-
+$(function (){
+    $("#appurl").popover({
+        trigger : 'hover',
+        html:true,
+        placement:'bottom'
+    });
+	$("#appurl2").popover({
+        trigger : 'hover',
+        html:true,
+        placement:'left'
+    });
+});
 function iFrameHeight() {   
 	var ifm= document.getElementById("iframepage");   
 	var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;   
