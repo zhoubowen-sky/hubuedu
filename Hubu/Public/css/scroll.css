@@ -25,12 +25,12 @@
 }
 /*滚动槽的颜色 */
 .scrollbar::-webkit-scrollbar-track-piece {
-    background-color:#5e5e5e;
+    background-color:#14191e;
 }
 /* 滑轮的颜色 */
 .scrollbar::-webkit-scrollbar-thumb:vertical {
     height: 10px;
-    background-color: #14191e;
+    background-color: #5e5e5e;
 }
 .scrollbar::-webkit-scrollbar-thumb:horizontal{
     height: 10px;

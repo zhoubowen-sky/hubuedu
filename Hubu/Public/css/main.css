@@ -359,8 +359,6 @@ a{text-decoration:none}
     height: 600px;
     width: auto;
     overflow-y:auto;
-    position: relative;
-    top: -22px;
     background: #14191e;
 	overflow-x: hidden;
 }
