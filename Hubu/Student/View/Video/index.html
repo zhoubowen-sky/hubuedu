@@ -78,16 +78,21 @@
 	</div> -->
 	
 	
-	
+	<div class="clearfix">
 	{/*下面是评论留言，笔记，教学资料，三个板块*/}
-	<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/comment" target="content_block"><b>评论留言</b></a></div>
-	<div><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/note" target="content_block"><b>笔记</b></a></div>
-	<div><a href="__MODULE__/Video/studyingData" target="content_block"><b>教学资料</b></a></div>
-	<div>
-		<iframe scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/CourseChapter/comment" name="content_block" width="100%" height="600"></iframe>
+	<div class="class-contain-btn-div">
+		<div class="btn-group">
+	<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/comment" class="btn btn-link" target="content_block" style="text-decoration: none;"><span>评论留言</span></a>
+	<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/note" class="btn btn-link" target="content_block" style="text-decoration: none;"><span>笔记</span></a>
+	<a href="__MODULE__/Video/studyingData" class="btn btn-link" target="content_block" style="text-decoration: none;"><span>教学资料</span></a>
+		</div>
+	</div>
+	<div >
+		<iframe scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/CourseChapter/comment" name="content_block" width='824px;' height="600px" style='margin-top:60px;margin-left:20px;'></iframe>
 	</div>
 	{/*这里放置的是bottom*/}
  <include file="Public/footer" />
+	<div>
 	<script src="{$Think.const.ADMIN_JS_URL}bootstrap.min.js"></script>
 	<script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
 	<script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
