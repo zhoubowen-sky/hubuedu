@@ -18,7 +18,10 @@
                             <span class="input-group-btn">
                             <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
                             </span>
-                        <input type="text" class="form-control" placeholder="">
+                            {/**搜索框的表单,通过post提交到后台*/}
+                            <form name="feedback" method="post" action="__MODULE__/Search/search">
+                        		<input type="text" class="form-control" placeholder="输入课程关键字" name="search" id="search">
+                        	</form>
                     </div>
                 </div>
                 <div>
