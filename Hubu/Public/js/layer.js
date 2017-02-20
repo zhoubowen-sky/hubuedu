@@ -17,6 +17,12 @@ $(function (){
         html:true,
         placement:'left'
     });
+	$("#loginURL").popover({
+        trigger : 'hover',
+        html:true,
+        delay: { "show": 0, "hide": 1000 },
+        placement:'bottom'
+    });
 });
 function iFrameHeight() {   
 	var ifm= document.getElementById("iframepage");   
