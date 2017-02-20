@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hotCourse-热门课程</title>
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+</head>
+<body>
+<nav class="navbar">
+<div class="container">
+    <ul class="nav nav-pills nav-stacked">
+	<li role="presentation" class="active"><a>热门课程</a></li>
+        <foreach name='hot' item='hot'>
+		<li role="presentation"><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$hot.course_name_id}" target='_blahk'><span>{$hot.course_name_name}</span></a></li>
+		</foreach>
+	</ul>
+</div>
+</nav>
+	<script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
+	<script>
+	$(window.parent.document).find("#hotCourseList").load(function(){
+	var main = $(window.parent.document).find("#hotCourseList");
+	var thisheight = $(document).height();
+	main.height(thisheight);
+	});
+	</script>
+</body>
+</html>

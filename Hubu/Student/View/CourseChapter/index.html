@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{$course_info.course_name_name}-课程章节{/**网页标题也展示这门课的信息*/}</title>
+	<meta name="renderer" content="webkit">
+	<link rel="icon" href="{$Think.const.SITE_URL}/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}font-awesome.min">
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
+</head>
+<body>
+	{/**下面这个header*/}
+	<include file="Public/header" />
+<div class='hd-header-img' id='{$Think.const.ADMIN_IMG_URL}topimage.jpg'></div>{/*课程图片的URL地址*/}
+   <div class='hd-header-top'>
+        <div class="hd-header ">
+        <div class="hd-fix">
+            <div class="hd-title"><h2>{$course_info.course_name_name}</h2></div>
+            <div class="hd-check">
+                <div class="row">
+                    <div class="col-md-1">
+                    {/**这里作出判断，如果学生已经选择了这门课程则展示“继续学习”并且按钮为空连接，没有选择就展示“点击开始学习”，点击后触发选择此课程的方法写入一条数据到数据库*/}
+                    <if condition="empty($check)">
+                    	<a href = "__MODULE__/CourseChapter/chooseCourse/course_name_id/{$course_info.course_name_id}" class="btn btn-success btn-lg">点击开始学习{/**加入到已选课程*/}</a>
+                    <else />
+                    	<a href = "javascript:void(0)" class="btn btn-success btn-lg">继续学习{/**加入到已选课程*/}</a>
+                    </if>
+                    </div>
+                    <div class="col-md-1 col-md-offset-1 hd-check-1">
+                        <p>学习人数</p>
+                        <p>{$choosed_count}</p>
+                    </div>
+                    <div class="col-md-1 hd-check-1">
+                        <p>课程节数</p>
+                        <p>{$chapter_count}</p>
+                    </div>
+                    <div class="col-md-1">
+                        <p>课程评分</p>
+                        <p>{$course_score}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        {/**用户登录了就展示进度条，不登录就不展示*/}
+        <if condition = "isset($_SESSION['student_user_username'])">
+        	<div>课程总的学习进度:{$course_progress}</div>
+        </if>
+    </div>
+<div class="class-contain-text-div"><p class="class-contain-text">简介:{$course_info.course_name_intro}{/**这里是课程简介*/}</p></div>
+<div class='CourseChapter-row center-block row'>
+<div class='col-lg-9'>
+	<div class="class-contain-btn-div">
+		<div class="btn-group">
+			<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/section_chapter/course_name_id/{$course_info.course_name_id}" class="btn btn-link" target="content_block" style="text-decoration: none;"><span>章节</span></a>
+			<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/comment" class="btn btn-link" target="content_block" style="text-decoration: none;"><span>评论留言</span></a>
+			<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/note" class="btn btn-link" target="content_block" style="text-decoration: none;"><span>笔记</span></a>
+		</div>
+	</div>
+	
+	
+	{/*下面使用的是iframe,默认显示的是章节板块的内容，使用的是另一个section_chapter模板，模板名称一样，但内容不一样,我这里长宽就写死了，需要改成自适应的*/}
+	<div>
+		<iframe id='chapter' frameborder="0" scrolling="no"  src="{$Think.const.SITE_URL}index.php/Student/CourseChapter/section_chapter/course_name_id/{$course_info.course_name_id}" name="content_block" width='824px;'></iframe>
+	</div>
+</div>
+</div>
+	<script>
+	$("#chapter").load(function(){
+	var mainheight = $(this).contents().find("body").height();
+	$(this).height(mainheight);
+	});
+	var imgurl = $('.hd-header-img').attr('id');
+    $('.hd-header').css("background-image","url("+imgurl+")");
+	</script>
+	{/*这里放置的是bottom*/}
+ <include file="Public/footer" />
+<script src="{$Think.const.ADMIN_JS_URL}bootstrap.min.js"></script>
+<script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
+<script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
+<script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+    <footer class="My-footer">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-1 footer-logo">
+                <img src="{$Think.const.ADMIN_IMG_URL}logo.png" alt="">
+                <p>让每一个有提升愿望的用户能够学到中国知名高校的课程</p>
+            </div>
+            <div class="col-md-6 col-md-offset-1 footer-contain" >
+                <h3>&nbsp;友情链接</h3>
+                <p><a href="#">友情链接-1</a>&nbsp;&nbsp;&nbsp;<a href="#">友情链接-2</a></p>
+                <p><a href="#">友情链接-3</a>&nbsp;&nbsp;&nbsp;<a href="#">友情链接-4</a></p>
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        <p>©版权所有 | 湖北大学计算机与信息工程学院 | POWER BY 周博文 郑志琦 童天相 <a href='{$Think.const.SITE_URL}index.php/Admin/AdminUser/login' target='_blank'>登陆</a></p>
+    </div>
+{/**屏幕右下角的悬浮固定的div*/}
+    <style type="text/css"> 
+	#low_right{ 
+		position: fixed; 
+		bottom: 50px; 
+		right: 20px; 
+	}
+	.low_right_div{
+		width:50px;
+		height:50px;
+		padding: 10px 10px 10px 10px;
+		background-color:white;
+		border:1px solid #D8D8D8;
+		border-radius: 1px;
+	}
+	.low_right_span{
+		width:30px;
+		height:30px;
+	}
+	.low_right_span i{
+		font-size:30px;
+		color:#666666;
+	}
+	</style>
+
+	<div id="low_right"> 
+		<div class='low_right_div'>
+			<span class='low_right_span'><a href='__MODULE__/Feedback/feedback' target='_blank'><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
+		</div>
+		<div class='low_right_div'>
+			<span class='low_right_span'><a href='javascript:void(0)' id="appurl2" rel="popover" data-content="<img src='{$Think.const.ADMIN_ROOT_URL}Uploads/default/app.png' style='width:100px;height:auto;margin-left:auto;margin-right:auto;position:relative;'>"><i class="fa fa-android" aria-hidden="true"></i></a></span>{/**这里的二维码图片就放在 Public/Uploads/default/ 目录下面吧*/}
+		</div>
+		<div class='low_right_div'>
+			<span class='low_right_span'><a href='#'><i class="fa fa-caret-square-o-up" aria-hidden="true"></i></a></span>
+		</div>
+	</div> 

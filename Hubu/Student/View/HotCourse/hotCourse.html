@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hotCourse-热门课程</title>
+ <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+ <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+ <style>
+	body{
+	width:100%;
+	height:auto;
+	}
+ </style>
+</head>
+<body>
+<div class='hot-class'>
+	<p class="hot-class-p text-center"><span class="hot-class-text">热门课程</span></p>
+	<div class="row hot-class-row">
+		<foreach name='hot' item='hot'>
+			<div class="col-lg-3 hot-class-col" >	
+				<div class="hot-class-contain">
+				<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$hot.course_name_id}" target='_blahk'><img alt="..." src="{$Think.const.ADMIN_IMG_UPLOADS}{$hot.course_name_pic}" width="260px" height="150px"></a>
+				<div><span class="hot-text-overflow">课程名称：{$hot.course_name_name}</span></div>
+				<div><span class="hot-text-overflow">讲师：{$hot.course_name_adder}</span></div>
+				<div><span class="hot-text-overflow">{$hot.course_name_choosed_num}人参加</span></div>
+				<div><span class="hot-text-overflow">课程简介：{$hot.course_name_intro}</span></div>
+				</div>
+			</div>
+		</foreach>
+	</div>
+		<div class='hot-class-hr'></div>
+		<br>
+		<div class="hot-center-btn"><a href='__MODULE__/Course/index' class="btn btn-success btn-lg center-block" target='_blank'>查看更多课程&nbsp;<i class="glyphicon glyphicon-log-in"></i></a></div>
+	</div>
+	<script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
+	<script>
+	$(window.parent.document).find("#hotCourse").load(function(){
+	var main = $(window.parent.document).find("#hotCourse");
+	var thisheight = $(document).height();
+	main.height(thisheight);
+	});
+	</script>
+</div>
+</body>
+</html>

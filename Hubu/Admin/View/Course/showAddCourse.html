@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>showAddCourse-添加课程</title>
+</head>
+<body>
+	{/**添加课程的表单*/}
+	<div>添加一门课程</div>
+	<form action="addCourse" method="post" enctype="multipart/form-data" name="form1" id="form1">
+	  	<label for="course_name_name">课程名称</label><input type="text" name="course_name_name" id="course_name_name" placeholder="高等数学"  />
+				课程类别：
+				<select name="course_name_class" class="input"style="width:100px; line-height:17px; display:inline-block">
+		            <option value="1">计算机</option>
+		            <option value="2">经济管理</option>
+		            <option value="3">心理学</option>
+		            <option value="4">外语</option>
+		            <option value="5">文学历史</option>
+		            <option value="6">艺术设计</option>
+		            <option value="7">工学</option>
+		            <option value="8">理学</option>
+		            <option value="9">生命科学</option>
+		            <option value="10">哲学</option>
+		            <option value="11">法学</option>
+		            <option value="12">教育教学</option>
+		            <option value="13">其他</option>
+		          </select>
+		<label for="course_name_adder">讲师</label>		<input type="text" name="course_name_adder" id="course_name_adder" />
+		<label for="course_name_intro">课程简介</label>	<input type="text" name="course_name_intro" id="course_name_intro" />
+		<label for="course_name_pic">课程图片</label>		<input type="file" name="course_name_pic" id="course_name_pic" />
+		<input type="submit" name="submit" id="submit" value="提交" />
+	</form>
+	
+	<hr>
+	{/**添加章的表单,这里需要展示出所有课程的信息，让用户选择是哪一门课程*/}
+	<div>添加一章的表单</div>
+	<form id="form2" name="form2" method="post" action="addSection">
+	  <label for="course_section_name">章名称</label><input type="text" name="course_section_name" id="course_section_name" placeholder="第一章  XXXX" />
+	  {/**这里要展示所有的课程信息，让用户选择已经存在的课程*/}
+	  <div>所属课程</div>
+	  <foreach name='courseList' item='courseList'>
+    <label><input type="radio" name="course_section_course_name" value="{$courseList.course_name_id}" id="章所属课程_0" />{$courseList.course_name_name}</label>
+    </foreach>
+	  
+	  <input type="submit" name="submit2" id="submit2" value="提交" />
+	</form>
+	<hr>
+	{/**添加小节*/}
+	<div>添加一节的信息</div>
+	<form id="form3" name="form3" method="post" action="addChapter"  enctype="multipart/form-data">
+  		<label for="course_chapter_name">节名称</label><input type="text" name="course_chapter_name" id="course_chapter_name" placeholder="1.1 XXXX"  />
+  		<div>所属课程</div>
+	  	<foreach name='courseList2' item='courseList2'>
+    		<label><input type="radio" name="course_chapter_course_name" value="{$courseList2.course_name_id}" id="章所属课程_1" />{$courseList2.course_name_name}</label>
+    	</foreach>
+    	
+    	<div>所属章</div>
+    	<label for="course_chapter_section">第几章</label><input type="text" name="course_chapter_section" id="course_chapter_section"  placeholder="填写阿拉伯数字例如“1”"  />
+    	
+    	<!-- <foreach name='sectionList' item='sectionList'>
+    		<label><input type="radio" name="course_chapter_section" value="{$sectionList.course_section_course_name}" id="aaa"  />{$sectionList.course_section_name}</label>
+    		<br>
+    	</foreach> -->
+    	<div>其他信息</div>
+    	<label for="course_chapter_adder">讲师</label><input type="text" name="course_chapter_adder" id="course_chapter_adder" />
+    	
+    	<label for="course_chapter_video_url">本小节视频</label><input type="file" name="course_chapter_video_url" id="course_chapter_video_url" />
+    	<label for="course_chapter_ppt_url">本小节PPT</label><input type="file" name="course_chapter_ppt_url" id="course_chapter_ppt_url" />
+    	
+    	
+    	
+    	<input type="submit" name="submit3" id="submit3" value="提交" />
+	</form>
+	
+</body>
+</html>

@@ -54,7 +54,21 @@ class StudentUserModel extends Model{
         return $b;
     }
     
-    
+    /**
+     * 检查用户填写的邮箱是否已经被注册过
+     * @param 用户注册的时候填入的表单 $email
+     */
+    function checkEmail_Registered($email){
+        //查询数据库中是否已存在这个email
+        $info = $this->getByStudent_user_email($email);
+        if ($info['student_user_email']){
+            return $info;
+        }else {
+            //数据库中没有这个记录，即用户输入的邮箱可以注册
+            return false;
+        }
+        
+    }
     
     
     

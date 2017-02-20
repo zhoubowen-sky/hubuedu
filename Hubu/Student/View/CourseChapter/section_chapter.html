@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>section_chapter</title>
+<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}font-awesome.min.css">
+<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+<script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
+<script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jqmeter.min.js'></script>
+<style>
+#chapter-jqmeter{
+	 position: relative;
+	 top:-19px
+}
+</style>
+</head>
+<body>
+	<div class="chapter">
+	<foreach name = 'section_chapter' item = 'section_chapter'>
+		<div class="chapter-contain">
+		<p class="chapter-contain-title"><i class="fa fa-info-circle" aria-hidden="true"></i><span>{$Think.lang.$key}{/*这个是输出数组键名*/}</span></p>
+		<div class="chapter-class-list">
+        <div class="list-group">
+			<foreach name = 'section_chapter' item = 'section_chapter'>
+				{/**这里链接指向视频播放页面，并且将该门课程的信息传递给Video控制器下面的相应方法，好让页面展示指定课程的信息，并播放此页面点击的课程视频*/}
+				<a id='list-group-item-{$section_chapter.course_chapter_id}' 
+				   class="list-group-item" 
+				   href='{$Think.const.SITE_URL}index.php/Student/Video/index/course_name/{$section_chapter.course_chapter_course_name}/id/{$section_chapter.course_chapter_id}' 
+				   target="_blank">
+				   <i class="fa fa-play-circle"></i>&nbsp;&nbsp;{$section_chapter.course_chapter_name}<span id="progress-list-group-item-{$section_chapter.course_chapter_id}" class="chapter-class-progress pull-right">开始学习</span></a>
+			    
+			    {/**下面是进度条的代码，只输出一个小于100的数字，作为百分比，如果用户没有登录则不展示此进度条*/}
+			    <if condition = "isset($_SESSION['student_user_username'])">
+			    	<div id='chapter-jqmeter' class="jqmeter-container-{$section_chapter.course_chapter_progress}"><span id='{$section_chapter.course_chapter_progress}' class='chapter-progress'></span></div>
+			    <else />
+			    	{/**没有登录时要展示的东西**/}
+			    </if>
+			</foreach>
+		</div>
+		</div>
+		</div>
+	</foreach>
+	</div>
+	<script>
+	$(window.parent.document).find("#chapter").load(function(){
+	var main = $(window.parent.document).find("#chapter");
+	var thisheight = $(document).height();
+	main.height(thisheight);
+	});
+	$('.chapter-class-progress').hide();
+        $(".list-group-item").mouseover(function(){
+                var listid = $(this).attr("id");
+                $('#'+listid).mouseover(function () {
+                    $('#progress-'+listid).show();
+                    $(this).mouseout(function () {
+                        $('#progress-'+listid).hide();
+                    })
+                });
+            })
+	$('.chapter-progress').each(function () {
+		var progress = $(this).attr('id');
+		console.log(progress);
+		$('.jqmeter-container-' + progress).jQMeter({
+			goal:'$100',
+			raised:'$'+progress+'',
+			width:'744px',
+			height:'4px',
+			bgColor:'#dadada',
+            barColor:'#f09246',
+			animationSpeed:1000,
+			displayTotal:false
+		});
+    });
+	</script>
+</body>
+</html>

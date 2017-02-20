@@ -1,0 +1,131 @@
+<html>
+<head>
+  <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+  <style>
+  #my-video{
+      width: 100%;
+      height: 600px;
+  }
+  </style>
+  <!-- If you'd like to support IE8 -->
+  <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+</head>
+
+<body>
+	
+	{/**添加隐藏域，用来存储记录课程进度所需的 用户ID 课程ID 小节ID ，记录这些信息后，js收集这些信息以及播放进度，使用Ajax传递到后台*/}
+	<input type="hidden" name="course_id"  id="course_id"  value="{$parameter.course_id}">
+	<input type="hidden" name="student_id" id="student_id" value="{$parameter.student_id}">
+	<input type="hidden" name="chapter_id" id="chapter_id" value="{$parameter.chapter_id}">
+	{/**用以存储数据库存储的 上次视频播放的时间点，用以续播*/}
+	<input type="hidden" name="chapter_current_time" id="chapter_current_time" value="{$parameter.chapter_current_time}">
+	
+
+  <video id="my-video" class="video-js" controls preload="auto"  
+   data-setup="{}">
+    <source src="{$video_url}" type='video/mp4'>
+    <p class="vjs-no-js">
+     请更换支持HTML5的浏览器
+    </p>
+  </video>
+  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+  <script>
+  
+  /**向后台提交视频播放进度的代码，使用ajax传值*/
+  /**
+  * 下面是向后台提交用户播放进度的方法
+  * progress_data 为百分比参数，例如已经播放20% 则传入20
+  */
+  function sendChapterProgress(progress_data,progress_currentTime){
+	  $.post("{$Think.const.SITE_URL}index.php/Student/ChapterProgress/receiveChapterProgress", 
+			  {
+		  		//用户ID参数
+		  		student_id:$('#student_id').val(),
+		  		//课程ID参数
+		  		course_id:$('#course_id').val(),
+		  		//小节ID参数
+		  		chapter_id:$('#chapter_id').val(),
+		  		//小节的播放进度
+		  		chapter_progress:progress_data,
+				//小节的播放进度记录
+				chapter_nowprogress:progress_currentTime
+			  },
+			   function(data){
+			     //alert(data);
+			     console.log(data);
+			   }, "json");
+  }
+  $(function() {    
+        //定时请求刷新  
+        setInterval(runajax,1000);   
+  });
+  //获取上次播放的进度单位为秒
+  var nowtime = $('#chapter_current_time').val();
+  var player = videojs('my-video');
+  player.play();
+  player.currentTime(nowtime);//接受上次播放的进度单位为秒
+  var c = 0;
+  var time = 0;
+  var alltime = 0;
+  var progress_currentTime = 0;
+  time = setInterval("c++",1000);//开始计算时间
+  player.on('timeupdate', function () {
+  window.alltime = parseInt(player.duration());//播放总时间
+  window.progress_currentTime = player.currentTime();//进度条最后停留时间点
+  FinalSchedule = parseInt(c*100/alltime);
+  if(FinalSchedule > 98){FinalSchedule = 100};
+  player.on('pause', function() {    
+        clearInterval(time);
+		ispause = true;		
+  });
+  player.on('play', function() {     
+        clearInterval(time);
+        time = setInterval("c++",1000);
+		ispause = false;
+  });
+  player.on('ended', function() {  
+        console.log('ended');
+        clearInterval(time); // 播放结束
+        player.controls(false);
+  });
+		
+	  //console.log('当前时间为'+c+'s');
+      //console.log('当前进度为'+FinalSchedule+'%');
+	  
+  });
+  //设置多少秒发送一次数据
+  var playtime = parseInt(2);
+  //布尔开关来防止暂停时候多次发送数据
+  ispause = false;
+  player.on('pause', function() {  
+		ispause = true;			
+  });
+  player.on('play', function() {  
+		ispause = false;
+  });
+  function runajax(){
+	if( ispause == false && c%playtime == 0 ){
+	//计算每发送一次数据时间与总时间的比
+	var progress_time = parseInt(playtime*100/alltime);
+	sendChapterProgress(progress_time,progress_currentTime);
+	}
+  }
+		
+  
+  
+ $(document).ready(function(){
+    $(document).bind("contextmenu",function(e){
+          return false;
+    });
+});
+ 
+ 
+  </script>
+  
+  
+  
+  
+
+</body>
+</html>

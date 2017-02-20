@@ -1,0 +1,373 @@
+状态码标识：
+
+400---从服务端课程类别数据获取成功
+401---从服务端课程类别数据获取失败
+403---数据库连接失败
+405---课程名称数据获取成功
+406---课程名称数据获取失败
+407---客户端未指定所要获取的课程大类信息或者指定的变量不合法
+408---热门课程信息获取成功
+409---热门课程信息获取失败
+410---客户端指定的课程的ID信息不合法或者未指定
+411---课程章节列表信息获取成功
+412---课程章节列表细心获取失败
+413---学生用户登录时提交的是空表单
+414---学生用户登录时，用户名不存在
+415---学生用户账户处于未激活状态
+416---学生用户密码输入不正确
+417---登陆成功，用户没有已选的课程
+418---登陆成功，学生用户个人信息以及已选课程的ID信息获取成功
+419---学生用户登录API使用错误，里面不含有 username 字段
+420---学生用户登录API使用错误，里面不含有 password 字段
+421---学生用户登录API使用错误，post上传的数据不是标准的JSON格式
+422---客户端指定的学生用户的ID信息不合法，不是int类型
+423---课程介绍信息获取成功，未提供学生ID因而不反馈学生的学习进度等信息
+424---课程介绍信息获取成功，学生该课程学习进度获取成功
+
+
+
+/*************************************************************************************************************/
+
+接口json数据格式说明：
+{
+    "code": 400,
+    "message": "课程类别数据获取成功",
+    "data": [
+        {
+            "college_id": "1",
+            "name": "计算机",
+            "icon": "",
+            "type": "1"
+        },
+        {
+            "college_id": "2",
+            "name": "经济管理",
+            "icon": "",
+            "type": "2"
+        }
+    ]
+}
+上述 code 为状态码，这个是由服务端规定，后续会在文档中逐步说明
+ message 为提示信息，用以APP与服务端相互提示
+ data    为真正要使用到的数据
+ 
+
+
+/*************************************************************************************************************/
+
+接口访问方法：
+
+1.PC端用浏览器查看接口数据是否符合要求
+	输入接口URL，如  http://120.27.104.19:3002/Hubu/Interface/Android/course_class_list.php?format=json
+	其中，?format=json 可要可不要，这是GET传输数据的方式，如果不要则默认提供json格式的数据
+	如果，?format=json 则浏览器输出json格式数据
+	如果，?format=xml  则浏览器输出xml格式数据
+	如果，?format=array则浏览器输出原生数组格式数据
+	
+	上述是给客户端开发者调试使用的，因而提供了多种格式，但是建议投入使用的时候，只使用json格式。
+	
+2.Android使用的时候基本与PC相同
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************************************************************/
+
+接口详细介绍：
+1.课程大类接口
+	URL：http://120.27.104.19:3002/Hubu/Interface/Android/course_class_list.php?format=json
+	数据格式：
+		{
+		    "code": 400,
+		    "message": "课程类别数据获取成功",
+		    "data": [
+		        {
+		            "college_id": "1",
+		            "name": "计算机",
+		            "icon": "",
+		            "type": "1"
+		        },
+		        {
+		            "college_id": "2",
+		            "name": "经济管理",
+		            "icon": "",
+		            "type": "2"
+		        }
+		    ]
+		}
+	说明：icon为课程大类图标，这个数据服务端无法提供，是否让其为空或是去掉这个字段，待定，icon字段已去掉。
+		?format=json可有可无，没有时默认输出json格式数据
+
+
+2.某一类课程/所有类 下面所有课程名称接口
+	URL：http://120.27.104.19:3002/Hubu/Interface/Android/course_name_list.php?format=json&course_class_code=8
+	数据格式：
+		{
+		    "code": 400,
+		    "message": "课程类别数据获取成功",
+		    "data": [
+		        {
+		            "course_id": "1",
+		            "name": "高等数学",
+		            "image": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-26/5889ec9cf1513.png",
+		            "description": "这是高等数学的课程介绍，这句话是写在数据库里面的",
+		            "teacher": "admin000",
+		            "choose_count": 2,
+		            "class": 12
+		        },
+		        {
+		            "course_id": "14",
+		            "name": "线性代数",
+		            "image": "http://120.27.104.19:3002/Hubu/Public/",
+		            "description": "xd",
+		            "teacher": "胡",
+		            "choose_count": 0,
+		            "class": 0
+		        }
+		    ]
+		}
+	说明：?format=json 可有可无，没有时默认输出json格式数据
+		course_class_code=8 这个必须要有，用以指明需要获得的是哪一类课程的数据
+		
+		course_class_code=1 计算机
+		course_class_code=2 经济管理
+		course_class_code=3 心理学
+		course_class_code=4 外语
+		course_class_code=5 文学历史
+		course_class_code=6 艺术设计
+		course_class_code=7 工学
+		course_class_code=8 理学
+		course_class_code=9 生命科学
+		course_class_code=10 哲学
+		course_class_code=11 法学
+		course_class_code=12 教育教学
+		course_class_code=13 其他
+		course_class_code=20 所有课程
+
+
+3.热门课程信息的接口
+	URL：http://120.27.104.19:3002/Hubu/Interface/Android/hot_course_list.php?format=json
+	数据格式：
+		{
+		    "code": 408,
+		    "message": "热门课程信息获取成功",
+		    "data": [
+		        {
+		            "course_id": "1",
+		            "name": "高等数学",
+		            "image": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-26/5889ec9cf1513.png",
+		            "description": "这是高等数学的课程介绍，这句话是写在数据库里面的",
+		            "teacher": "admin000",
+		            "choose_count": 2,
+		            "class": 12
+		        },
+		        {
+		            "course_id": "2",
+		            "name": "信号与系统",
+		            "image": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-02-03/589488e3d94d4.png",
+		            "description": "这是信号与系统的介绍",
+		            "teacher": "zbw",
+		            "choose_count": 2,
+		            "class": 8
+		        }
+		    ]
+		}
+	说明：?format=json 可有可无，没有时默认输出json格式数据
+
+4.课程章节列表信息的接口
+	URL：http://120.27.104.19:3002/Hubu/Interface/Android/course_info.php?format=json&course_id=2
+	数据格式：
+		{
+		    "code": 411,
+		    "message": "课程章节列表细心获取成功",
+		    "data": [
+		        {
+		            "chapter_name": "第一章 测试数据1",
+		            "section": [
+		                {
+		                    "section_id": "25",
+		                    "name": "1.1 红楼梦1.1",
+		                    "video_url": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-24/5886e8740dbaa.mp4",
+		                    "ppt_url": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-24/5886e874125e3.ppt"
+		                }
+		            ]
+		        },
+		        {
+		            "chapter_name": "第二章 红楼梦2",
+		            "section": [
+		                {
+		                    "section_id": "26",
+		                    "name": "2.1 红楼梦测试",
+		                    "video_url": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-24/5886e8d1c3754.mp4",
+		                    "ppt_url": "http://120.27.104.19:3002/Hubu/Public/"
+		                }
+		            ]
+		        }
+		    ]
+		}
+	说明：?format=json 可有可无，没有时默认输出json格式数据
+		course_id=2 必须要有，course_id是课程的ID，根据这个ID来获取这门课程的章节信息
+
+
+5.学生用户登录接口完成
+	URL：http://120.27.104.19:3002/Hubu/Interface/Android/student_login.php?format=json
+	数据格式：
+		登录成功
+		{
+		    "code": 418,
+		    "message": "登陆成功，学生用户个人信息以及已选课程的ID信息获取成功",
+		    "data": {
+		        "userinfo": {
+		            "email": "1784225410@qq.com",
+		            "username": "1784225410@qq.com",
+		            "sex": "1",
+		            "tel": "17671846116",
+		            "qq": "1784225410",
+		            "addr": "湖大二期-D-426",
+		            "pic": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-26/5889ed2127cb3.jpg",
+		            "intro": "这是我的个人介绍！！！5",
+		            "verify": "1"
+		        },
+		        "mycourse": [
+		            "1",
+		            "2",
+		            "17",
+		            "4"
+		        ]
+		    }
+		}
+		登录出现问题
+		{
+		    "code": 414,
+		    "message": "用户名不存在",
+		    "data": []
+		}
+	说明：当登陆成功时，userinfo为用户个人信息，mycourse为用户已选课程的ID信息，根据这个ID信息可以调用其他接口获取该门课程的信息，学习进度还未完成
+		客户端的数据提交方式应为post，
+		即$_POST['userinfo'] = '{"username":"1784225410@qq.com","password":"123456"}';字段都已规定好，更改后接口会失效
+
+6.课程介绍的数据接口，顺便承接接口4，此接口也提供学生相关课程的学习进度的数据
+	URL：http://120.27.104.19:3002/Hubu/Interface/Android/course_introduce.php?format=json&course_id=1&student_id=9
+	数据格式：
+		//课程ID与学生ID都提供
+		{
+		    "code": 424,
+		    "message": "课程介绍信息获取成功，学生该课程学习进度获取成功",
+		    "data": {
+		        "course_introduce": [
+		            {
+		                "course_name_id": "1",
+		                "course_name_name": "高等数学",
+		                "course_name_class": "8",
+		                "course_name_adder": "admin000",
+		                "course_name_intro": "这是高等数学的课程介绍，这句话是写在数据库里面的",
+		                "course_name_pic": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-26/5889ec9cf1513.png",
+		                "course_name_time": "2017-01-26 20:33:33"
+		            }
+		        ],
+		        "chapter_progress": [
+		            {
+		                "chapter_progress_id": "1",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "1",
+		                "chapter_progress_state": "60",
+		                "chapter_progress_time": "2017-02-14 20:54:47"
+		            },
+		            {
+		                "chapter_progress_id": "2",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "2",
+		                "chapter_progress_state": "30",
+		                "chapter_progress_time": "2017-02-14 21:03:41"
+		            },
+		            {
+		                "chapter_progress_id": "3",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "3",
+		                "chapter_progress_state": "90",
+		                "chapter_progress_time": "2017-02-14 22:22:46"
+		            },
+		            {
+		                "chapter_progress_id": "4",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "4",
+		                "chapter_progress_state": "78",
+		                "chapter_progress_time": "2017-02-14 22:22:43"
+		            },
+		            {
+		                "chapter_progress_id": "5",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "12",
+		                "chapter_progress_state": "25",
+		                "chapter_progress_time": "2017-02-14 22:59:26"
+		            },
+		            {
+		                "chapter_progress_id": "6",
+		                "chapter_progress_student": "9",
+		                "chapter_progress_course": "1",
+		                "chapter_progress_chapter": "13",
+		                "chapter_progress_state": "69",
+		                "chapter_progress_time": "2017-02-14 22:59:29"
+		            }
+		        ],
+		        "course_progress": 29.3
+		    }
+		}
+		//只提供课程ID则获取的是课程的信息，没有该学生的学习进度信息
+		{
+		    "code": 423,
+		    "message": "课程介绍信息获取成功，未提供学生ID因而不反馈学生的学习进度等信息",
+		    "data": {
+		        "course_introduce": [
+		            {
+		                "course_name_id": "1",
+		                "course_name_name": "高等数学",
+		                "course_name_class": "8",
+		                "course_name_adder": "admin000",
+		                "course_name_intro": "这是高等数学的课程介绍，这句话是写在数据库里面的",
+		                "course_name_pic": "http://120.27.104.19:3002/Hubu/Public/Uploads/2017-01-26/5889ec9cf1513.png",
+		                "course_name_time": "2017-01-26 20:33:33"
+		            }
+		        ]
+		    }
+		}
+		说明：?format=json 可有可无，没有时默认输出json格式数据
+			&course_id为必须，是课程的ID信息
+			student_id为非必须，是学生ID，如果提供，则展示课程信息的同时，也展示该学生该课程的学习进度
+			course_progress 整个课程的学习进度
+			chapter_progress 课程每一小节的进度，没有数据的小节进度一律为0
+			course_introduce 课程的相关基本信息
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程</title>
+	<meta name="renderer" content="webkit">
+	<link rel="icon" href="{$Think.const.SITE_URL}/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}font-awesome.min">
+    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
+
+</head>
+<body>
+	{/**下面这个header*/}
+    <include file="Public/header" />
+    {/**注释这样写，就不会在HTML里面展示出来了，这是TP模板引擎的写法*/}
+
+<div class='course center-block'>
+<div class='row'>
+		<div class='col-lg-8'>
+		<div class="m-nav">
+		<div class="btn-group  m-nav-btn">
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/all" 			class="btn btn-warning"	target="coursename"><i class="glyphicon glyphicon-th"></i>&nbsp;<span>全部</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/computer" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-inbox"></i>&nbsp;<span>计算机</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/ecoManagement" class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-euro"></i>&nbsp;<span>经济管理</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/psychology" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-heart"></i>&nbsp;<span>心理学</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/foreignLanguage" class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-road"></i>&nbsp;<span>外语</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/literaryHistory" class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-bookmark"></i>&nbsp;<span>文学历史</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/artDesign" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-pencil"></i>&nbsp;<span>艺术设计</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/engineering" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-wrench"></i>&nbsp;<span>工学</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/science" 		class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-globe"></i>&nbsp;<span>理学</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/biomedicine" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-tree-conifer"></i>&nbsp;<span>生命科学</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/philosophy" 	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;<span>哲学</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/law" 			class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-glass"></i>&nbsp;<span>法学</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/teachingMethod" class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-book"></i>&nbsp;<span>教育教学</span></a>
+			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/elseCourse"	class="btn btn-link"	target="coursename"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;<span>其他</span></a>
+		</div>
+		</div>
+		{/*下面使用的是iframe,默认显示的是所有的课程,我这里长宽就写死了，需要改成自适应的*/}
+		<div>
+		  <iframe id="CourseList" scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/CourseName/all" name="coursename" width="930px"  ></iframe>
+		</div>
+		</div>
+		{/*热门课程的iframe*/}
+		<div class='col-lg-2 col-lg-offset-1'>
+		  <iframe id="hotCourseList" scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/HotCourse/hotCourseList" name="coursename"></iframe>
+		</div>
+		<script>
+		$("#CourseList").load(function(){
+		var mainheight = $(this).contents().find("body").height();
+		$(this).height(mainheight);
+		}); 
+		$("#hotCourseList").load(function(){
+		var mainheight = $(this).contents().find("body").height();
+		$(this).height(mainheight);
+		});
+		window.onscroll=function(){
+			if($(document).scrollTop()>148){
+				$("#hotCourseList").css('position','fixed').css('top','2px')
+			} 
+			if($(document).scrollTop()<148){
+				$("#hotCourseList").css('position','')
+			}
+		}
+		</script>
+		</div>
+</div>
+		
+    {/*这里放置的是bottom*/}
+    <include file="Public/footer" />
+	<script src="{$Think.const.ADMIN_JS_URL}bootstrap.min.js"></script>
+    <script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
+    <script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
+    <script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
+</body>
+</html>

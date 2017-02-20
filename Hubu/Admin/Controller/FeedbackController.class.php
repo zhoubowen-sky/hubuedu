@@ -14,22 +14,26 @@ class FeedbackController extends Controller {
             //show_bug($rst);
         }
         
-        
         //用户留言的浏览与管理页面
 		//echo "feedback";
 		//var_dump(get)
-		$feedback = D('Feedback');
-		$info = $feedback->select();//从数据库中查询出数据存储在$info中
+		//从数据库中查询出数据，并输出到前台模板
+        $m = M('Feedback');
+        $where = '';
+        $p = getpage($m,$where,6);
+        $list = $m->field(true)->where($where)->select();
+        $this->list = $list;
+        $this->page = $p->show();
+        $this->assign('info',$list);
+        
+		//$feedback = D('Feedback');
+		//$info = $feedback->select();//从数据库中查询出数据存储在$info中
 		//show_bug($info);
-		$this->assign('info',$info);
+		//$this->assign('info',$info);
 		$this->display();
 	}
 	
-	function find1(){
-	    $info = D('Feedback');
-	    $z = $info->find(1);
-	    show_bug($z);
-	}
+	
 	
 	function emailCheck(){
 	    $a = think_send_mail('zhoubowen.sky@foxmail.com','发件人','在线学习平台','这是一封测试邮件，无需回复！不要太在意为什么是126邮箱。。。这并不重要。。。');
