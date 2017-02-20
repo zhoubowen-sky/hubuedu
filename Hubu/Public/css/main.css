@@ -16,64 +16,63 @@ a{text-decoration:none}
     background: #2e323e;
 }
 .header-top .row{
-    width: 1340px;
+    width: 98%;
     height: 100px;
     margin-left: auto;
     margin-right: auto;
 }
 .header-top .header-img{
-     width: 255px;
      margin-top: 30px;
 }
 .header-top .logo{
     padding-right: 0;
+	margin-left:7%;
+	position: relative;
+    top: 33px;
 }
 .header-top .head{
     padding-left: 0;
-}
-.header-top .search-login{
-    padding-left: 35px;
+	margin-left:3%;
 }
 .header-top .row ul{
     width: auto;
     height:100px;
 }
+.header-top .search-login{
+	padding-right:4%;
+    position: relative;
+    top: 30px;
+}
 .header-top .row li{
-    width: 100px;
+    width: 24%;
     height: 100px;
 }
 .header-top .row .ul-a{
     text-decoration:none;
     color: white;
-    font-size: 21px;
+    font-size: 18px;
     position: relative;
     top: 33px;
-    left: 23px;
+    left: 33%;
 }
 .header-top .row .ul-a1{
     text-decoration:none;
     color: white;
-    font-size: 21px;
+    font-size: 18px;
     position: relative;
     top: 33px;
-    left: 1px;
+	left:10%;
 }
 .header-top .row li:hover{
     background: #3b404d;
 }
-.header-top .row .search{
-    width: 50%;
-    height: auto;
-    position: relative;
-    top: 33px;
-	right:15px;
-}
+
 .header-top .row .login{
     width: 40%;
     height: auto;
     position: relative;
-    top: 5px;
-    left: 230px;
+	left:21%;
+    top: 3px;
 }
 .header-top .row .login a{
     text-decoration:none;
@@ -84,10 +83,10 @@ a{text-decoration:none}
     color: white;
 }
 .header-top .row .login-1{
-    width: 40%;
+    width: 170px;
     height: auto;
     position: relative;
-    left: 230px;
+	top: 30px;
 }
 .header-top .row .login-1 a{
     text-decoration:none;
