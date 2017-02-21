@@ -68,16 +68,15 @@ a{text-decoration:none}
 }
 
 .header-top .row .login{
-    width: 40%;
+	padding:0;
     height: auto;
     position: relative;
-	left:21%;
-    top: 3px;
+    top: 35px;
 }
 .header-top .row .login a{
     text-decoration:none;
     color: lightgoldenrodyellow;
-    font-size: 16px;
+    font-size: 15px;
 }
 .header-top .row .login span{
     color: white;
