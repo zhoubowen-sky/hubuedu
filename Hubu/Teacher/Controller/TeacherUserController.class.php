@@ -197,7 +197,7 @@ class TeacherUserController extends Controller{
 	                'adminuser_pic' => /* $config['rootPath']. */$z['savepath'].$z['savename'], /**这里存储用户头像的文件路径*/
 	            );
 	            //show_bug($user_info);
-	            $res = $info->where('adminuser_id = %s',array($_POST['Teacheruser_id']))->save($user_info);
+	            $res = $info->where('adminuser_id = %s',array($_POST['adminuser_id']))->save($user_info);
 	            //show_bug($res);
 	            //根据$resault值判断是否修改成功，给予用户提示信息
 	            if($res){
