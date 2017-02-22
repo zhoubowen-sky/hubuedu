@@ -5,37 +5,32 @@
     <title>个人中心</title>
 	<meta name="renderer" content="webkit">
 	<link rel="icon" href="{$Think.const.SITE_URL}/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}pintuer.css">
 	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}font-awesome.min">
-	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}admin.css">
 	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
 	<script src="{$Think.const.ADMIN_JS_URL}jquery.js"></script>
-	<script src="{$Think.const.ADMIN_JS_URL}pintuer.js"></script>
 
 </head>
 <body>
 	{/**下面这个header*/}
     <include file="Public/header" />
-    
-    <div><h2>我的课程</h2></div>
+    <div style='width:800px;height:auto;' class='well center-block'>
+    <div><h1 style='margin-bottom:25px;'>我的课程</h1></div>
     <foreach name='myCourseInfo' item='myCourseInfo'>
-		<div class="class-media">
-		<div class="media">
+		<div class="class-media" style='height:210px;width:400px;'>
+		<div class="media" style='height:200px;margin-left:25px;'>
             {/**这里是跳转到课程列表的链接，例如，跳转到高等数学课程Chapter的网页链接,course_name_code是该课程在数据表里面的代码，也可以用ID表示，实际上与ID值course_name_id相同*/}
             
             <div class="media-body">
-                <p class="class-media-name">{$myCourseInfo.course_name_name}</p>
-                <p class="class-media-teacher">讲师/主讲人：{$myCourseInfo.course_name_adder}</p>
-                <p class="class-media-contain">课程简介：{$myCourseInfo.course_name_intro}</p>
-                <p class="">我的学习进度：{$myCourseInfo.course_progress}</p>
-                <a href="{$Think.const.SITE_URL}index.php/Student/I/deleteChoosedCourse/course_name_id/{$myCourseInfo.course_name_id}">退出该课程</a>
-				<a class="media-left" href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$myCourseInfo.course_name_id}" target="_blank">继续学习</a>
-            </div>
-            {/**没有评分则展示评分选项，已经评过就不展示评分选项*/}
+                <h3 class="class-media-name" style='margin-top:0;'>{$myCourseInfo.course_name_name}</h3>
+                <p class="class-media-teacher" style='font-size:16px;'>讲师/主讲人：{$myCourseInfo.course_name_adder}</p>
+                <!--<p class="class-media-contain">课程简介：{$myCourseInfo.course_name_intro}</p>-->
+				
+                <p style='font-size:16px;'>我的学习进度：{$myCourseInfo.course_progress}</p>
+				 {/**没有评分则展示评分选项，已经评过就不展示评分选项*/}
             <if condition="$myCourseInfo.course_name_score eq 0">
             	<form method="post" action="__MODULE__/I/marking/course_name_id/{$myCourseInfo.course_name_id}" id="marking">
-			        <li>请给课程打分：
+			        <li style="list-style:none;margin-bottom:10px;"><span style='font-size:16px;'>请给课程打分：</span>
 			          <select name="choose_course_score" class="input"style="width:100px; line-height:17px; display:inline-block">
 			            <option value="0">待打分</option>
 			            <option value="1">1分</option>
@@ -49,83 +44,68 @@
 			            <option value="9">9分</option>
 			            <option value="10">10分</option>
 			          </select>
-			          <input type="submit" name="submit" id="submit" value="提交评分" />
+			          <input type="submit" class="btn btn-primary btn-xs" name="submit" id="submit" value="提交评分" style='height:24px;position:relative;bottom:2px;left:5px;'/>
 			        </li>
         		</form>
             <else />
-            	<div>你对该课程的评分为：{$myCourseInfo.course_name_score}分</div>
+            	<div><p style='font-size:16px;'>你对该课程的评分为：{$myCourseInfo.course_name_score}分</p></div>
             </if>
+			<div class="btn-group" role="group">
+                <a class="btn btn-default" href="{$Think.const.SITE_URL}index.php/Student/I/deleteChoosedCourse/course_name_id/{$myCourseInfo.course_name_id}">退出该课程</a>
+				<a class="btn btn-default" href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$myCourseInfo.course_name_id}" target="_blank">继续学习</a>
+            </div>
+			</div>
+           
         </div>
 		</div>
     </foreach>
     
     
-    <div><h2>我的个人信息(下面表单是直接从后台复制过来的，包括样式文件)</h2></div>
+    <div><h1 style='margin-bottom:25px;'>我的个人信息</h1></div>
     <!--  以下表单为更改用户密码 -->
+	<div style='width:930px;padding-left:2%;'>
     <form method="post" class="form-x" action="updatePassword" id="updatePassword">
-      <div class="form-group">
-        <div class="label">
-          <label for="sitename">用户名：</label>
-        </div>
-        <div class="field">
-          <label style="line-height:33px;">
+      <div>
+        <div class="form-group" style='width:300px;'>
+          <label for="sitename">用户名：
+		  </label>
+          <label class="form-control">
            {$Think.session.student_user_username}
           </label>
         </div>
       </div>      
-      <div class="form-group">
-        <div class="label">
-          <label for="sitename">原始密码：</label>
-        </div>
-        <div class="field">
-          <input type="password" class="input w50" id="mpass" name="mpass" size="50" placeholder="请输入原始密码" data-validate="required:请输入原始密码" />       
-        </div>
+       <div class="form-group" style='width:300px;'>
+          <label>原始密码：</label>
+          <input type="password" class="form-control" id="mpass" name="mpass" size="50" placeholder="请输入原始密码" data-validate="required:请输入原始密码" />       
       </div>      
-      <div class="form-group">
-        <div class="label">
+      <div class="form-group" style='width:300px;'>
           <label for="sitename">新密码：</label>
-        </div>
-        <div class="field">
-          <input type="password" class="input w50" name="newpass" size="50" placeholder="请输入新密码" data-validate="required:请输入新密码,length#>=5:新密码不能小于5位" />         
-        </div>
+          <input type="password" class="form-control" name="newpass" size="50" placeholder="请输入新密码" data-validate="required:请输入新密码,length#>=5:新密码不能小于5位" />         
       </div>
-      <div class="form-group">
-        <div class="label">
+      <div class="form-group" style='width:300px;'>
           <label for="sitename">确认新密码：</label>
+          <input type="password" class="form-control" name="renewpass" size="50" placeholder="请再次输入新密码" data-validate="required:请再次输入新密码,repeat#newpass:两次输入的密码不一致" />          
         </div>
-        <div class="field">
-          <input type="password" class="input w50" name="renewpass" size="50" placeholder="请再次输入新密码" data-validate="required:请再次输入新密码,repeat#newpass:两次输入的密码不一致" />          
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="label">
-          <label></label>
-        </div>
-        <div class="field">
-          <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>   
-        </div>
+        <div>
+          <button class="btn btn-primary" type="submit"> 提交</button>   
       </div>      
     </form>
     
     <hr><!-- 间隔的横线 -->
     
     <!-- 以下表单为更改管理员非密码外的其他信息 -->
-    <div class="panel-head"><strong><span class="icon-key"></span> 修改管理员其他信息</strong></div>
+    <div><h2>修改其他信息<h2></div>
     
     <form method="post" class="form-x" action="updateUserInfo" enctype="multipart/form-data" id="updateUserInfo">
-      <div class="form-group">
-        <div class="label">
+     <div class="form-group" style='width:300px;'>
           <label for="sitename">E-mail：</label>
-        </div>
-        <div class="field">
-          <input type="text" class="input w50" id="student_user_email" name="student_user_email" size="50" value="{$studentUserInfo.student_user_email}"  />         
-        </div>
+        
+          <input type="text" class="form-control" id="student_user_email" name="student_user_email" size="50" value="{$studentUserInfo.student_user_email}"  />         
+       
       </div>
-      <div class="form-group">
-        <div class="label">
+     <div class="form-group" style='width:300px;'>
           <label for="sitename">性别：</label>
-        </div>
+       
         {/**这里做一个判断，用以显示不同的性别*/}
         <switch name="studentUserInfo.student_user_sex">
         	<case value="1">
@@ -145,64 +125,37 @@
 	        </case>
         </switch>
       </div>
-      <div class="form-group">
-        <div class="label">
+      <div class="form-group" style='width:300px;'>
           <label for="sitename">电话号码：</label>
-        </div>
-        <div class="field">
-          <input type="text" class="input w50" id="tel" name="student_user_tel" size="50" value="{$studentUserInfo.student_user_tel}"  />       
-        </div>
+          <input type="text" class="form-control" id="tel" name="student_user_tel" size="50" value="{$studentUserInfo.student_user_tel}"  />       
       </div> 
-      <div class="form-group">
-        <div class="label">
+      <div class="form-group" style='width:300px;'>
           <label for="sitename">QQ：</label>
+          <input type="text" class="form-control" id="qq" name="student_user_qq" size="50" value="{$studentUserInfo.student_user_qq}"  />       
         </div>
-        <div class="field">
-          <input type="text" class="input w50" id="qq" name="student_user_qq" size="50" value="{$studentUserInfo.student_user_qq}"  />       
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="label">
+<div class="form-group" style='width:300px;'>
           <label for="sitename">地址：</label>
+          <input type="text" class="form-control" id="addr" name="student_user_addr" size="50" value="{$studentUserInfo.student_user_addr}"  />       
         </div>
-        <div class="field">
-          <input type="text" class="input w50" id="addr" name="student_user_addr" size="50" value="{$studentUserInfo.student_user_addr}"  />       
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="label">
+<div class="form-group" style='width:300px;'>
           <label for="sitename">个人简介：</label>
+          <input type="text" class="form-control" id="introduction" name="student_user_intro" size="50" value="{$studentUserInfo.student_user_intro}"  />       
         </div>
-        <div class="field">
-          <input type="text" class="input w50" id="introduction" name="student_user_intro" size="50" value="{$studentUserInfo.student_user_intro}"  />       
-        </div>
-      </div>
       <div class="form-group">
-        <div class="label">
           <label for="sitename">头像：</label>
-        </div>
-        <div class="field">
-          <input type="file" class="input w50" name="student_user_pic" size="50" />       
-        </div>
+          <input type="file"  name="student_user_pic" size="50" />       
       </div> 
-      
-      <div class="form-group">
-        <div class="label">
-          <label></label>
-        </div>
-        <div class="field">
-          <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>   
-        </div>
-      </div>      
+	  <br>
+          <button class="btn btn-primary" type="submit"> 提交</button>   
+      <hr/>
+	  </div>  
     </form>
-    
-    
-    
+	</div>
+	
+	<br/>
     {/*这里放置的是bottom*/}
     <include file="Public/footer" />
 	<script src="{$Think.const.ADMIN_JS_URL}bootstrap.min.js"></script>
-    <script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
-    <script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
     <script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
 </body>
 </html>
