@@ -39,7 +39,7 @@
 	  {/**这里要展示所有的课程信息，让用户选择已经存在的课程*/}
 	  <div>所属课程</div>
 	  <foreach name='courseList' item='courseList'>
-    <label><input type="radio" name="course_section_course_name" value="{$courseList.course_name_id}" id="章所属课程_0" />{$courseList.course_name_name}</label>
+    <label><input type="radio" name="course_section_course_name" value="{$courseList.course_name_id}" id="course_section_course_name" />{$courseList.course_name_name}</label>
     </foreach>
 	  
 	  <input type="submit" name="submit2" id="submit2" value="提交" />
@@ -51,7 +51,7 @@
   		<label for="course_chapter_name">节名称</label><input type="text" name="course_chapter_name" id="course_chapter_name" placeholder="1.1 XXXX"  />
   		<div>所属课程</div>
 	  	<foreach name='courseList2' item='courseList2'>
-    		<label><input type="radio" name="course_chapter_course_name" value="{$courseList2.course_name_id}" id="章所属课程_1" />{$courseList2.course_name_name}</label>
+    		<label><input type="radio" name="course_chapter_course_name" value="{$courseList2.course_name_id}" id="course_chapter_course_name" />{$courseList2.course_name_name}</label>
     	</foreach>
     	
     	<div>所属章</div>
