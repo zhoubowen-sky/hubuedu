@@ -16,10 +16,11 @@ a{text-decoration:none}
     background: #2e323e;
 }
 .header-top .row{
-    width: 1340px;
+    width: 1100px;
     height: 100px;
     margin-left: auto;
     margin-right: auto;
+	background: #2e323e;
 }
 .header-top .header-img{
      width: 255px;
@@ -30,10 +31,9 @@ a{text-decoration:none}
 }
 .header-top .head{
     padding-left: 0;
+	margin-left:50px;
 }
-.header-top .search-login{
-    padding-left: 35px;
-}
+
 .header-top .row ul{
     width: auto;
     height:100px;
@@ -61,19 +61,22 @@ a{text-decoration:none}
 .header-top .row li:hover{
     background: #3b404d;
 }
-.header-top .row .search{
-    width: 50%;
-    height: auto;
-    position: relative;
+.header-top .search-login{
+    padding-left: 35px;
+	width:250px;
+	position: relative;
     top: 33px;
-	right:15px;
+	left:50px;
+}
+.header-top .row .search{
+    height: auto;
 }
 .header-top .row .login{
-    width: 40%;
+    width: 130px;
     height: auto;
     position: relative;
-    top: 5px;
-    left: 230px;
+    top: 32px;
+    left: 120px;
 }
 .header-top .row .login a{
     text-decoration:none;
@@ -84,10 +87,11 @@ a{text-decoration:none}
     color: white;
 }
 .header-top .row .login-1{
-    width: 40%;
+    width: 130px;
     height: auto;
     position: relative;
-    left: 230px;
+	top: 32px;
+    left: 120px;
 }
 .header-top .row .login-1 a{
     text-decoration:none;
