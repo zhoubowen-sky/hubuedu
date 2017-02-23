@@ -32,8 +32,8 @@
 				   &nbsp;&nbsp;{$section_chapter.course_chapter_name}</a>
 			    </div>
 				<div class="btn-group" role="group" style='margin-left:18px;'>
-					<button type="button" class="btn btn btn-info" onclick='window.open("{$Think.const.SITE_URL}index.php/Student/Video/index/course_name/{$section_chapter.course_chapter_course_name}/id/{$section_chapter.course_chapter_id}")'><i class="fa fa-play-circle"></i></button>
-					<button type="button" class="btn btn btn-success"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i></button>
+					<button type="button" style='padding:9px 12px 9px 12px;' class="btn btn btn-info" onclick='window.open("{$Think.const.SITE_URL}index.php/Student/Video/index/course_name/{$section_chapter.course_chapter_course_name}/id/{$section_chapter.course_chapter_id}")'><i class="fa fa-play-circle"></i></button>
+					<button type="button" style='padding:9px 12px 9px 12px;' class="btn btn btn-success"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i></button>
 				</div>
 			    {/**下面是进度条的代码，只输出一个小于100的数字，作为百分比，如果用户没有登录则不展示此进度条*/}
 			    <if condition = "isset($_SESSION['student_user_username'])">
