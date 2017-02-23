@@ -424,7 +424,7 @@ class CourseController extends Controller {
             $_POST['course_chapter_ppt_url'] = $z['course_chapter_ppt_url']['savepath'].$z['course_chapter_ppt_url']['savename'];/**这里存储PPT的文件路径*/
             $_POST['course_chapter_ppt_size'] = $z['course_chapter_ppt_url']['size'];//存储PPT文件的大小
             $_POST['course_chapter_time'] = date('Y-m-d H:i:s');
-            $_POST['course_chapter_adder_id'] = session('adminuser_id');//添加用户ID
+            //$_POST['course_chapter_adder_id'] = session('adminuser_id');//添加用户ID
             $course = D('CourseChapter')->create();
             //show_bug($course);
             //show_bug($_POST);
