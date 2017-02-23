@@ -36,6 +36,7 @@
 	<div>添加一章的表单</div>
 	<form id="form2" name="form2" method="post" action="addSection">
 	  <label for="course_section_name">章名称</label><input type="text" name="course_section_name" id="course_section_name" placeholder="第一章  XXXX" />
+	  <label for="course_section_section_num">章编号</label><input type="text" name="course_section_section_num" id="course_section_section_num" placeholder="填阿拉伯数字，第一章填 1  " />
 	  {/**这里要展示所有的课程信息，让用户选择已经存在的课程*/}
 	  <div>所属课程</div>
 	  <foreach name='courseList' item='courseList'>

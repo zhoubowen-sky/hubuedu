@@ -17,7 +17,7 @@ class CourseController extends Controller {
             if($course_name_class != null){
                 //传进来的值不为空
                 $m = M('CourseName');
-                $where = "course_name_class = $course_name_class";
+                $where = "course_name_class = $course_name_class ".' and course_name_adder_id = '.session('adminuser_id');
                 $p = getpage($m,$where,5);
                 $course_name = $m->field(true)->where($where)->select();
                 $this->course_name = $course_name;
@@ -27,7 +27,7 @@ class CourseController extends Controller {
             }else {
                 //传进来的值为空，即默认选了全选
                 $m = M('CourseName');
-                $where = '';
+                $where = 'course_name_adder_id = '.session('adminuser_id');
                 $p = getpage($m,$where,5);
                 $course_name = $m->field(true)->where($where)->select();
                 $this->course_name = $course_name;
@@ -39,7 +39,7 @@ class CourseController extends Controller {
             //没有表单提交
             //echo "无表单数据提交";
             $m = M('CourseName');
-            $where = '';
+            $where = 'course_name_adder_id = '.session('adminuser_id');
             $p = getpage($m,$where,5);
             $course_name = $m->field(true)->where($where)->select();
             $this->course_name = $course_name;
@@ -60,12 +60,50 @@ class CourseController extends Controller {
             //echo $course_name_id;
             $section_chapter = getCourseSectionChapterList($course_name_id);
             //show_bug($section_chapter);
+            
+            //输出章名称以及信息
+            $wheres = ' course_section_course_name = '.$course_name_id;
+            $section_info = D('CourseSection')->where($wheres)->select();
+            //show_bug($section_info);
+            
+            
+            $this->assign('section_info',$section_info);
             $this->assign('section_chapter',$section_chapter);
             $this->display();
         }else {
             echo "出现错误，请联系网站管理员。";
         }
     }
+    
+    /**
+     * 更新一章的章名称，章编号
+     * @param 章信息的ID $course_section_id
+     */
+    function updateSectionInfo($course_section_id){
+        //show_bug($_POST);
+        $section_info = D('CourseSection')->create();
+        //show_bug($section_info);
+        $rzt = D('CourseSection')->where("course_section_id = $course_section_id")->save();
+        if ($rzt){
+            $this->success('本章信息修改成功！');
+        }else {
+            $this->error('本章信息未作更改或者出现错误');
+        }
+    }
+    
+    /**
+     * 删除某一章以及盖章所有小节
+     * @param 章信息的ID $course_section_id
+     */
+    function deleteSection($course_section_id){
+        $rzt = D('CourseSection')->where("course_section_id = $course_section_id")->delete();
+        if ($rzt){
+            $this->success('本章信息删除成功！');
+        }else {
+            $this->error('本章信息未作更改或者出现错误');
+        }
+    }
+    
 	
     /**
      * TODO 修改课程节的信息
@@ -277,7 +315,8 @@ class CourseController extends Controller {
      * 用于展示添加课程模板的方法
      */
     function showAddCourse(){
-        $courseList = D('CourseName')->select();
+        $wheres = 'course_name_adder_id = '.session('adminuser_id');
+        $courseList = D('CourseName')->where($wheres)->select();
         $sectionList = D('CourseSection')->select();
         //show_bug($sectionList);
         //show_bug($courseList);
@@ -317,6 +356,7 @@ class CourseController extends Controller {
             }
             $_POST['course_name_pic'] = $z['savepath'].$z['savename'];/**这里存储用户头像的文件路径*/
             $_POST['course_name_time'] = date('Y-m-d H:i:s');
+            $_POST['course_name_adder_id'] = session('adminuser_id');//添加用户的ID
             $course = D('CourseName')->create();
             //show_bug($course);
             //show_bug($_POST);
@@ -384,6 +424,7 @@ class CourseController extends Controller {
             $_POST['course_chapter_ppt_url'] = $z['course_chapter_ppt_url']['savepath'].$z['course_chapter_ppt_url']['savename'];/**这里存储PPT的文件路径*/
             $_POST['course_chapter_ppt_size'] = $z['course_chapter_ppt_url']['size'];//存储PPT文件的大小
             $_POST['course_chapter_time'] = date('Y-m-d H:i:s');
+            $_POST['course_chapter_adder_id'] = session('adminuser_id');//添加用户ID
             $course = D('CourseChapter')->create();
             //show_bug($course);
             //show_bug($_POST);

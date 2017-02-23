@@ -23,6 +23,29 @@
 		
 	</foreach>
 	
+	<foreach name = 'section_info' item = 'section_info'>
+		<div>
+			章名称：{$section_info.course_section_name} --- 章编号：{$section_info.course_section_section_num}
+		</div>
+		
+		<form name="updateSectionInfo" method="post" action="__MODULE__/Course/updateSectionInfo/course_section_id/{$section_info.course_section_id}">
+			
+			<div>
+				<label class="input-group-addon" for="course_section_name">章名称:</label> <input type="text" class="form-control" name="course_section_name" id="course_section_name" value="{$section_info.course_section_name}"> 
+			</div>
+			<div>
+				<label class="input-group-addon" for="course_section_section_num">章编号：</label> <input type="text" class="form-control" name="course_section_section_num" id="course_section_section_num" value="{$section_info.course_section_section_num}">
+			</div>
+			<br/>
+			<div>
+			<input class="btn btn-primary" type="submit" name="submit" id="submit" value="修改章信息">
+			</div>
+		</form>
+		<a href='__MODULE__/Course/deleteSection/course_section_id/{$section_info.course_section_id}'>删除本章以及改章所有小节</a>
+		<hr>
+	</foreach>
+	
+	
 	
 </body>
 </html>
