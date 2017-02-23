@@ -30,7 +30,7 @@ class TeacherUserController extends Controller{
 	            
 	            $rst = $user ->checkNamePwd($_POST['username'], $_POST['password']);
 	            //$rst如果为false，那说明输入的密码不正确，如果为一个数组，就说明输入正确，就可以生成session信息
-	            //show_bug($rst);
+	            show_bug($rst);
 	            if ($rst === false) {
 	                //echo "输入的用户名或者密码错误!";
 	                $this->error("输入的用户名或密码错误!");
@@ -54,11 +54,89 @@ class TeacherUserController extends Controller{
 	                session('adminuser_introduction',  $rst['adminuser_introduction']);//存储用户个人简介adminuser_introduction
 	                session('adminuser_pic',           $rst['adminuser_pic']);//存储用户头像路径信息
 	                //echo "登陆成功！";
+	                
+	                /***************************************教师此时同样需要模拟学生账户登录，用以得到预览课程的目的，教师账号与学生账号密码一样*************************************************/
+	                //检查学生用户数据表中是否有这个账户，如果有就直接生成session，没有就添加一条数据
+
+	                //验证码输入正确，账号密码校验
+	                $user = new \Model\StudentUserModel();//实例化StudentUserModel调用其中的checkNamePwd()方法,好对student_user数据库中的数据进行操作
+	                //检查数据库中是否有这条数据
+	                $rst0 = M('StudentUser')->where('student_user_email = '.'\''.$rst['adminuser_email'].'\'')->find();
+	                //show_bug($rst0);
+	                if (!empty($rst0)){
+	                $z = $user->checkNamePwd($rst['adminuser_email'], $rst['adminuser_pwd']);
+	                //show_bug($z);
+	                //判断账号密码是否验证成功
+	                if($z === false){
+	                    //账号密码输入错误
+	                    //$this->error("输入的用户名或密码错误!");
+	                    echo '账号密码输入错误';
+	                }else {
+	                    //账号密码输入正确
+	                    //进行账号激活校验，即student_user_verify字段，只有此字段为真（1）才能进行下一步操作，否则发送邮件激活
+	                    //$rst = $user->getField('student_user_verify');
+	                    $rst = $z['student_user_is_teacher'];
+	                    //show_bug($rst);
+	                    if ($rst){
+	                        /**********************************登陆成功后执行的操作***********************************/
+	                        //echo "登陆成功";
+	                        //show_bug($z);//数据库中查询到的用户信息那一条记录
+	                        //登录信息持久化，生成session，这里要存储的将是大量的信息，包括学生课程相关的信息
+	                        //性别在数据库中存储为1,2两种形式，如果为数字1就是男，数字2就是女，这里写一个判断
+	                        if ($z['student_user_sex'] == 1) {
+	                            session('student_user_sex','男');//存储用户性别adminuser_sex
+	                        } else if ($z['student_user_sex'] == 2){
+	                            session('student_user_sex','女');//存储用户性别adminuser_sex
+	                        } else {
+	                            session('student_user_sex','未知');//存储用户性别adminuser_sex
+	                        }
+	                        //在session中存储其他信息
+	                        session('student_user_id',$z['student_user_id']);//存储用户信息在数据表中的ID值student_user_id
+	                        session('student_user_username',$z['student_user_username']);//存储用户名student_user_username
+	                        session('student_user_email',$z['student_user_email']);//存储用户注册邮箱student_user_email
+	                        session('student_user_tel',$z['student_user_tel']);//存储电话号码
+	                        session('student_user_qq',$z['student_user_qq']);//存储QQ
+	                        session('student_user_addr',$z['student_user_addr']);//存储地址
+	                        session('student_user_pic',$z['student_user_pic']);//存储用户头像路径
+	                        session('student_user_intro',$z['student_user_intro']);//存储用户个人介绍
+	                         
+	                        //echo "session生成成功！";
+	                        //$this->success('登录成功！');
+	                        
+	                    }else {
+	                        $this->error('出现未知错误，请联系管理员',SITE_URL);
+	                    }
+	                }
+	            }else {
+	                //数据库中没有这条数据，插入一条数据，并指明这是教师账户
+	                $arr = array(
+	                    'student_user_username'   => $rst['adminuser_email'],
+	                    'student_user_email'      => $rst['adminuser_email'],
+	                    'student_user_pwd'        => $rst['adminuser_pwd'],
+	                    'student_user_is_teacher' => 1,
+	                );
+	                $rst1 = D('StudentUser')->add($arr);
+	                if (empty($rst1)){
+	                    echo '与教师账户相互映射的学生账户添加失败';
+	                }else {
+	                    echo '与教师账户相互映射的学生账户添加成功';
+	                    //生成session
+	                    //查询出刚添加的这条信息
+	                    $rst2 = M('StudentUser')->where('student_user_email = '.'\''.$rst['adminuser_email'].'\'')->find();
+	                    session('student_user_id',$rst2['student_user_id']);//存储用户信息在数据表中的ID值student_user_id
+	                    session('student_user_username',$rst['adminuser_email']);//存储用户名student_user_username
+	                    session('student_user_email',$rst['adminuser_email']);//存储用户注册邮箱student_user_email
+	                }
+	            }
+	                
+	                
+	                }
+	                
 	                //跳转到后台首页,Controller类的redirect()方法  $this->redirect('New/category', array('cate_id' => 2), 5, '页面跳转中...');
 	                //将参数array('cate_id' => 2)传递到index
 	                $this->redirect('TeacherIndex/index'/*,array('Teacheruser_username' => $rst['adminuser_username']) ,1,'正在登录到后台系统...' */);
 	            }
-	        }
+	        
 	    } else {
     	    //调用视图display()，直接展示login.html模板，display()没有参数那么调用的模板名称就与当前方法名一致
     	    $this->display();
@@ -138,6 +216,11 @@ class TeacherUserController extends Controller{
 	                    'adminuser_pwd' => $_POST['renewpass'],/* 获取表单中的新密码 */
 	                );
 	                $resault = $info->where('adminuser_id = %d',array(session('adminuser_id')))->save($arr);
+	                //同时更改与教师账户相映射的学生账户的密码
+	                $arr2 = array(
+	                    'student_user_pwd' => $_POST['renewpass'],/* 获取表单中的新密码 */
+	                );
+	                $resault2 = M('StudentUser')->where('student_user_id = %d',array(session('student_user_id')))->save($arr2);
 	                //show_bug($resault);
 	                //根据$resault值判断是否修改成功，给予用户提示信息
 	                if($resault){

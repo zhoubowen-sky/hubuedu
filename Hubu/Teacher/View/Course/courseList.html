@@ -52,7 +52,7 @@
         <th>类别</th>
         <th width="20%">课程简介</th>
         <th width="10%">更新时间</th>
-        <th width="310">操作</th>
+        <th width="410">操作</th>
       </tr>
       {/*下面使用模板循环输出相应课程的信息*/}
       <foreach name='course_name' item='course_name'>
@@ -82,8 +82,9 @@
           <td>{$course_name.course_name_time}</td>
           <td>
 	          <div class="button-group"> 
-		          <a class="button border-main" href="__MODULE__/Course/showCourseChapter/course_name_id/{$course_name.course_name_id}"><span class="icon-edit"></span> 查看</a> 
-		          <a class="button border-main" href="__MODULE__/Course/updateCourseInfo/course_name_id/{$course_name.course_name_id}"><span class="icon-edit"></span> 修改</a> 
+		          <a class="button border-main" href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$course_name.course_name_id}" target="_blank"><span class="icon-edit"></span> 预览课程</a> 
+		          <a class="button border-main" href="__MODULE__/Course/showCourseChapter/course_name_id/{$course_name.course_name_id}"><span class="icon-edit"></span> 章节编辑</a> 
+		          <a class="button border-main" href="__MODULE__/Course/updateCourseInfo/course_name_id/{$course_name.course_name_id}"><span class="icon-edit"></span> 课程编辑</a> 
 		          <a class="button border-red" href="__MODULE__/Course/deleteCourse/course_name_id/{$course_name.course_name_id}" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> 
 	          </div>
           </td>
