@@ -43,11 +43,13 @@
                     </div>
                 </div>
             </div>
+            <if condition = "isset($_SESSION['student_user_username'])">
 			<div class="pull-right" style='width:280px;height:100px;position:relative;bottom:75px;'>
                         <h2 class='text-center'  style='color:white'>课程进度</h2>
 						<br><br>
                         <p class='text-center' style='color:white;font-size:30px;margin-top:10px;'>{$course_progress}%</p>
             </div>
+            </if>
         </div>
         </div>
         {/**用户登录了就展示进度条，不登录就不展示*/}
