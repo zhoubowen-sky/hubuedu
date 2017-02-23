@@ -3,6 +3,12 @@
 namespace Student\Controller;
 use Think\Controller;
 class VideoController extends Controller {
+    
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
 	/**
 	 * 展示视频播放页的方法，并将课程的参数传递进来
 	 * @param 课程名的id $course_name

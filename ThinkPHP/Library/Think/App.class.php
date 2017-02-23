@@ -60,6 +60,12 @@ class App {
      * @return void
      */
     static public function exec() {
+        
+        /**
+         * CONTROLLER_NAME 控制器名称
+         * MODULE_NAME 模块名称 分组模块
+         * ACTION_NAME 操作方法名称
+         */
     
         if(!preg_match('/^[A-Za-z](\/|\w)*$/',CONTROLLER_NAME)){ // 安全检测
             $module  =  false;
@@ -86,6 +92,7 @@ class App {
             $action  =  'run';
         }else{
             //创建控制器实例
+            //实例化控制器
             $module  =  controller(CONTROLLER_NAME,CONTROLLER_PATH);                
         }
 
@@ -98,6 +105,7 @@ class App {
             // 是否定义Empty控制器
             $module = A('Empty');
             if(!$module){
+                //没有定义空控制器时进行空控制器操作，就输出错误信息
                 E(L('_CONTROLLER_NOT_EXIST_').':'.CONTROLLER_NAME);
             }
         }

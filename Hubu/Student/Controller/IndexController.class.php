@@ -3,6 +3,12 @@
 namespace Student\Controller;
 use Think\Controller;
 class IndexController extends Controller {
+    
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
 	/**
 	 * 展示网站首页的方法，默认调用的方法，index.html也是默认的模版，即首页
 	 */

@@ -4,6 +4,11 @@ namespace Student\Controller;
 use Think\Controller;
 class StudentUserController extends Controller {
     
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
     /**
 	 * 用户登录的方法，
 	 * 接收用户输入的表单数据（账户，密码，验证码），

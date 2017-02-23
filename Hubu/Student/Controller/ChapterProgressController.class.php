@@ -9,6 +9,10 @@ class ChapterProgressController extends Controller {
         show_bug($info);
     }
     
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
     
     
     /**

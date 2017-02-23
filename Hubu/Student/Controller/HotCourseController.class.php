@@ -3,6 +3,12 @@
 namespace Student\Controller;
 use Think\Controller;
 class HotCourseController extends Controller {
+    
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
     /**
      * "热门课程"的模版页面，展示模版页面并向其输出数据
      */

@@ -3,6 +3,12 @@
 namespace Student\Controller;
 use Think\Controller;
 class CourseChapterController extends Controller {
+    
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
 	/**
 	 * 用户点击课程后，例如点击“高等数学”，跳转到高等数学这门课程所有的章节列表页面
 	 */
