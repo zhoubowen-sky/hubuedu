@@ -16,6 +16,7 @@
 </style>
 </head>
 <body>
+<!--href='{$Think.const.SITE_URL}index.php/Student/Video/index/course_name/{$section_chapter.course_chapter_course_name}/id/{$section_chapter.course_chapter_id}' -->
 	<div class="chapter">
 	<foreach name = 'section_chapter' item = 'section_chapter'>
 		<div class="chapter-contain">
@@ -27,8 +28,7 @@
 				<div class='pull-left'>
 				<a id='list-group-item-{$section_chapter.course_chapter_id}' 
 				   class="list-group-item" 
-				   href='{$Think.const.SITE_URL}index.php/Student/Video/index/course_name/{$section_chapter.course_chapter_course_name}/id/{$section_chapter.course_chapter_id}' 
-				   target="_blank">
+				>
 				   &nbsp;&nbsp;{$section_chapter.course_chapter_name}</a>
 			    </div>
 				<div class="btn-group" role="group" style='margin-left:18px;'>
