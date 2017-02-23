@@ -28,6 +28,24 @@
      请更换支持HTML5的浏览器
     </p>
   </video>
+  
+  {/**课程章节列表*/}
+	<div class="video-controler scrollbar pull-left">
+		<foreach name = 'section_chapter' item = 'section_chapter'>
+			<ul class="video-controler-ul">
+			 <li class="video-controler-ul-first"><span class="video-controler-ul-title">{$Think.lang.$key}{/*这个是输出数组键名*/}</span></li>
+			<foreach name = 'section_chapter' item = 'section_chapter'>
+				{/*下面这个链接地址应该是，在点击后，视频播放界面的播放内容变为相应节的视频，和imooc视频播放界面一样，看能否用JS在这里实现点击后，更改上述video标签的url值，如果可以,下面就是视频url，如果不行，就再想其他方案*/}
+				 <li class="video-controler-ul-li">
+					 <a href="__MODULE__/Video/videoPlayer/video_url/{$section_chapter.course_chapter_video_url}/course_id/{$section_chapter.course_id}/chapter_id/{$section_chapter.chapter_id}/student_id/{$section_chapter.student_id}/chapter_current_time/{$section_chapter.chapter_current_time}" 
+					 target = "_self">{$section_chapter.course_chapter_name}</a>
+				 </li>
+			</foreach>
+		 </ul>
+		</foreach>
+	</div>
+  
+  
   <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
   <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
   <script>
