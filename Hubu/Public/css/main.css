@@ -479,10 +479,7 @@ a{text-decoration:none}
     padding-right: 26px;
 }
 .class-contain-btn-div{
-    width: 824px;
-    height: 56px;
-    padding-left: 10px;
-    padding-right: 10px;
+    margin-left:20px;
 }
 .class-contain-btn-div a{
     display: block;
