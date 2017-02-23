@@ -26,7 +26,7 @@
                 <p class="class-media-teacher" style='font-size:16px;'>讲师/主讲人：{$myCourseInfo.course_name_adder}</p>
                 <!--<p class="class-media-contain">课程简介：{$myCourseInfo.course_name_intro}</p>-->
 				
-                <p style='font-size:16px;'>我的学习进度：{$myCourseInfo.course_progress}</p>
+                <p style='font-size:16px;'>我的学习进度：{$myCourseInfo.course_progress} %</p>
 				 {/**没有评分则展示评分选项，已经评过就不展示评分选项*/}
             <if condition="$myCourseInfo.course_name_score eq 0">
             	<form method="post" action="__MODULE__/I/marking/course_name_id/{$myCourseInfo.course_name_id}" id="marking">
