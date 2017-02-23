@@ -31,7 +31,7 @@ a{text-decoration:none}
 }
 .header-top .head{
     padding-left: 0;
-	margin-left:50px;
+	margin-left:70px;
 }
 
 .header-top .row ul{
@@ -66,22 +66,22 @@ a{text-decoration:none}
 	width:250px;
 	position: relative;
     top: 33px;
-	left:50px;
+	left:30px;
 }
 .header-top .row .search{
     height: auto;
 }
 .header-top .row .login{
-    width: 130px;
+    width: 180px;
     height: auto;
     position: relative;
-    top: 38px;
-    left: 120px;
+    top: 40px;
+    left: 100px;
 }
 .header-top .row .login a{
     text-decoration:none;
     color: lightgoldenrodyellow;
-    font-size: 16px;
+    font-size: 14px;
 }
 .header-top .row .login span{
     color: white;
@@ -578,7 +578,7 @@ a{text-decoration:none}
     color: white;
 }
 .My-footer .footer-contain p>a{
-   text-decoration: none;
+    text-decoration: none;
     color: white;
 }
 .copyright{
