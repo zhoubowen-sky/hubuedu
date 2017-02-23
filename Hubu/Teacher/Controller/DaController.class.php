@@ -51,26 +51,42 @@ class DaController extends Controller {
         }
         //show_bug($student_info_list);
         //krsort($student_info_list);
-        /* 
-        $student_high_90 = array();//全部学完的学生,大于等于90
-        $student_low_80 = array();//低于80%的学生
+        
+        $student_high_95 = array();//全部学完的学生,大于等于95
+        $student_low_95 = array();
+        $student_low_70 = array();//低于80%的学生
         $student_low_50 = array();
         $student_low_30 = array();
         
         foreach ($student_info_list as $kk => $vv){
-            switch ($vv['progress']){
-                case $vv['progress'] >= 90: $student_high_90[] = $vv;break;
-                case $vv['progress'] <= 80: $student_80[]  = $vv;break;
-                case $vv['progress'] <= 50: $student_50[]  = $vv;break;
-                case $vv['progress'] <= 15: $student_30[]  = $vv;break;
+            
+            if ($vv['progress'] >= 95){
+                $student_high_95[] = $vv;
+            }elseif (70 < $vv['progress'] && $vv['progress'] <= 95){
+                $student_low_95[]  = $vv;
+            }elseif (50 < $vv['progress'] && $vv['progress'] <= 70){
+                $student_low_70[]  = $vv;
+            }elseif (30 < $vv['progress'] && $vv['progress'] <= 50){
+                $student_low_50[]  = $vv;
+            }elseif ($vv['progress'] <= 30){
+                $student_low_30[]  = $vv;
+            }else {
+                
             }
-        }
-        //show_bug($student_high_90);
-        //show_bug($student_80);
-        show_bug($student_50);
-        show_bug($student_30); */
-        
-        
+            
+            
+        }/* 
+        show_bug($student_high_95);
+        show_bug($student_low_95);
+        show_bug($student_low_70);
+        show_bug($student_low_50);
+        show_bug($student_low_30);  */
+
+        $this->assign('student_high_95',$student_high_95);
+        $this->assign('student_low_95',$student_low_95);
+        $this->assign('student_low_70',$student_low_70);
+        $this->assign('student_low_50',$student_low_50);
+        $this->assign('student_low_30',$student_low_30);
         $this->assign('student_info_list',$student_info_list);
         $this->display();
     }

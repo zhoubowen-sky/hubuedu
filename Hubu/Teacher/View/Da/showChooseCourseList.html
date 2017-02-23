@@ -28,7 +28,110 @@
       </foreach>
     </table>
     
-    <div>课程进度低于50%的学生：</div>
+    <div>课程进度大于95%的学生：</div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>邮箱</th>
+        <th>学习进度</th>
+        <th>操作</th>
+      </tr>
+      {/*下面使用模板循环输出相应课程的信息*/}
+      <foreach name='student_high_95' item='student_high_95'>
+         <tr>
+          <td>{$student_high_95.student_user_id}</td>
+          <td>{$student_high_95.student_user_username}</td>
+          <td>{$student_high_95.student_user_email}</td>
+          <td>{$student_high_95.progress}%</td>
+          <td><a href = "#">发推送消息</a></td>
+        </tr>
+      </foreach>
+    </table>
+    
+    <div>课程进度70-95%的学生：</div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>邮箱</th>
+        <th>学习进度</th>
+        <th>操作</th>
+      </tr>
+      {/*下面使用模板循环输出相应课程的信息*/}
+      <foreach name='student_low_95' item='student_low_95'>
+         <tr>
+          <td>{$student_low_95.student_user_id}</td>
+          <td>{$student_low_95.student_user_username}</td>
+          <td>{$student_low_95.student_user_email}</td>
+          <td>{$student_low_95.progress}%</td>
+          <td><a href = "#">发推送消息</a></td>
+        </tr>
+      </foreach>
+    </table>
+    
+    <div>课程进度50-70%的学生：</div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>邮箱</th>
+        <th>学习进度</th>
+        <th>操作</th>
+      </tr>
+      {/*下面使用模板循环输出相应课程的信息*/}
+      <foreach name='student_low_70' item='student_low_70'>
+         <tr>
+          <td>{$student_low_70.student_user_id}</td>
+          <td>{$student_low_70.student_user_username}</td>
+          <td>{$student_low_70.student_user_email}</td>
+          <td>{$student_low_70.progress}%</td>
+          <td><a href = "#">发推送消息</a></td>
+        </tr>
+      </foreach>
+    </table>
+    
+    <div>课程进度30-50%的学生：</div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>邮箱</th>
+        <th>学习进度</th>
+        <th>操作</th>
+      </tr>
+      {/*下面使用模板循环输出相应课程的信息*/}
+      <foreach name='student_low_50' item='student_low_50'>
+         <tr>
+          <td>{$student_low_50.student_user_id}</td>
+          <td>{$student_low_50.student_user_username}</td>
+          <td>{$student_low_50.student_user_email}</td>
+          <td>{$student_low_50.progress}%</td>
+          <td><a href = "#">发推送消息</a></td>
+        </tr>
+      </foreach>
+    </table>
+    
+    <div>课程进度小于30%的学生：</div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>邮箱</th>
+        <th>学习进度</th>
+        <th>操作</th>
+      </tr>
+      {/*下面使用模板循环输出相应课程的信息*/}
+      <foreach name='student_low_30' item='student_low_30'>
+         <tr>
+          <td>{$student_low_30.student_user_id}</td>
+          <td>{$student_low_30.student_user_username}</td>
+          <td>{$student_low_30.student_user_email}</td>
+          <td>{$student_low_30.progress}%</td>
+          <td><a href = "#">发推送消息</a></td>
+        </tr>
+      </foreach>
+    </table>
     
     
     
