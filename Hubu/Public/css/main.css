@@ -530,7 +530,10 @@ a{text-decoration:none}
     bottom:1px;
 }
 .chapter-class-list{
-    padding: 0 0 0 32px;
+    padding: 0 0 0 20px;
+}
+.chapter-class-list .list-group .list-group-item{
+	width:660px;
 }
 .chapter-class-list .list-group a{
     height: 40px;
@@ -539,6 +542,7 @@ a{text-decoration:none}
     color: #93999f;
     border: 0;
 }
+
 .chapter-class-list .list-group a:hover{
     background: #14191e;
     color: white;
