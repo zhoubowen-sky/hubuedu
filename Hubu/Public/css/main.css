@@ -58,6 +58,9 @@ a{text-decoration:none}
     top: 33px;
     left: 1px;
 }
+.header-top .row .ul-a1 span{
+	font-size:19px;
+}
 .header-top .row li:hover{
     background: #3b404d;
 }
@@ -76,12 +79,12 @@ a{text-decoration:none}
     height: auto;
     position: relative;
     top: 40px;
-    left: 100px;
+    left: 80px;
 }
 .header-top .row .login a{
     text-decoration:none;
     color: lightgoldenrodyellow;
-    font-size: 14px;
+    font-size: 13px;
 }
 .header-top .row .login span{
     color: white;
@@ -277,7 +280,7 @@ a{text-decoration:none}
 }
 /*课程页面*/
 .course{
-	width:1280px;
+	width:1150px;
 }
 .m-nav{
     width: 930px;
@@ -559,8 +562,11 @@ a{text-decoration:none}
     height: 180px;
 }
 .My-footer .row{
-    width: 1349px;
-    height: auto;
+    width: 1100px;
+    height: 180px;
+	background: #333;
+	margin-left:auto;
+	margin-right:auto;
 }
 .My-footer .footer-logo{
     margin-top: 30px;
@@ -572,6 +578,9 @@ a{text-decoration:none}
 }
 .My-footer .footer-contain{
     margin-top: 30px;
+	position:relative;
+	top: -20px;
+	left:230px;
 }
 .My-footer .footer-contain h3{
     border-left: 2px solid white;

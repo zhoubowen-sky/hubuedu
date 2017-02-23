@@ -17,8 +17,8 @@
     {/**注释这样写，就不会在HTML里面展示出来了，这是TP模板引擎的写法*/}
 
 <div class='course center-block'>
-<div class='row'>
-		<div class='col-lg-8'>
+<div class='row' style='width:1150px;'>
+		<div class='pull-left' width='930px'>
 		<div class="m-nav">
 		<div class="btn-group  m-nav-btn">
 			<a id="m-nav-other" href="{$Think.const.SITE_URL}index.php/Student/CourseName/all" 			class="btn btn-warning"	target="coursename"><i class="glyphicon glyphicon-th"></i>&nbsp;<span>全部</span></a>
@@ -43,7 +43,7 @@
 		</div>
 		</div>
 		{/*热门课程的iframe*/}
-		<div class='col-lg-2 col-lg-offset-1'>
+		<div class='pull-left'  style='width:200px;position:relative;left:35px;'>
 		  <iframe id="hotCourseList" scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/HotCourse/hotCourseList" name="coursename"></iframe>
 		</div>
 		<script>
