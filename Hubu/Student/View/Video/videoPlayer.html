@@ -2,10 +2,50 @@
 <head>
   <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
   <style>
+  .my-player{
+  width: 80%;
+  height: 600px;
+  float:left;
+  }
   #my-video{
-      width: 100%;
+      width: auto;
       height: 600px;
   }
+  .video-controler{
+    height: 600px;
+    width: 20%;
+    overflow-y:auto;
+    background: #14191e;
+	overflow-x: hidden;
+	float:left;
+}
+.video-controler-ul{
+    list-style: none;
+    margin-top: 20px;
+}
+.video-controler-ul-first{
+    width: 300px;
+    height: 21px;
+    padding-bottom: 10px;
+}
+.video-controler-ul-li{
+    width: 300px;
+    height: 21px;
+    margin-top: 15px;
+}
+.video-controler-ul-li a{
+    text-decoration: none !important;
+    color: #787d82;
+    font-size: 12px;
+    line-height: 20px;
+    margin-left: 15px;
+}
+.video-controler-ul-title{
+    font-size: 14px;
+    color: #787d82;
+    line-height: 20px;
+    text-align: left;
+}
   </style>
   <!-- If you'd like to support IE8 -->
   <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
@@ -20,17 +60,17 @@
 	{/**用以存储数据库存储的 上次视频播放的时间点，用以续播*/}
 	<input type="hidden" name="chapter_current_time" id="chapter_current_time" value="{$parameter.chapter_current_time}">
 	
-
-  <video id="my-video" class="video-js" controls preload="auto"  
-   data-setup="{}">
-    <source src="{$video_url}" type='video/mp4'>
-    <p class="vjs-no-js">
-     请更换支持HTML5的浏览器
-    </p>
-  </video>
-  
+<div class='my-player'>
+	<video id="my-video" class="video-js" controls preload="auto"  
+		data-setup="{}">
+		<source src="{$video_url}" type='video/mp4'>
+		<p class="vjs-no-js">
+		请更换支持HTML5的浏览器
+		</p>
+	</video>
+</div>
   {/**课程章节列表*/}
-	<div class="video-controler scrollbar pull-left">
+	<div class="video-controler scrollbar">
 		<foreach name = 'section_chapter' item = 'section_chapter'>
 			<ul class="video-controler-ul">
 			 <li class="video-controler-ul-first"><span class="video-controler-ul-title">{$Think.lang.$key}{/*这个是输出数组键名*/}</span></li>
