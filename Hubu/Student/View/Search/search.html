@@ -3,16 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <title>{$search_keywords}_搜索结果</title>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
+<script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
 </head>
 <body>
 	
-	
-	<form name="feedback" method="post" action="__MODULE__/Search/search">
+	<include file="Public/header" />
+	<!--<form name="feedback" method="post" action="__MODULE__/Search/search">
     	<input type="text" class="form-control" placeholder="输入课程关键字" name="search" id="search">
     	<input type="submit" name="submit" id="submit" value="搜索">
-    </form>
-	
-	<div>共找到{$search_num}个相关结果</div>
+    </form>-->
+	<div style='margin-left:auto;margin-right:auto;width:1100px;height:auto;min-height:300px;'>
+	<div style='margin-bottom:20px;'><span style='font-size:16px;margin-bottom:20px;'>共找到{$search_num}个相关结果</span></div>
 	
 	<foreach name = 'search' item = 'search'>
         <div class="class-media" id="class-media">
@@ -38,9 +41,16 @@
                         <span>课程简介：{$search.course_name_intro}<span>
 				</a>
 				</p>
+				<div class="row class-media-student">
+                <div class="col-lg-3"><i class="glyphicon glyphicon-user"></i>&nbsp;<span>{$voo.course_choosed_count}人学习</span></div>
+                <div class="col-lg-3 class-media-time"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;<span>共{$voo.course_chapter_count}节</span></div>
+                </div>
             </div>
         </div>
 		</div>
     </foreach>
-</body>
+	</div>
+	<include file="Public/footer" />
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
 </html>
