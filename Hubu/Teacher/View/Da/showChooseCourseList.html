@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>学生用户的名单</title>
+</head>
+<body>
+
+	<a href="__MODULE__/Da/showMyCourse">返回</a>
+	
+	<table>
+      <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>邮箱</th>
+        <th>学习进度</th>
+        <th>操作</th>
+      </tr>
+      {/*下面使用模板循环输出相应课程的信息*/}
+      <foreach name='student_info_list' item='student_info_list'>
+         <tr>
+          <td>{$student_info_list.student_user_id}</td>
+          <td>{$student_info_list.student_user_username}</td>
+          <td>{$student_info_list.student_user_email}</td>
+          <td>{$student_info_list.progress}%</td>
+          <td><a href = "#">发推送消息</a></td>
+        </tr>
+      </foreach>
+    </table>
+    
+    <div>课程进度低于50%的学生：</div>
+    
+    
+    
+</body>
+</html>
