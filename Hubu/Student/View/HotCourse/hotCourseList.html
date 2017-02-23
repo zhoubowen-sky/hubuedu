@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
 </head>
 <body>
-<nav class="navbar" style='width:230px;'>
-<div class="container">
+
+<div class="container-fluid">
     <ul class="nav nav-pills nav-stacked">
-	<li role="presentation" class="active"><a>热门课程</a></li>
+	<li role="presentation" class="active" style='height:38px;'><a>热门课程</a></li>
         <foreach name='hot' item='hot'>
-		<li role="presentation"><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$hot.course_name_id}" target='_blahk'><span>{$hot.course_name_name}</span></a></li>
+		<li role="presentation" style='height:38px;'><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$hot.course_name_id}" target='_blahk'><span>{$hot.course_name_name}</span></a></li>
 		</foreach>
 	</ul>
 </div>
-</nav>
+
 	<script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
 	<script>
 	$(window.parent.document).find("#hotCourseList").load(function(){

@@ -44,7 +44,7 @@
 		</div>
 		{/*热门课程的iframe*/}
 		<div class='pull-left'  style='width:200px;position:relative;left:35px;'>
-		  <iframe id="hotCourseList" scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/HotCourse/hotCourseList" name="coursename"></iframe>
+		  <iframe id="hotCourseList" scrolling="no" frameborder="0" src="{$Think.const.SITE_URL}index.php/Student/HotCourse/hotCourseList" name="coursename" width="200px"></iframe>
 		</div>
 		<script>
 		$("#CourseList").load(function(){
@@ -53,11 +53,12 @@
 		}); 
 		$("#hotCourseList").load(function(){
 		var mainheight = $(this).contents().find("body").height();
-		$(this).height(mainheight);
+		var hotmainheight = mainheight-10;
+		$(this).height(hotmainheight);
 		});
 		window.onscroll=function(){
 			if($(document).scrollTop()>148){
-				$("#hotCourseList").css('position','fixed').css('top','2px')
+				$("#hotCourseList").css('position','fixed').css('top','2px');
 			} 
 			if($(document).scrollTop()<148){
 				$("#hotCourseList").css('position','')
@@ -66,7 +67,6 @@
 		</script>
 		</div>
 </div>
-		
     {/*这里放置的是bottom*/}
     <include file="Public/footer" />
 	<script src="{$Think.const.ADMIN_JS_URL}bootstrap.min.js"></script>
