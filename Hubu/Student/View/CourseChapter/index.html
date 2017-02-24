@@ -55,7 +55,7 @@
         {/**用户登录了就展示进度条，不登录就不展示*/}
         <if condition = "isset($_SESSION['student_user_username'])">
 		<div class="progress" style='height:70px;border-radius:0;margin-bottom:0;'>
-			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {$course_progress}%;min-width: 13em;">
+			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {$course_progress}%;min-width: 17em;">
 			<span style="font-size:28px;position:relative;top:22px;">课程进度：{$course_progress}%<span>
 			</div>
 		</div>
