@@ -4,6 +4,11 @@ namespace Student\Controller;
 use Think\Controller;
 class IController extends Controller {
     
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
     function index(){
         //先判断用户是否登陆
         if (isset($_SESSION['student_user_id'])){

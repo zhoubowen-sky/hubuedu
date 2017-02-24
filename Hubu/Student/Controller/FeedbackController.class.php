@@ -3,6 +3,12 @@
 namespace Student\Controller;
 use Think\Controller;
 class FeedbackController extends Controller {
+    
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
 	/***
 	 * 处理用户反馈表单的方法
 	 */

@@ -3,6 +3,12 @@
 namespace Student\Controller;
 use Think\Controller;
 class CourseClassController extends Controller {
+    
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
     /**
      * 读取数据库中课程类别的信息
      * 读出有数据库表hubu_course_class多少种类别

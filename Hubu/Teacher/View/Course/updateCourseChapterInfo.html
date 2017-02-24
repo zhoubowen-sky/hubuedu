@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{$course_chapter_info.course_chapter_name}</title>
+</head>
+<body>
+	
+	<form name="form1" method="post" action="__MODULE__/Course/updateCourseChapterInfo/course_chapter_id/{$course_chapter_info.course_chapter_id}" enctype="multipart/form-data">
+	  <label for="course_chapter_name">小节名称</label><input type="text" name="course_chapter_name" id="course_chapter_name" value="{$course_chapter_info.course_chapter_name}"><br><br>
+	  <label for="course_chapter_adder">小节添加者</label><input type="text" name="course_chapter_adder" id="course_chapter_adder" value="{$course_chapter_info.course_chapter_adder}"><br><br>
+	  <input type="submit" id="submit_button" value="提交"><br><br>
+	</form>
+	
+	
+	  
+	<form name="form2" method="post" action="__MODULE__/Course/updateCourseChapterInfo_video/course_chapter_id/{$course_chapter_info.course_chapter_id}" enctype="multipart/form-data">
+		{/**视频文件修改的表单*/}
+		<label for="course_chapter_video_url">视频文件</label>
+		<input type="file" name="course_chapter_video_url" id="course_chapter_video_url"><br><br>
+		<input type="submit" id="submit_button" value="提交"><br><br>
+	</form>
+	
+	<form name="form3" method="post" action="__MODULE__/Course/updateCourseChapterInfo_ppt/course_chapter_id/{$course_chapter_info.course_chapter_id}" enctype="multipart/form-data">
+		{/**视频文件修改的表单*/}
+		<label for="course_chapter_ppt_url">PPT文件</label>
+		<input type="file" name="course_chapter_ppt_url" id="course_chapter_ppt_url"><br><br>
+		<input type="submit" id="submit_button" value="提交"><br><br>
+	</form>
+	
+	
+	
+</body>
+</html>

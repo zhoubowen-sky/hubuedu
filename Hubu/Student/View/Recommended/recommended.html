@@ -5,12 +5,12 @@
     <title>精品推荐</title>
 	<meta name="renderer" content="webkit">
 	<link rel="icon" href="{$Think.const.SITE_URL}/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
 </head>
 <body>
-	<a href='http://web.hubu.edu:3002/index.php/Student/Recommended/recommended' target='_blank'>精品推荐，方便调试，弄好后直接删了</a>
+	<!--<a href='http://web.hubu.edu:3002/index.php/Student/Recommended/recommended' target='_blank'>精品推荐，方便调试，弄好后直接删了</a>-->
 	<p class="recommended-class-p text-center"><span class="recommended-class-text">精品课程</span></p>
 	
 	{/**下面计算机是一个类别，然后相应的下面我会输出一个类别为计算机的课程，其中计算机类别ID为1，经济管理为2，以此类推，这样可以使用这个来对应两者关系*/}
@@ -21,7 +21,7 @@
             <a href="#2" aria-controls="2" role="tab" data-toggle="tab"  class="list-group-item"><i class="glyphicon glyphicon-euro"></i>&nbsp;<span>经济管理</span></a>
             <a href="#6" aria-controls="6" role="tab" data-toggle="tab"  class="list-group-item"><i class="glyphicon glyphicon-pencil"></i>&nbsp;<span>艺术设计</span></a>
             <a href="#7" aria-controls="7" role="tab" data-toggle="tab"  class="list-group-item"><i class="glyphicon glyphicon-wrench"></i>&nbsp;<span>工学</span></a>
-            <a href="#8" aria-controls="8" role="tab" data-toggle="tab"  class="list-group-item"><i class="glyphicon glyphicon-wrench"></i>&nbsp;<span>理学</span></a>
+            <a href="#8" aria-controls="8" role="tab" data-toggle="tab"  class="list-group-item"><i class="glyphicon glyphicon-globe"></i>&nbsp;<span>理学</span></a>
             <a href="#9" aria-controls="9" role="tab" data-toggle="tab"  class="list-group-item"><i class="glyphicon glyphicon-tree-conifer"></i>&nbsp;<span>生命科学</span></a>
             <a href='__MODULE__/Course/index' target='_blank' class="list-group-item"><i class="glyphicon glyphicon-menu-hamburger"></i>&nbsp;<span>更多</span></a>
         </div>
@@ -39,12 +39,12 @@
 	<div class="recommended-right pull-left tab-content">
 		<foreach name='recommended' item='recommended'>
 		<div id='{$recommended.course_name_class}' role="tabpanel" class="tab-pane">
-			<a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$recommended.course_name_id}" target='_blahk'><img alt="..." src="{$Think.const.ADMIN_IMG_UPLOADS}{$recommended.course_name_pic}" width="260px" height="150px"></a>
-			<div><span class="">课程名称：{$recommended.course_name_name}</span></div>
-			<div><span class="">讲师：{$recommended.course_name_adder}</span></div>
-			<div><span class="">{$recommended.course_name_choosed_num}人参加</span></div>
-			<div><span class="">课程简介：{$recommended.course_name_intro}</span></div>
-			<div>课程类别ID，可以用这个值区分不同的课程信息{$recommended.course_name_class}</div>
+			<div class="recommended-right-img"><a href="{$Think.const.SITE_URL}index.php/Student/CourseChapter/index/course_name_id/{$recommended.course_name_id}" target='_blahk'><img alt="..." src="{$Think.const.ADMIN_IMG_UPLOADS}{$recommended.course_name_pic}" width="400px" height="231px"></a></div>
+			<div class="recommended-right-class-title text-center"><span class=""><!--课程名称：-->{$recommended.course_name_name}</span></div>
+			<div class="recommended-right-class-title text-center"><span class="">讲师：{$recommended.course_name_adder}</span></div>
+			<div class="recommended-right-class-title text-center"><span class="">{$recommended.course_name_choosed_num}人参加</span></div>
+			<div class="recommended-right-class-contain center-block"><p class=""><!--课程简介：-->{$recommended.course_name_intro}</p></div>
+			<div id="{$recommended.course_name_class}1231321213122"><!--课程类别ID，可以用这个值区分不同的课程信息--></div>
 		</div>
 		</foreach>
 	</div>
@@ -62,6 +62,6 @@
 	$(this).tab('show')
 	});
 	</script>
-<script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}bootstrap.min.js'></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

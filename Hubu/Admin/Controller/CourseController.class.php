@@ -355,6 +355,7 @@ class CourseController extends Controller {
             //print_r($_FILES);
             if(empty($_FILES['course_chapter_video_url']['tmp_name'])){
                 //没有附件上传
+                //exit();
                 $this->error('没有选择视频文件');
             }else {
                 //自定义文件接收相关配置
@@ -369,6 +370,7 @@ class CourseController extends Controller {
                 $z = $upload->upload();//执行上传操作，如果视频和PPT都有，这里需要上传两个文件，PPT以及视频
                 //print_r($z);
                 //show_bug($z);
+                //exit();
                 if (!$z){
                     //show_bug($upload->getError());
                     $this->error($upload->getError());//输出错误
@@ -388,6 +390,7 @@ class CourseController extends Controller {
             $rst = D('CourseChapter')->add();//添加数据到数据库
             if ($rst){
                 $this->success('数据添加成功！');
+                //echo '数据添加成功';
             }else {
                 $this->error('数据添加失败！');
             }

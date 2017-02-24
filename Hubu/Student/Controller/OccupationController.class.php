@@ -3,6 +3,12 @@
 namespace Student\Controller;
 use Think\Controller;
 class OccupationController extends Controller {
+    
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
     /**
      * "职业"选项的网页模板展示，与IndexController同等级别
      */

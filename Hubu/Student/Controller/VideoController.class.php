@@ -3,6 +3,12 @@
 namespace Student\Controller;
 use Think\Controller;
 class VideoController extends Controller {
+    
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
 	/**
 	 * 展示视频播放页的方法，并将课程的参数传递进来
 	 * @param 课程名的id $course_name
@@ -36,36 +42,36 @@ class VideoController extends Controller {
         //echo $id;
         //根据传进来的参数，获取课程的信息，该节视频的信息，该门课程的信息
         //$course_chapter_sql = "select * from hubu_course_chapter where course_chapter_name = $course_name and course_chapter_id = $id";
-        $course_info = getCourseSectionChapterList($course_name);
-        //show_bug($course_info);
-        /**下面用循环将$course_info 里面的url地址统一用url安全编码方法进行编码，同时将课程进度记录要用的参数拼接进去**/
-        foreach ($course_info as $k => &$v){
-            //show_bug($v);
-            foreach ($v as $kk => &$vv){
-                //执行url编码
-                //echo $vv['course_chapter_video_url'].'<br>';
-                $vv['course_chapter_video_url'] = urlsafe_b64encode(ADMIN_IMG_UPLOADS.$vv['course_chapter_video_url']);
-                //echo $vv['course_chapter_video_url'];
+//         $course_info = getCourseSectionChapterList($course_name);
+//         //show_bug($course_info);
+//         /**下面用循环将$course_info 里面的url地址统一用url安全编码方法进行编码，同时将课程进度记录要用的参数拼接进去**/
+//         foreach ($course_info as $k => &$v){
+//             //show_bug($v);
+//             foreach ($v as $kk => &$vv){
+//                 //执行url编码
+//                 //echo $vv['course_chapter_video_url'].'<br>';
+//                 $vv['course_chapter_video_url'] = urlsafe_b64encode(ADMIN_IMG_UPLOADS.$vv['course_chapter_video_url']);
+//                 //echo $vv['course_chapter_video_url'];
                 
-                /**课程进度记录相关的代码*/
-                //课程进度记录需要四个参数，课程ID，小节ID，用户ID，还有播放进度，将其加入到下面的section_chapter中
-                //需要添加的信息有 课程ID 用户ID ，小节ID已经有了,
-                $vv['course_id'] = $course_name;
-                $vv['student_id'] = $_SESSION['student_user_id'];
-                $vv['chapter_id'] = $vv['course_chapter_id'];//换个名字在存储一次
+//                 /**课程进度记录相关的代码*/
+//                 //课程进度记录需要四个参数，课程ID，小节ID，用户ID，还有播放进度，将其加入到下面的section_chapter中
+//                 //需要添加的信息有 课程ID 用户ID ，小节ID已经有了,
+//                 $vv['course_id'] = $course_name;
+//                 $vv['student_id'] = $_SESSION['student_user_id'];
+//                 $vv['chapter_id'] = $vv['course_chapter_id'];//换个名字在存储一次
                 
-                //该小节课程之前的学习进度
-                $wheres = 'chapter_progress_student = '.$_SESSION['student_user_id'].' and chapter_progress_course = '.$course_name.' and chapter_progress_chapter = '.$vv['course_chapter_id'];
-                //echo $wheres;
-                $chapter_current_time_tmp = M('ChapterProgress')->where($wheres)->find();
-                //show_bug($chapter_current_time_tmp);
-                //echo $chapter_current_time_tmp['chapter_progress_current_time'];
-                $vv['chapter_current_time'] = (int)$chapter_current_time_tmp['chapter_progress_current_time'];
+//                 //该小节课程之前的学习进度
+//                 $wheres = 'chapter_progress_student = '.$_SESSION['student_user_id'].' and chapter_progress_course = '.$course_name.' and chapter_progress_chapter = '.$vv['course_chapter_id'];
+//                 //echo $wheres;
+//                 $chapter_current_time_tmp = M('ChapterProgress')->where($wheres)->find();
+//                 //show_bug($chapter_current_time_tmp);
+//                 //echo $chapter_current_time_tmp['chapter_progress_current_time'];
+//                 $vv['chapter_current_time'] = (int)$chapter_current_time_tmp['chapter_progress_current_time'];
                 
-            }
-            unset($vv);//取消引用
-        }
-        unset($v);//取消引用
+//             }
+//             unset($vv);//取消引用
+//         }
+//         unset($v);//取消引用
         
         $chapter_info = D('CourseChapter')->where("course_chapter_course_name = $course_name and course_chapter_id = $id")->find(); /* query($course_chapter_sql); */
         //show_bug($chapter_info);
@@ -92,7 +98,7 @@ class VideoController extends Controller {
         
         //section_chapter中添加了进度记录的几个参数，因为在模板中要用到
         $this->assign('chapter_info',$chapter_info);
-        $this->assign('section_chapter',$course_info);
+//        $this->assign('section_chapter',$course_info);
 		$this->display('index');
 	}
 	
@@ -118,6 +124,11 @@ class VideoController extends Controller {
 	        'chapter_current_time' => $chapter_current_time
 	    );
 	    //show_bug($parameter);
+	    
+	    //获取该课程的章节列表信息输出到模板页面
+	    $course_info = A('Student/Video')->getCourseInfo($course_id);
+	    //show_bug($course_info);
+	    $this->assign('section_chapter',$course_info);
 	    
 	    $this->assign('parameter',$parameter);
 	    $this->assign('video_url',$video_url);
@@ -155,8 +166,43 @@ class VideoController extends Controller {
 	    $this->display();
 	} */
 	
-	
-	
+	/**
+	 * 获取该门课程的列表信息并且添加数据库中该课程之前的学习进度记录到其中
+	 * @param 符合要求的数组 array $course_name_id
+	 */
+	function getCourseInfo($course_name_id){
+	    $course_info = getCourseSectionChapterList($course_name_id);
+	    //show_bug($course_info);
+	    /**下面用循环将$course_info 里面的url地址统一用url安全编码方法进行编码，同时将课程进度记录要用的参数拼接进去**/
+	    foreach ($course_info as $k => &$v){
+	        //show_bug($v);
+	        foreach ($v as $kk => &$vv){
+	            //执行url编码
+	            //echo $vv['course_chapter_video_url'].'<br>';
+	            $vv['course_chapter_video_url'] = urlsafe_b64encode(ADMIN_IMG_UPLOADS.$vv['course_chapter_video_url']);
+	            //echo $vv['course_chapter_video_url'];
+	    
+	            /**课程进度记录相关的代码*/
+	            //课程进度记录需要四个参数，课程ID，小节ID，用户ID，还有播放进度，将其加入到下面的section_chapter中
+	            //需要添加的信息有 课程ID 用户ID ，小节ID已经有了,
+	            $vv['course_id'] = $course_name_id;
+	            $vv['student_id'] = $_SESSION['student_user_id'];
+	            $vv['chapter_id'] = $vv['course_chapter_id'];//换个名字在存储一次
+	    
+	            //该小节课程之前的学习进度
+	            $wheres = 'chapter_progress_student = '.$_SESSION['student_user_id'].' and chapter_progress_course = '.$course_name_id.' and chapter_progress_chapter = '.$vv['course_chapter_id'];
+	            //echo $wheres;
+	            $chapter_current_time_tmp = M('ChapterProgress')->where($wheres)->find();
+	            //show_bug($chapter_current_time_tmp);
+	            //echo $chapter_current_time_tmp['chapter_progress_current_time'];
+	            $vv['chapter_current_time'] = (int)$chapter_current_time_tmp['chapter_progress_current_time'];
+	    
+	        }
+	        unset($vv);//取消引用
+	    }
+	    unset($v);//取消引用
+	    return $course_info;
+	}
 	
 	
 	

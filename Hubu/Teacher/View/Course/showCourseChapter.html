@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>showCourseChapter</title>
+</head>
+<body>
+	
+	<foreach name = 'section_chapter' item = 'section_chapter'>
+			
+		<div><a href='#'><h3>{$Think.lang.$key}{/*这个是输出数组键名*/}</h3></a></div>
+		
+			<foreach name = 'section_chapter' item = 'section_chapter'>
+				{/**这里链接指向视频播放页面，并且将该门课程的信息传递给Video控制器下面的相应方法，好让页面展示指定课程的信息，并播放此页面点击的课程视频*/}
+					<div>
+						<a href='{$Think.const.SITE_URL}index.php/Student/Video/index/course_name/{$section_chapter.course_chapter_course_name}/id/{$section_chapter.course_chapter_id}' target="_blank">{$section_chapter.course_chapter_name}</a>
+						{/**下面这个链接点击进去就是展示该节的信息，并且提供修改的表单*/}
+						<a href='__MODULE__/Course/updateCourseChapterInfo/course_chapter_id/{$section_chapter.course_chapter_id}'>修改本节</a>
+						<a href='__MODULE__/Course/deleteCourseChapter/course_chapter_id/{$section_chapter.course_chapter_id}'>删除本节</a>
+					</div>
+					
+			</foreach>
+		
+	</foreach>
+	
+	<foreach name = 'section_info' item = 'section_info'>
+		<div>
+			章名称：{$section_info.course_section_name} --- 章编号：{$section_info.course_section_section_num}
+		</div>
+		
+		<form name="updateSectionInfo" method="post" action="__MODULE__/Course/updateSectionInfo/course_section_id/{$section_info.course_section_id}">
+			
+			<div>
+				<label class="input-group-addon" for="course_section_name">章名称:</label> <input type="text" class="form-control" name="course_section_name" id="course_section_name" value="{$section_info.course_section_name}"> 
+			</div>
+			<div>
+				<label class="input-group-addon" for="course_section_section_num">章编号：</label> <input type="text" class="form-control" name="course_section_section_num" id="course_section_section_num" value="{$section_info.course_section_section_num}">
+			</div>
+			<br/>
+			<div>
+			<input class="btn btn-primary" type="submit" name="submit" id="submit" value="修改章信息">
+			</div>
+		</form>
+		<a href='__MODULE__/Course/deleteSection/course_section_id/{$section_info.course_section_id}'>删除本章以及改章所有小节</a>
+		<hr>
+	</foreach>
+	
+	
+	
+</body>
+</html>

@@ -18,7 +18,7 @@ class AdminUserModel extends Model{
         //根据$name查询数据库里面是否有这一条记录
         //可以根据指定字段进行查询getByXXX($name)，XXX是字段名，Model父类封装好的方法，执行结果一位数组，PHP本身不区分大小写，采用驼峰法命名
         //此处驼峰法命名与数据库之间有一个下划线_的关系,AdminUser对应数据表名字hubu_admin_user,hubu_为数据表前缀
-        $info = $this-> getByAdminuser_username($name);
+        $info = $this-> getByAdminuser_email($name);
         //show_bug($info);//$info是一个以为数组才是正确，为空说明表单用户名输入错误
         //$info不为空，继续验证密码
         if($info != null){

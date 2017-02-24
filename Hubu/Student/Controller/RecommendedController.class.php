@@ -3,6 +3,11 @@
 namespace Student\Controller;
 use Think\Controller;
 class RecommendedController extends Controller {
+    
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
 
     /**
      * 精品推荐的相关课程

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>我的课程</title>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div style='margin:5px 10px 5px 10px;'>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">数据分析</div>
+	<table class="table table-hover">
+      <tr style='height:36px;font-size:14px;'>
+        <th class='text-center' style='padding:8px;width:25%;'>课程ID</th>
+        <th class='text-center' style='padding:8px;width:25%;'>课程名称</th>
+        <th class='text-center' style='padding:8px;width:25%;'>选课人数</th>
+        <th class='text-center' style='padding:8px;width:25%;'>操作</th>
+      </tr>
+      {/*下面使用模板循环输出相应课程的信息*/}
+      <foreach name='course_list' item='course_list'>
+         <tr style='height:59px;font-size:14px;'>
+          <td class='text-center' style='padding:18px 8px 8px 8px;'>{$course_list.course_name_id}</td>
+          <td class='text-center' style='padding:18px 8px 8px 8px;'>{$course_list.course_name_name}</td>
+          <td class='text-center' style='padding:18px 8px 8px 8px;'>{$course_list.course_name_choose_count}</td>
+          <td class='text-center' style='padding:12px 8px 8px 8px;'><a class="btn btn-primary" href = "__MODULE__/Da/showChooseCourseList/course_name_id/{$course_list.course_name_id}">查看详细信息</a></td>
+        </tr>
+      </foreach>
+    </table>
+	</div>
+</div>
+</body>
+</html>

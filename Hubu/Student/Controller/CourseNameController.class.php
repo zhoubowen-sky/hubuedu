@@ -3,6 +3,12 @@
 namespace Student\Controller;
 use Think\Controller;
 class CourseNameController extends Controller {
+    
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
     /**
      * 从数据库中获取所有的课程名称，并输出到模板
      * 对应的数据表为hubu_course_name

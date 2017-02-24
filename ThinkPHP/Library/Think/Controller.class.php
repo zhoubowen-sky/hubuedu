@@ -160,16 +160,20 @@ abstract class Controller {
      */
     public function __call($method,$args) {
         if( 0 === strcasecmp($method,ACTION_NAME.C('ACTION_SUFFIX'))) {
+            // $this 当前的控制器对象
             if(method_exists($this,'_empty')) {
+                // 在相应控制器中定义 _empty 方法
                 // 如果定义了_empty操作 则调用
                 $this->_empty($method,$args);
             }elseif(file_exists_case($this->view->parseTemplate())){
+                // 即使没有相应操作的方法，但是有模板文件，也会输出模板文件
                 // 检查是否存在默认模版 如果有直接输出模版
                 $this->display();
             }else{
                 E(L('_ERROR_ACTION_').':'.ACTION_NAME);
             }
         }else{
+            //帮助提示空操作的错误信息的函数 E就是error , L language
             E(__CLASS__.':'.$method.L('_METHOD_NOT_EXIST_'));
             return;
         }

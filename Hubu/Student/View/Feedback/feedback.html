@@ -5,51 +5,55 @@
     <title>用户反馈留言</title>
 	<meta name="renderer" content="webkit">
 	<link rel="icon" href="{$Think.const.SITE_URL}/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}bootstrap.min.css">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}main.css">
-    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}swiper-3.4.0.min.css">
+		<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}font-awesome.min">
     <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.js'></script>
-    <script type="text/javascript" src='{$Think.const.ADMIN_JS_URL}jquery.adaptive-backgrounds.js'></script>
-	<script src="{$Think.const.ADMIN_ROOT_URL}layui/lay/dest/layui.all.js"></script>
-
-    <script type="text/javascript">
-
-        $(document).ready(function(){
-            $.adaptiveBackground.run();	
-        });
-
-    </script>
-
 </head>
 
 <body>
 	{/*包含header.html模板*/}
 	<include file="Public/header" />
-	
-	<p>用户反馈留言的页面</p>
-	<form name="feedback" method="post" action="__SELF__">
-		<p>
-			<label for="feedback_name">用户名:</label> <input type="text" name="feedback_name" id="feedback_name"> 
-		</p>
-		<p>
-			<label for="feedback_tel">电话：</label> <input type="text" name="feedback_tel" id="feedback_tel">
-		</p>
-		<p>
-			<label for="feedback_email">邮箱：</label> <input type="text" name="feedback_email" id="feedback_email">
-		</p>
-		<p>
-			<label for="feedback_addr">地址：</label> <input type="text" name="feedback_addr" id="feedback_addr">
-		</p>
-		<p>
-			<label for="feedback_content">意见和建议:</label> <input name="feedback_content" id="feedback_content">
-		</p>
-		<p>
-		  <input type="submit" name="submit" id="submit" value="提交">
-		</p>
+<div class='container-fluid'>
+ <div class='row'>
+   <div class='col-lg-1'></div>
+    <div class='well col-lg-10'>
+		<h2 class='text-center'>反馈留言</h2>
+		<br/>
+		<form name="feedback" method="post" action="__SELF__">
+			
+			<div class="input-group" style='width:35%;margin-left:32%'>
+				<label class="input-group-addon" for="feedback_name">用户名:</label> <input type="text" class="form-control" name="feedback_name" id="feedback_name"> 
+			</div>
+			<br/>
+			<div class="input-group" style='width:35%;margin-left:32%'>
+				<label class="input-group-addon" for="feedback_tel">电话：</label> <input type="text" class="form-control" name="feedback_tel" id="feedback_tel">
+			</div>
+			<br/>
+			<div class="input-group" style='width:35%;margin-left:32%'>
+				<label class="input-group-addon" for="feedback_email">邮箱：</label> <input type="text" class="form-control" name="feedback_email" id="feedback_email">
+			</div>
+			<br/>
+			<div class="input-group" style='width:35%;margin-left:32%'>
+				<label class="input-group-addon" for="feedback_addr">地址：</label> <input type="text" class="form-control" name="feedback_addr" id="feedback_addr">
+			</div>
+			<br/>
+			<div class="input-group" style='width:35%;margin-left:32%'>
+				<label class="input-group-addon" for="feedback_content">意见和建议:</label> <input class="form-control" name="feedback_content" id="feedback_content">
+			</div>
+			<br/>
+			<div class="btn-group btn-group-lg center-block" role="group" aria-label="..." style='width:247px;height:46px;'>
+			<input class="btn btn-primary" type="submit" name="submit" id="submit" value="提交">
+			<a class="btn btn-default" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HmR2cWt8cWl7cDBtdWdeeHFmc393cjB9cXM" style="text-decoration:none;">直接写信给开发者</a>
+			</div>
+				
+			
 
-	</form>
-	<p><a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HmR2cWt8cWl7cDBtdWdeeHFmc393cjB9cXM" style="text-decoration:none;">直接写信给开发者</a></p>
-	
+		</form>
+		
+ </div>
+</div>
+</div>
 	{/*这里放置的是bottom*/}
    <include file="Public/footer" />
 	
@@ -64,8 +68,7 @@ var mainheight = $(this).contents().find("body").height();
 $(this).height(mainheight);
 }); 
 </script>
-<script src="{$Think.const.ADMIN_JS_URL}swiper-3.4.0.jquery.min.js"></script>
-<script src="{$Think.const.ADMIN_JS_URL}imgturn.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="{$Think.const.ADMIN_JS_URL}layer.js"></script>
 </body>
 </html>

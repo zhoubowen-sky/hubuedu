@@ -4,6 +4,11 @@ namespace Student\Controller;
 use Think\Controller;
 class StudentUserController extends Controller {
     
+    //空操作的方法
+    function _empty(){
+        echo '服务器繁忙，请稍后再试...';
+    }
+    
     /**
 	 * 用户登录的方法，
 	 * 接收用户输入的表单数据（账户，密码，验证码），
@@ -49,8 +54,8 @@ class StudentUserController extends Controller {
 	                    $this->error("您的账号还没有激活，我们已向您的邮箱 $email 发送了激活邮件，请注意查收并登录邮箱激活账号！");
 	                }else {
 	                    /**********************************登陆成功后执行的操作***********************************/
-	                    echo "登陆成功";
-	                    show_bug($z);//数据库中查询到的用户信息那一条记录
+	                    //echo "登陆成功";
+	                    //show_bug($z);//数据库中查询到的用户信息那一条记录
 	                    //登录信息持久化，生成session，这里要存储的将是大量的信息，包括学生课程相关的信息
 	                    //性别在数据库中存储为1,2两种形式，如果为数字1就是男，数字2就是女，这里写一个判断
 	                    if ($z['student_user_sex'] == 1) {
@@ -70,7 +75,7 @@ class StudentUserController extends Controller {
 	                    session('student_user_pic',$z['student_user_pic']);//存储用户头像路径
 	                    session('student_user_intro',$z['student_user_intro']);//存储用户个人介绍
 	                    
-	                    echo "session生成成功！";
+	                    //echo "session生成成功！";
 	                    $this->success('登录成功！');
 	                }
 	            }
