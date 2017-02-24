@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>showAddCourse-添加课程</title>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	{/**添加课程的表单*/}
-	<div>添加一门课程</div>
+	<div><h3>添加一门课程</h3></div>
 	<form action="addCourse" method="post" enctype="multipart/form-data" name="form1" id="form1">
-	  	<label for="course_name_name">课程名称</label><input type="text" name="course_name_name" id="course_name_name" placeholder="高等数学"  />
-				课程类别：
-				<select name="course_name_class" class="input"style="width:100px; line-height:17px; display:inline-block">
+	<div class="form-group" style='width:400px;'>
+	  	<label for="course_name_name" style='font-size:20px;line-height:22px;margin:8px 0 8px 0'>课程名称</label><input class="form-control" type="text" name="course_name_name" id="course_name_name" placeholder="高等数学"  />
+				<span style='font-size:20px;line-height:22px;padding:8px 0 8px 0;'><b>课程类别：</b></span>
+				<select class="form-control" name="course_name_class" class="input">
 		            <option value="1">计算机</option>
 		            <option value="2">经济管理</option>
 		            <option value="3">心理学</option>
@@ -25,52 +27,55 @@
 		            <option value="12">教育教学</option>
 		            <option value="13">其他</option>
 		          </select>
-		<label for="course_name_adder">讲师</label>		<input type="text" name="course_name_adder" id="course_name_adder" />
-		<label for="course_name_intro">课程简介</label>	<input type="text" name="course_name_intro" id="course_name_intro" />
-		<label for="course_name_pic">课程图片</label>		<input type="file" name="course_name_pic" id="course_name_pic" />
-		<input type="submit" name="submit" id="submit" value="提交" />
+		<label style='font-size:20px;line-height:22px;padding:8px 0 8px 0' for="course_name_adder">讲师</label>		<input  class="form-control" type="text" name="course_name_adder" id="course_name_adder" />
+		<label style='font-size:20px;line-height:22px;padding:8px 0 8px 0' for="course_name_intro">课程简介</label>	<input class="form-control" type="text" name="course_name_intro" id="course_name_intro" />
+		<label style='font-size:20px;line-height:22px;padding:8px 0 8px 0' for="course_name_pic">课程图片</label>		<input  type="file" name="course_name_pic" id="course_name_pic" />
+		<br/>
+		<input class="btn btn-default" type="submit" name="submit" id="submit" value="提交" />
+	</div>
 	</form>
 	
 	<hr>
 	{/**添加章的表单,这里需要展示出所有课程的信息，让用户选择是哪一门课程*/}
-	<div>添加一章的表单</div>
+	<div><h3>添加一章的表单</h3></div>
 	<form id="form2" name="form2" method="post" action="addSection">
-	  <label for="course_section_name">章名称</label><input type="text" name="course_section_name" id="course_section_name" placeholder="第一章  XXXX" />
-	  <label for="course_section_section_num">章编号</label><input type="text" name="course_section_section_num" id="course_section_section_num" placeholder="填阿拉伯数字，第一章填 1  " />
+	<div class="form-group" style='width:400px;'>
+	  <label style='font-size:20px;line-height:22px;padding:8px 0 8px 0' for="course_section_name">章名称</label><input class="form-control" type="text" name="course_section_name" id="course_section_name" placeholder="第一章  XXXX" />
+	  <label style='font-size:20px;line-height:22px;padding:8px 0 8px 0' for="course_section_section_num">章编号</label><input class="form-control" type="text" name="course_section_section_num" id="course_section_section_num" placeholder="填阿拉伯数字，第一章填 1  " />
 	  {/**这里要展示所有的课程信息，让用户选择已经存在的课程*/}
-	  <div>所属课程</div>
+	  <div><span style='font-size:20px;line-height:22px;padding:8px 0 8px 0'><b>所属课程</b></span></div>
 	  <foreach name='courseList' item='courseList'>
-    <label><input type="radio" name="course_section_course_name" value="{$courseList.course_name_id}" id="course_section_course_name" />{$courseList.course_name_name}</label>
-    </foreach>
-	  
-	  <input type="submit" name="submit2" id="submit2" value="提交" />
+		<label class="radio-inline"><input type="radio" name="course_section_course_name" value="{$courseList.course_name_id}" id="course_section_course_name" />{$courseList.course_name_name}</label>
+	  </foreach>
+	  <br/><br/>
+	  <input class="btn btn-default" type="submit" name="submit2" id="submit2" value="提交" />
+	</div>
 	</form>
 	<hr>
 	{/**添加小节*/}
-	<div>添加一节的信息</div>
+	<div><h3>添加一节的信息</h3></div>
 	<form id="form3" name="form3" method="post" action="addChapter"  enctype="multipart/form-data">
-  		<label for="course_chapter_name">节名称</label><input type="text" name="course_chapter_name" id="course_chapter_name" placeholder="1.1 XXXX"  />
-  		<div>所属课程</div>
+	<div class="form-group" style='width:400px;'>
+  		<label style='font-size:20px;line-height:22px;padding:8px 0 8px 0' for="course_chapter_name">节名称</label><input class="form-control" type="text" name="course_chapter_name" id="course_chapter_name" placeholder="1.1 XXXX"  />
+  		<div><span style='font-size:20px;line-height:22px;padding:8px 0 8px 0'><b>所属课程</b></span></div>
 	  	<foreach name='courseList2' item='courseList2'>
-    		<label><input type="radio" name="course_chapter_course_name" value="{$courseList2.course_name_id}" id="course_chapter_course_name" />{$courseList2.course_name_name}</label>
+    		<label class="radio-inline"><input type="radio" name="course_chapter_course_name" value="{$courseList2.course_name_id}" id="course_chapter_course_name" />{$courseList2.course_name_name}</label>
     	</foreach>
-    	
-    	<div>所属章</div>
-    	<label for="course_chapter_section">第几章</label><input type="text" name="course_chapter_section" id="course_chapter_section"  placeholder="填写阿拉伯数字例如“1”"  />
+    	<label style='font-size:20px;line-height:22px;padding:8px 0 8px 0' for="course_chapter_section">所属章节</label><input class="form-control" type="text" name="course_chapter_section" id="course_chapter_section"  placeholder="填写阿拉伯数字例如“1”"  />
     	
     	<!-- <foreach name='sectionList' item='sectionList'>
     		<label><input type="radio" name="course_chapter_section" value="{$sectionList.course_section_course_name}" id="aaa"  />{$sectionList.course_section_name}</label>
     		<br>
     	</foreach> -->
-    	<div>其他信息</div>
-    	<label for="course_chapter_adder">讲师</label><input type="text" name="course_chapter_adder" id="course_chapter_adder" />
+		<hr>
+    	<div><h3>其他信息</h3></div>
+    	<label style='font-size:20px;line-height:22px;padding:8px 0 8px 0' for="course_chapter_adder">讲师</label><input class="form-control" type="text" name="course_chapter_adder" id="course_chapter_adder" />
     	
-    	<label for="course_chapter_video_url">本小节视频</label><input type="file" name="course_chapter_video_url" id="course_chapter_video_url" />
-    	<label for="course_chapter_ppt_url">本小节PPT</label><input type="file" name="course_chapter_ppt_url" id="course_chapter_ppt_url" />
-    	
-    	
-    	
-    	<input type="submit" name="submit3" id="submit3" value="提交" />
+    	<label style='font-size:20px;line-height:22px;padding:8px 0 8px 0' for="course_chapter_video_url">本小节视频</label><input type="file" name="course_chapter_video_url" id="course_chapter_video_url" />
+    	<label style='font-size:20px;line-height:22px;padding:8px 0 8px 0' for="course_chapter_ppt_url">本小节PPT</label><input type="file" name="course_chapter_ppt_url" id="course_chapter_ppt_url" /> 	
+    	<br/>
+		<input class="btn btn-default" type="submit" name="submit3" id="submit3" value="提交" />
+	</div>
 	</form>
 	
 </body>
