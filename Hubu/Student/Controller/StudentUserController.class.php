@@ -161,7 +161,7 @@ class StudentUserController extends Controller
                     // 邮箱没有被注册，发送邮件到注册的邮箱,向数据库写入数据
                     // 收集表单数据，把时间添加到$_POST里面
                     $_POST['student_user_time'] = date("Y-m-d H:i:s"); // 用户注册的时间
-                    $_POST['student_user_username'] = $_POST['student_user_email']; // 默认在注册的时候，用户名就是邮箱，但是这是两个字段
+                    //$_POST['student_user_username'] = $_POST['student_user_email']; // 默认在注册的时候，用户名就是邮箱，但是这是两个字段
                     $m = D('StudentUser');
                     $rst = $m->create(); // 收集表单数据，存储到 $rst 中
                                          // show_bug($rst);
