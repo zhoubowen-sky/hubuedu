@@ -45,6 +45,13 @@ class FeedbackController extends Controller
         } else {
             // 用户没有提交表单，直接展示模版
             // echo "无表单数据";
+
+            // 如果用户登录了，就把用户的个人信息直接输出到前台
+            if (isset($_SESSION['student_user_id'])){
+                $userInfo = D('StudentUser')->where('student_user_id = '.$_SESSION['student_user_id'])->find();
+                $this->assign('userInfo',$userInfo);
+            }
+            
             $this->display();
         }
     }

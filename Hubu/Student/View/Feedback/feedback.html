@@ -23,19 +23,19 @@
 		<form name="feedback" method="post" action="__SELF__">
 			
 			<div class="input-group" style='width:35%;margin-left:32%'>
-				<label class="input-group-addon" for="feedback_name">用户名:</label> <input type="text" class="form-control" name="feedback_name" id="feedback_name"> 
+				<label class="input-group-addon" for="feedback_name">用户名:</label> <input value="{$userInfo.student_user_username}" type="text" class="form-control" name="feedback_name" id="feedback_name"> 
 			</div>
 			<br/>
 			<div class="input-group" style='width:35%;margin-left:32%'>
-				<label class="input-group-addon" for="feedback_tel">电话：</label> <input type="text" class="form-control" name="feedback_tel" id="feedback_tel">
+				<label class="input-group-addon" for="feedback_tel">电话：</label> <input value="{$userInfo.student_user_tel}" type="text" class="form-control" name="feedback_tel" id="feedback_tel">
 			</div>
 			<br/>
 			<div class="input-group" style='width:35%;margin-left:32%'>
-				<label class="input-group-addon" for="feedback_email">邮箱：</label> <input type="text" class="form-control" name="feedback_email" id="feedback_email">
+				<label class="input-group-addon" for="feedback_email">邮箱：</label> <input value="{$userInfo.student_user_email}" type="text" class="form-control" name="feedback_email" id="feedback_email">
 			</div>
 			<br/>
 			<div class="input-group" style='width:35%;margin-left:32%'>
-				<label class="input-group-addon" for="feedback_addr">地址：</label> <input type="text" class="form-control" name="feedback_addr" id="feedback_addr">
+				<label class="input-group-addon" for="feedback_addr">地址：</label> <input value="{$userInfo.student_user_addr}" type="text" class="form-control" name="feedback_addr" id="feedback_addr">
 			</div>
 			<br/>
 			<div class="input-group" style='width:35%;margin-left:32%'>
