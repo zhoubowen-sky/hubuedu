@@ -23,7 +23,7 @@
 	<div>增加一门课程为热门课程</div>
 	<form id="form1" name="form1" method="post" action="__MODULE__/HotCourse/addHotCourse">
 	  	<foreach name='courseList' item='courseList'>
-    		<label><input type="radio" name="hot_course_course_name" value="{$courseList.course_name_id}" id="章所属课程_1" />{$courseList.course_name_name}</label>
+    		<label><input type="radio" name="hot_course_course_name" value="{$courseList.course_name_id}" id="{$courseList.course_name_id}" />{$courseList.course_name_name}</label>
     	</foreach>
   		<input type="submit" name="submit" id="submit" value="点击增添" />
 	</form>
