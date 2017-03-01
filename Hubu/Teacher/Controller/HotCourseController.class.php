@@ -25,11 +25,26 @@ class HotCourseController extends Controller
             $hot[$k] = $info;
         }
         // show_bug($hot);
-        
+
         /**
          * 查询出所有课程的信息
+         * 同时要查询已有的热门课程，如果该课程已经是热门课程，那就不在下面展示出来
          */
-        $courseList = D('CourseName')->select();
+        $courseList = D('CourseName')->select();//这里面是所有课程的信息
+        //下面剔除已经是热门课程的课程
+        //查询出已有的热门课程
+        $hotCourseList = D('HotCourse')->select();
+        //用循环来剔除热门课程
+        //show_bug($courseList);
+        $courseListNew = array();
+        foreach ($courseList as $k => $v){
+            foreach ($hotCourseList as $kk => $vv){
+                if ($v['course_name_id'] === $vv['hot_course_course_name']){
+                    //$courseListNew[] = $vv['hot_course_course_name'];
+                    unset($courseList[$k]);
+                }
+            }
+        }
         $this->assign('courseList', $courseList);
         
         $this->assign('hot', $hot);
